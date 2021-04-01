@@ -3,8 +3,8 @@
 *.DS_Store
 
 #Visual Studio files
-**/appsettings.development.json
-**/appsettings.staging.json
+**/appsettings.Development.json
+**/appsettings.json
 **/appsettings.production.json
 *.[Oo]bj
 *.user
