@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using VehicleRegister.Domain.Models;
 
 namespace VehicleRegister.Domain.Interfaces.Model.Interface
 {
@@ -8,7 +9,9 @@ namespace VehicleRegister.Domain.Interfaces.Model.Interface
     {
         int Id { get; set; }
         DateTime Date { get; set; }
-        int VehicleId {get; set;}
-        int AutoMotiveRepairId { get; set; }
+         int VehicleId { get; set; }
+         Vehicle Vehicle { get; set; }
+         int AutoMotiveRepairId { get; set; }
+         AutoMotiveRepair AutoMotiveRepair { get; set; }
     }
 }

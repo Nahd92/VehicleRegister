@@ -11,6 +11,9 @@ namespace VehicleRegister.Business.Wrapper
     {
         private IVehicleService _vehicle;
         private IRepositoryWrapper _wrapper;
+        private IAutoMotiveRepairService _AutoMotiveRepair;
+        private IServiceReservationService _service;
+
         public IVehicleService Vehicle
         {
             get
@@ -23,7 +26,29 @@ namespace VehicleRegister.Business.Wrapper
             }
         }
 
+        public IAutoMotiveRepairService RepairService
+        {
+            get
+            {
+                if (_AutoMotiveRepair == null)
+                {
+                    _AutoMotiveRepair = new AutoMotiveRepairService(_wrapper);
+                }
+                return _AutoMotiveRepair;
+            }
+        }
 
+        public IServiceReservationService ServiceReservations
+        {
+            get
+            {
+                if (_service == null)
+                {
+                    _service = new ServiceReservationsService(_wrapper);
+                }
+                return _service;
+            }
+        }
 
         public ServiceWrapper(IRepositoryWrapper wrapper)
         {

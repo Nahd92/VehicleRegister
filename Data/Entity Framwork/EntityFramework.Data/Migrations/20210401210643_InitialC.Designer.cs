@@ -4,14 +4,16 @@ using EntityFramework.Data.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EntityFramework.Data.Migrations
 {
     [DbContext(typeof(VehicleRegisterContext))]
-    partial class VehicleRegisterContextModelSnapshot : ModelSnapshot
+    [Migration("20210401210643_InitialC")]
+    partial class InitialC
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -47,10 +49,15 @@ namespace EntityFramework.Data.Migrations
                     b.Property<int>("PhoneNumber")
                         .HasColumnType("int");
 
+                    b.Property<int?>("ServiceReservationsId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Website")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ServiceReservationsId");
 
                     b.ToTable("AutoMotiveRepair");
                 });
@@ -62,20 +69,10 @@ namespace EntityFramework.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AutoMotiveRepairId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("VehicleId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("AutoMotiveRepairId");
-
-                    b.HasIndex("VehicleId");
 
                     b.ToTable("ServiceReservations");
                 });
@@ -108,6 +105,9 @@ namespace EntityFramework.Data.Migrations
                     b.Property<DateTime>("ServiceDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int?>("ServiceReservationsId")
+                        .HasColumnType("int");
+
                     b.Property<int>("Weight")
                         .HasColumnType("int");
 
@@ -116,23 +116,27 @@ namespace EntityFramework.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ServiceReservationsId");
+
                     b.ToTable("Vehicle");
+                });
+
+            modelBuilder.Entity("VehicleRegister.Domain.Models.AutoMotiveRepair", b =>
+                {
+                    b.HasOne("VehicleRegister.Domain.Models.ServiceReservations", null)
+                        .WithMany("AutoMotiveRepair")
+                        .HasForeignKey("ServiceReservationsId");
+                });
+
+            modelBuilder.Entity("VehicleRegister.Domain.Models.Vehicle", b =>
+                {
+                    b.HasOne("VehicleRegister.Domain.Models.ServiceReservations", null)
+                        .WithMany("Vehicle")
+                        .HasForeignKey("ServiceReservationsId");
                 });
 
             modelBuilder.Entity("VehicleRegister.Domain.Models.ServiceReservations", b =>
                 {
-                    b.HasOne("VehicleRegister.Domain.Models.AutoMotiveRepair", "AutoMotiveRepair")
-                        .WithMany()
-                        .HasForeignKey("AutoMotiveRepairId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("VehicleRegister.Domain.Models.Vehicle", "Vehicle")
-                        .WithMany()
-                        .HasForeignKey("VehicleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("AutoMotiveRepair");
 
                     b.Navigation("Vehicle");

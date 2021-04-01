@@ -11,7 +11,11 @@ namespace VehicleRegister.Domain.Models
         [Key]
         public int Id { get; set; }
         public DateTime Date { get; set; }
-        public int VehicleId { get; set; }
+
+        public int VehicleId{ get; set; }
+        public Vehicle Vehicle { get; set; }
         public int AutoMotiveRepairId { get; set; }
+        public AutoMotiveRepair AutoMotiveRepair { get; set; }
+
     }
 }

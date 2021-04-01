@@ -7,5 +7,7 @@ namespace VehicleRegister.Domain.Interfaces.Service.Interface
     public interface IServiceWrapper
     {
         IVehicleService Vehicle { get; }
+        IAutoMotiveRepairService RepairService { get; }
+        IServiceReservationService ServiceReservations { get;  }
     }
 }

@@ -7,6 +7,10 @@ namespace VehicleRegister.Domain.Interfaces.Repository.Interface
     public interface IVehicleRepository
     {
         Task<IEnumerable<IVehicle>> GetAllVehicles();
-        void Create();
+        Task<bool> CreateVehicle(IVehicle vehicle);
+        Task<bool> UpdateVehicle(IVehicle vehicle);
+        Task<bool> DeleteVehicle(IVehicle vehicle);
+        Task<IVehicle> GetVehicleById(int id);
+    
     }
 }

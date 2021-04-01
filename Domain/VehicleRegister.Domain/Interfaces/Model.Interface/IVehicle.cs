@@ -12,8 +12,8 @@ namespace VehicleRegister.Domain.Interfaces.Model.Interface
         string Brand { get; set; }
         int Weight { get; set; }
         DateTime InTraffic { get; set; }
-        bool DrivingBan { get; set; }
-        bool ServiceBooked { get; set; }
+        bool IsDrivingBan { get; set; }
+        bool IsServiceBooked { get; set; }
         DateTime ServiceDate { get; set; }
         int YearlyFee { get; set; }
     }
