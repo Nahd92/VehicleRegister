@@ -1,0 +1,63 @@
+﻿#OS junk files
+[Tt]humbs.db
+*.DS_Store
+
+#Visual Studio files
+**/appsettings.development.json
+**/appsettings.staging.json
+**/appsettings.production.json
+*.[Oo]bj
+*.user
+*.aps
+*.pch
+*.vspscc
+*.vssscc
+*_i.c
+*_p.c
+*.ncb
+*.suo
+*.tlb
+*.tlh
+*.bak
+*.[Cc]ache
+*.ilk
+*.log
+*.lib
+*.sbr
+*.sdf
+*.pyc
+*.xml
+ipch/
+obj/
+[Bb]in
+[Dd]ebug*/
+[Rr]elease*/
+Ankh.NoLoad
+packages/
+#Tooling
+*.suo
+*.user
+_ReSharper.*
+VehicleRegister.CarAPI/bin
+VehicleRegister.CarAPI/obj
+packages
+
+#Project files
+[Bb]uild/
+
+#Subversion files
+.svn
+
+# Office Temp Files
+~$*
+
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+### VisualStudioCode Patch ###
+# Ignore all local history of files
+**/.history
