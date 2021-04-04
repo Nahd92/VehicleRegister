@@ -18,8 +18,6 @@ namespace VehicleRegister.CarAPI
                     .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                     .AddEnvironmentVariables();
             Configuration = builder.Build();
-
-            var environment = Configuration["ConnectionStrings:VehicleRegister"];
         }
 
 
