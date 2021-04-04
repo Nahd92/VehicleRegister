@@ -7,7 +7,7 @@ namespace VehicleRegister.Domain.Interfaces.Model.Interface
     public interface IVehicle
     {
         int Id { get; set; }
-        int RegisterNumber { get; set; }
+        string RegisterNumber { get; set; }
         string Model { get; set; }
         string Brand { get; set; }
         int Weight { get; set; }

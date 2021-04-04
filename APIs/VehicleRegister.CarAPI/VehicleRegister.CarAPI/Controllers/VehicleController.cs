@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using VehicleRegister.Domain.DTO.VehicleDTO.Request;
-using VehicleRegister.Domain.Interfaces.Model.Interface;
 using VehicleRegister.Domain.Interfaces.Service.Interface;
 using VehicleRegister.Domain.RouteAPI;
 
@@ -27,6 +25,20 @@ namespace VehicleRegister.CarAPI.Controllers
         public async Task<IActionResult> GetAllVehicles()
         {
             var vehicles = await _serviceWrapper.Vehicle.GetAllVehicles();
+
+            if (vehicles == null) return NotFound();
+
+            return Ok(vehicles);
+        }
+
+
+        [HttpGet]
+        [Route(RoutesAPI.Vehicle.GetVehicleWithRegNumber)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> GetVehicleWithRegNumber(string regNumber)
+        {
+            var vehicles = await _serviceWrapper.Vehicle.GetVehicleWithRegNumber(regNumber);
 
             if (vehicles == null) return NotFound();
 
@@ -70,6 +82,18 @@ namespace VehicleRegister.CarAPI.Controllers
                 return NoContent();
 
             return BadRequest("Something happend when trying to delete vehicle! Try again");
+        }
+
+
+        [HttpPut]
+        [Route(RoutesAPI.Vehicle.UpdateVehicle)]
+        public async Task<IActionResult> UpdateVehicle(UpdateVehicleRequest request)
+        {
+            var response = await _serviceWrapper.Vehicle.UpdateVehicle(request);
+
+            if (response == null) return NotFound("Could not find any Vehicles with inputed Id");
+
+            return Ok(response);
         }
     }
 }

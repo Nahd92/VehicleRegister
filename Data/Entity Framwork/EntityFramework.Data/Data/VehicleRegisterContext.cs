@@ -16,7 +16,7 @@ namespace EntityFramework.Data.Data
         public DbSet<Vehicle> Vehicles { get; set; }
         public DbSet<AutoMotiveRepair> AutoMotive { get; set; }
         public DbSet<ServiceReservations> ServiceReservations { get; set; }
-
+        public DbSet<VehicleServiceHistory> VehicleServiceHistory { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -24,6 +24,7 @@ namespace EntityFramework.Data.Data
             modelBuilder.Entity<Vehicle>().ToTable("Vehicle");
             modelBuilder.Entity<AutoMotiveRepair>().ToTable("AutoMotiveRepair");
             modelBuilder.Entity<ServiceReservations>().ToTable("ServiceReservations");
+            modelBuilder.Entity<VehicleServiceHistory>().ToTable("VehicleServiceHistory");
         }
 
     }

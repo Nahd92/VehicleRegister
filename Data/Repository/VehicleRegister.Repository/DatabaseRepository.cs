@@ -26,8 +26,15 @@ namespace VehicleRegister.Repository
 
         public async Task<bool> DeleteVehicle(IVehicle vehicle)
         {
-            _ctx.Remove(vehicle);
-           return await _ctx.SaveChangesAsync() > 0;
+            try
+            {
+                _ctx.Remove(vehicle);
+                return await _ctx.SaveChangesAsync() > 0;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public async Task<IEnumerable<IAutoMotiveRepair>> GetAllAutoMotives()
@@ -78,7 +85,7 @@ namespace VehicleRegister.Repository
                         InTraffic = veh.InTraffic,
                         Model = veh.Model,
                         RegisterNumber = veh.RegisterNumber,
-                        Weight = veh.RegisterNumber,
+                        Weight = veh.Weight,
                         YearlyFee = veh.YearlyFee
                     });
                 }
@@ -96,7 +103,7 @@ namespace VehicleRegister.Repository
         {
             try
             {
-                var vehicle = await _ctx.Vehicles.Where(x => x.Id == id).FirstOrDefaultAsync();
+                var vehicle = await _ctx.Vehicles.Where(x => x.Id == id).AsNoTracking().FirstOrDefaultAsync();
 
                 if (vehicle == null) return null;
                     
@@ -110,7 +117,7 @@ namespace VehicleRegister.Repository
                     InTraffic = vehicle.InTraffic,
                     Model = vehicle.Model,
                     RegisterNumber = vehicle.RegisterNumber,
-                    Weight = vehicle.RegisterNumber,
+                    Weight = vehicle.Weight,
                     YearlyFee = vehicle.YearlyFee
                 };
 
@@ -122,9 +129,18 @@ namespace VehicleRegister.Repository
             }    
         }
 
-        public Task<bool> UpdateVehicle(IVehicle vehicle)
+        public async Task<bool> UpdateVehicle(IVehicle vehicle)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _ctx.Update(vehicle);
+                return await _ctx.SaveChangesAsync() > 0;                
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
     }
 }

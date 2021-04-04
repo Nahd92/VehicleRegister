@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using VehicleRegister.CarAPI.Controllers;
 using VehicleRegister.Domain.DTO.VehicleDTO.Request;
+using VehicleRegister.Domain.DTO.VehicleDTO.Response;
 using VehicleRegister.Domain.Interfaces.Model.Interface;
 using VehicleRegister.Domain.Interfaces.Service.Interface;
 using VehicleRegister.Domain.Models;
@@ -37,7 +38,7 @@ namespace VehicleRegister.Testing.Controllers
                 Model = "XC90",
                 InTraffic = DateTime.Parse("2020-02-02"),
                 IsDrivingBan = false,
-                RegisterNumber = 123-431,
+                RegisterNumber = "ABC123",
                 Weight = 2220,
                 IsServiceBooked = false,
                 ServiceDate = DateTime.Parse("2021-03-03"),
@@ -51,7 +52,7 @@ namespace VehicleRegister.Testing.Controllers
             Model = "XC90",
             InTraffic = DateTime.Parse("2020-02-02"),
             IsDrivingBan = false,
-            RegisterNumber = 123 - 431,
+            RegisterNumber = "ABC123",
             Weight = 2220,
             IsServiceBooked = false,
             ServiceDate = DateTime.Parse("2021-03-03"),
@@ -64,7 +65,7 @@ namespace VehicleRegister.Testing.Controllers
             Model = "XC90",
             InTraffic = DateTime.Parse("2020-02-02"),
             IsDrivingBan = false,
-            RegisterNumber = 123 - 431,
+            RegisterNumber = "ABC123",
             Weight = 2220,
             IsServiceBooked = false,
             ServiceDate = DateTime.Parse("2021-03-03"),
@@ -153,7 +154,7 @@ namespace VehicleRegister.Testing.Controllers
             mockService.Setup(x => x.Vehicle.GetVehicleById(It.IsAny<int>())).ReturnsAsync(car);
 
             //Act
-            var response = await vehicleController.GetVehicle(car.Id); 
+            var response = await vehicleController.GetVehicle(car.Id);
 
             //Assert
             var result = response.Should().BeOfType<OkObjectResult>().Subject;
@@ -161,6 +162,66 @@ namespace VehicleRegister.Testing.Controllers
             re.Id.Should().Be(1);
         }
 
+        [TestMethod]
+        public async Task DeleteVehicle_ShouldReturnNoContentWhenSuccessfully()
+        {
+            //Arrange
+            int randomId = 1;
+            mockService.Setup(x => x.Vehicle.DeleteVehicle(It.IsAny<int>())).ReturnsAsync(true);
+
+            //Act
+            var response = await vehicleController.DeleteVehicle(randomId);
+
+            //Assert
+            var result = response.Should().BeOfType<NoContentResult>();
+        }
+
+        [TestMethod]
+        public async Task DeleteVehicle_ShouldReturnBadRequestAndASpecificMessageToUser()
+        {
+            //Arrange
+            int randomId = 1;
+            mockService.Setup(x => x.Vehicle.DeleteVehicle(It.IsAny<int>())).ReturnsAsync(false);
+
+            //Act
+            var response = await vehicleController.DeleteVehicle(randomId);
+
+            //Assert
+            var result = response.Should().BeOfType<BadRequestObjectResult>().Subject;
+            result.Value.Should().Be("Something happend when trying to delete vehicle! Try again");
+        }
+
+
+        [TestMethod]
+        public async Task UpdateVehicle_ShouldReturnOkResultAndCorrectType()
+        {
+            //Arrange
+           var request = new UpdateVehicleResponse() { Id = 1, Brand = "Ferrari", Model = "Diablo", ServiceDate = DateTime.Now, InTraffic = DateTime.Now, IsDrivingBan = false, IsServiceBooked = false, YearlyFee = 2000, RegisterNumber = "ABC123", Weight = 2200 };
+            mockService.Setup(x => x.Vehicle.UpdateVehicle(It.IsAny<UpdateVehicleRequest>()))
+                                            .ReturnsAsync(request);
+
+            //Act
+            var response = await vehicleController.UpdateVehicle(new UpdateVehicleRequest() { Id = 1, IsDrivingBan = false, IsServiceBooked = false, ServiceDate = DateTime.Now });
+
+            //Assert
+            var result = response.Should().BeOfType<OkObjectResult>().Subject;
+            var vehicle = result.Value.Should().BeOfType<UpdateVehicleResponse>().Subject;
+            vehicle.Id.Should().Be(1);
+        }
+
+        [TestMethod]
+        public async Task UpdateVehicle_ShouldReturnNotFoundAndMessage()
+        {
+            //Arrange
+            mockService.Setup(x => x.Vehicle.UpdateVehicle(It.IsAny<UpdateVehicleRequest>()));
+
+            //Act
+            var response = await vehicleController.UpdateVehicle(new UpdateVehicleRequest() { Id = 1, IsDrivingBan = false, IsServiceBooked = false, ServiceDate = DateTime.Now });
+
+            //Assert
+            var result = response.Should().BeOfType<NotFoundObjectResult>().Subject;
+            result.Value.Should().Be("Could not find any Vehicles with inputed Id");
+        }
 
     }
 }
