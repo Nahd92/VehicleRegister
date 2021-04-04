@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Data\Entity Framwork\EntityFramework.Data\EntityFramework.Data.csproj" />
+    <ProjectReference Include="..\..\Data\Repository\VehicleRegister.Repository\VehicleRegister.Repository.csproj" />
     <ProjectReference Include="..\..\Domain\VehicleRegister.Domain\VehicleRegister.Domain.csproj" />
   </ItemGroup>
 

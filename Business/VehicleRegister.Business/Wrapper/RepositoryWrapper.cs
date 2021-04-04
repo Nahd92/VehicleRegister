@@ -1,7 +1,7 @@
 ﻿using EntityFramework.Data.Data;
-using EntityFramework.Data.Storage;
 using VehicleRegister.Domain.Interfaces.Model.Interface;
 using VehicleRegister.Domain.Interfaces.Repository.Interface;
+using VehicleRegister.Repository;
 
 namespace VehicleRegister.Business.Wrapper
 {
@@ -19,7 +19,7 @@ namespace VehicleRegister.Business.Wrapper
             {
                 if (_vehicle == null)
                 {
-                    _vehicle = new EntityFrameworkStorage(_entityDb);
+                    _vehicle = new DatabaseRepository(_entityDb);
                 }
                 return _vehicle;
             }
@@ -31,7 +31,7 @@ namespace VehicleRegister.Business.Wrapper
             {
                 if (_autoMotive == null)
                 {
-                    _autoMotive = new EntityFrameworkStorage(_entityDb);
+                    _autoMotive = new DatabaseRepository(_entityDb);
                 }
                 return _autoMotive;
             }
@@ -43,7 +43,7 @@ namespace VehicleRegister.Business.Wrapper
             {
                 if (_service == null)
                 {
-                    _service = new EntityFrameworkStorage(_entityDb);
+                    _service = new DatabaseRepository(_entityDb);
                 }
                 return _service;
             }

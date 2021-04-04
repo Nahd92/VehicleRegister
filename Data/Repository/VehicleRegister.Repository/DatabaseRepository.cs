@@ -2,18 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using VehicleRegister.Domain.Interfaces.Model.Interface;
 using VehicleRegister.Domain.Interfaces.Repository.Interface;
 using VehicleRegister.Domain.Models;
 
-namespace EntityFramework.Data.Storage
+namespace VehicleRegister.Repository
 {
-    public class EntityFrameworkStorage : IVehicleRepository, IAutoMotiveRepairRepository, IServiceReservationsRepository
+    public class DatabaseRepository : IVehicleRepository, IAutoMotiveRepairRepository, IServiceReservationsRepository
     {
         private readonly VehicleRegisterContext _ctx;
-        public EntityFrameworkStorage(VehicleRegisterContext ctx)
+        public DatabaseRepository(VehicleRegisterContext ctx)
         {
             _ctx = ctx;
         }
@@ -47,9 +46,9 @@ namespace EntityFramework.Data.Storage
             catch (Exception ex)
             {
 
-                throw ex ;
+                throw ex;
             }
-         
+
         }
 
         public Task<bool> DeleteVehicle(IVehicle vehicle)

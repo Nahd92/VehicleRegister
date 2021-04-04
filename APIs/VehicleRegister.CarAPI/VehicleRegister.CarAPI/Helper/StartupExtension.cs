@@ -1,5 +1,4 @@
 ﻿using EntityFramework.Data.Data;
-using EntityFramework.Data.Storage;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -7,6 +6,7 @@ using VehicleRegister.Business.Wrapper;
 using VehicleRegister.Domain.Interfaces.Model.Interface;
 using VehicleRegister.Domain.Interfaces.Repository.Interface;
 using VehicleRegister.Domain.Interfaces.Service.Interface;
+using VehicleRegister.Repository;
 
 namespace VehicleRegister.CarAPI.Helper
 {
@@ -23,9 +23,9 @@ namespace VehicleRegister.CarAPI.Helper
             service.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
             service.AddScoped<IServiceWrapper, ServiceWrapper>();
 
-            service.AddScoped<IVehicleRepository,EntityFrameworkStorage>();
-            service.AddScoped<IAutoMotiveRepairRepository, EntityFrameworkStorage>();
-            service.AddScoped<IServiceReservationsRepository, EntityFrameworkStorage>();
+            service.AddScoped<IVehicleRepository, DatabaseRepository>();
+            service.AddScoped<IAutoMotiveRepairRepository, DatabaseRepository>();
+            service.AddScoped<IServiceReservationsRepository, DatabaseRepository>();
         }
     }
 }

@@ -31,6 +31,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VehicleRegister.Testing", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VehicleRegister.Business", "Business\VehicleRegister.Business\VehicleRegister.Business.csproj", "{E6C6D885-4D3B-43EB-9F16-36FB328685C7}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repository", "Repository", "{713573C9-C45C-4C20-BBAE-FB13A71824A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VehicleRegister.Repository", "Data\Repository\VehicleRegister.Repository\VehicleRegister.Repository.csproj", "{B48F7D26-2870-4DF9-91F1-6A519EA1DFC8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +65,10 @@ Global
 		{E6C6D885-4D3B-43EB-9F16-36FB328685C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E6C6D885-4D3B-43EB-9F16-36FB328685C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E6C6D885-4D3B-43EB-9F16-36FB328685C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B48F7D26-2870-4DF9-91F1-6A519EA1DFC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B48F7D26-2870-4DF9-91F1-6A519EA1DFC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B48F7D26-2870-4DF9-91F1-6A519EA1DFC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B48F7D26-2870-4DF9-91F1-6A519EA1DFC8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -74,6 +82,8 @@ Global
 		{575F2485-A80F-4086-B378-79B31554BC76} = {610E8893-9E11-40E8-84AB-C6BFF1076B14}
 		{86487F47-9299-44A2-8691-84D045AB95A0} = {6668051E-71AE-4824-93A4-84A9D8AEFDC0}
 		{E6C6D885-4D3B-43EB-9F16-36FB328685C7} = {32AAB84E-6F6D-4AC4-AE58-EE142A624E53}
+		{713573C9-C45C-4C20-BBAE-FB13A71824A6} = {F12D63DC-BF9A-4835-B7B6-FFE5D211BB6D}
+		{B48F7D26-2870-4DF9-91F1-6A519EA1DFC8} = {713573C9-C45C-4C20-BBAE-FB13A71824A6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {12983FA7-2CB9-4A04-AB81-B22BD8B9DE09}
