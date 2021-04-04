@@ -15,6 +15,8 @@ namespace VehicleRegister.Domain.RouteAPI
             public const string GetAllVehicles = Base + "Vehicles";
             public const string GetVehicle = Base + "Vehicle/{id}";
             public const string CreateVehicle = Base + "Vehicle";
+            public const string DeleteVehicle = Base + "Vehicle/{id}";
+            public const string UpdateVehicle = Base + "Vehicle";
         }
         public class AutoMotive
         {

@@ -20,6 +20,13 @@ namespace VehicleRegister.CarAPI.Controllers
 
         [HttpGet]
         [Route(RoutesAPI.AutoMotive.GetAllAutoMotives)]
-        public async Task<IActionResult> GetAutoMotives() => Ok(await _serviceWrapper.RepairService.GetAllAutoMotives());
+        public async Task<IActionResult> GetAutoMotives()
+        {
+            var automotives = await _serviceWrapper.RepairService.GetAllAutoMotives();
+
+            if (automotives == null) return NotFound();
+           
+            return Ok(automotives);
+        }
     }
 }

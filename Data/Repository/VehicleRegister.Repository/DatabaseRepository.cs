@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using VehicleRegister.Domain.Interfaces.Model.Interface;
 using VehicleRegister.Domain.Interfaces.Repository.Interface;
@@ -17,43 +18,16 @@ namespace VehicleRegister.Repository
             _ctx = ctx;
         }
 
-        public void Create()
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task<bool> CreateVehicle(IVehicle vehicle)
         {
-            try
-            {
-                var createVehicle = new Vehicle()
-                {
-                    Id = vehicle.Id,
-                    Brand = vehicle.Brand,
-                    IsDrivingBan = vehicle.IsDrivingBan,
-                    ServiceDate = vehicle.ServiceDate,
-                    IsServiceBooked = vehicle.IsServiceBooked,
-                    InTraffic = vehicle.InTraffic,
-                    Model = vehicle.Model,
-                    RegisterNumber = vehicle.RegisterNumber,
-                    Weight = vehicle.RegisterNumber,
-                    YearlyFee = vehicle.YearlyFee
-                };
-                _ctx.Add(createVehicle);
-                return await _ctx.SaveChangesAsync() > 0;
-
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
-
+            _ctx.Add(vehicle);
+            return await _ctx.SaveChangesAsync() > 0;
         }
 
-        public Task<bool> DeleteVehicle(IVehicle vehicle)
+        public async Task<bool> DeleteVehicle(IVehicle vehicle)
         {
-            throw new NotImplementedException();
+            _ctx.Remove(vehicle);
+           return await _ctx.SaveChangesAsync() > 0;
         }
 
         public async Task<IEnumerable<IAutoMotiveRepair>> GetAllAutoMotives()
@@ -78,14 +52,12 @@ namespace VehicleRegister.Repository
                     });
                 }
                 return autoMotives;
-
             }
             catch (Exception ex)
             {
 
                 throw ex;
             }
-
         }
 
         public async Task<IEnumerable<IVehicle>> GetAllVehicles()
@@ -120,9 +92,34 @@ namespace VehicleRegister.Repository
 
         }
 
-        public Task<IVehicle> GetVehicleById(int id)
+        public async Task<IVehicle> GetVehicleById(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var vehicle = await _ctx.Vehicles.Where(x => x.Id == id).FirstOrDefaultAsync();
+
+                if (vehicle == null) return null;
+                    
+                IVehicle ve = new Vehicle()
+                {
+                    Id = vehicle.Id,
+                    Brand = vehicle.Brand,
+                    IsDrivingBan = vehicle.IsDrivingBan,
+                    ServiceDate = vehicle.ServiceDate,
+                    IsServiceBooked = vehicle.IsServiceBooked,
+                    InTraffic = vehicle.InTraffic,
+                    Model = vehicle.Model,
+                    RegisterNumber = vehicle.RegisterNumber,
+                    Weight = vehicle.RegisterNumber,
+                    YearlyFee = vehicle.YearlyFee
+                };
+
+                return ve;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }    
         }
 
         public Task<bool> UpdateVehicle(IVehicle vehicle)

@@ -28,7 +28,7 @@ namespace VehicleRegister.Testing.Controllers
 
         private IEnumerable<IVehicle> vehicles = null;
 
-        private IEnumerable<IVehicle> car = new List<Vehicle>()
+        private IEnumerable<IVehicle> cars = new List<Vehicle>()
         {
             new Vehicle()
             {
@@ -44,11 +44,22 @@ namespace VehicleRegister.Testing.Controllers
                 YearlyFee = 2000
             }
         };
-
+        private IVehicle car = new Vehicle()
+        {
+            Id = 1,
+            Brand = "Volvo",
+            Model = "XC90",
+            InTraffic = DateTime.Parse("2020-02-02"),
+            IsDrivingBan = false,
+            RegisterNumber = 123 - 431,
+            Weight = 2220,
+            IsServiceBooked = false,
+            ServiceDate = DateTime.Parse("2021-03-03"),
+            YearlyFee = 2000
+        };
 
         private CreateVehicleRequest carDTO = new CreateVehicleRequest()
         {
-            Id = 1,
             Brand = "Volvo",
             Model = "XC90",
             InTraffic = DateTime.Parse("2020-02-02"),
@@ -80,14 +91,14 @@ namespace VehicleRegister.Testing.Controllers
         public async Task GetAllVehicles_ShouldReturnOkWhenListIsNotEmpty()
         {
             //Arrange
-            mockService.Setup(x => x.Vehicle.GetAllVehicles()).ReturnsAsync(car);
+            mockService.Setup(x => x.Vehicle.GetAllVehicles()).ReturnsAsync(cars);
 
             //Act
             var response = await vehicleController.GetAllVehicles();
 
             //Assert
-            var result = response.Should().BeOfType<JsonResult>().Subject;
-            var vehicle = result.Value.Should().BeAssignableTo<IEnumerable<IVehicle>>().Subject;
+            var result = response.Should().BeOfType<OkObjectResult>().Subject;
+            var vehicle = result.Value.Should().BeOfType<List<Vehicle>>().Subject;
             vehicle.Count().Should().Be(1);
         }
 
@@ -103,7 +114,7 @@ namespace VehicleRegister.Testing.Controllers
             var response = await vehicleController.CreateVehicle(carDTO);
 
             //Assert
-            response.Should().BeOfType<OkResult>();
+            response.Should().BeOfType<NoContentResult>();
         }
 
         [TestMethod]
@@ -120,6 +131,35 @@ namespace VehicleRegister.Testing.Controllers
             result.Value.Should().Be("Something happened while trying to create a new Vehicle, try again!");
         }
 
+        [TestMethod]
+        public async Task GetVehicleById_ShouldReturnNotFoundIfVehicleNotExist()
+        {
+            //Arrange
+            IVehicle nullValue = null;
+            int randomId = 1;
+            mockService.Setup(x => x.Vehicle.GetVehicleById(It.IsAny<int>())).ReturnsAsync(nullValue);
+
+            //Act
+            var response = await vehicleController.GetVehicle(randomId);
+
+            //Assert
+            response.Should().BeOfType<NotFoundResult>();
+        }
+
+        [TestMethod]
+        public async Task GetVehicleById_ShouldReturnOkAndValueWhenVehicleExist()
+        {
+            //Arrange
+            mockService.Setup(x => x.Vehicle.GetVehicleById(It.IsAny<int>())).ReturnsAsync(car);
+
+            //Act
+            var response = await vehicleController.GetVehicle(car.Id); 
+
+            //Assert
+            var result = response.Should().BeOfType<OkObjectResult>().Subject;
+            var re = result.Value.Should().BeOfType<Vehicle>().Subject;
+            re.Id.Should().Be(1);
+        }
 
 
     }

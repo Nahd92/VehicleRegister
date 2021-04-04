@@ -24,7 +24,7 @@ namespace VehicleRegister.Testing.Services
             vehicleService = new VehicleService(mockService.Object);
         }
 
-        private IEnumerable<IVehicle> car = new List<Vehicle>()
+        private IEnumerable<IVehicle> cars = new List<Vehicle>()
         {
             new Vehicle()
             {
@@ -40,10 +40,23 @@ namespace VehicleRegister.Testing.Services
                 YearlyFee = 2000
             }
         };
+        private IVehicle car = new Vehicle()
+        {          
+                Id = 1,
+                Brand = "Volvo",
+                Model = "XC90",
+                InTraffic = DateTime.Parse("2020-02-02"),
+                IsDrivingBan = false,
+                RegisterNumber = 123-431,
+                Weight = 2220,
+                IsServiceBooked = false,
+                ServiceDate = DateTime.Parse("2021-03-03"),
+                YearlyFee = 2000
+            
+        };
 
         private CreateVehicleRequest carDTO = new CreateVehicleRequest()
-        {                   
-                Id = 1,
+        {                
                 Brand = "Volvo",
                 Model = "XC90",
                 InTraffic = DateTime.Parse("2020-02-02"),
@@ -62,7 +75,7 @@ namespace VehicleRegister.Testing.Services
         public async Task TestGetAllVehicles_ShouldContainOneVehicleInList()
         {
             //arrange
-            mockService.Setup(x => x.VehicleRepo.GetAllVehicles()).ReturnsAsync(car);
+            mockService.Setup(x => x.VehicleRepo.GetAllVehicles()).ReturnsAsync(cars);
 
             //Act
             var response = await vehicleService.GetAllVehicles();
@@ -72,7 +85,7 @@ namespace VehicleRegister.Testing.Services
         } 
 
         [TestMethod]
-        public async Task TestCreateVehicle_ShouldReturnTrue()
+        public async Task TestCreateVehicle_ShouldReturnCreatedResponse()
         {
             //Arrange
             mockService.Setup(x => x.VehicleRepo.CreateVehicle(It.IsAny<IVehicle>())).ReturnsAsync(true);
@@ -81,6 +94,16 @@ namespace VehicleRegister.Testing.Services
             //Assert
             response.Should().BeTrue();
         }
-            
+
+        [TestMethod]
+        public async Task TestGetVehicle_ShouldReturnCorrectId()
+        {
+            //Arrange
+            mockService.Setup(x => x.VehicleRepo.GetVehicleById(It.IsAny<int>())).ReturnsAsync(car);
+            //Act
+            var response = await vehicleService.GetVehicleById(car.Id);
+            //Assert
+           response.Id.Should().Be(1);
+        }
     }
 }
