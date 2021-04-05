@@ -109,6 +109,29 @@ namespace VehicleRegister.Testing.Services
 
 
         [TestMethod]
+        public async Task TestGetVehicleByVehicleName_ShouldReturnCorrectRegNumber()
+        {
+            //Arrange
+            mockRepository.Setup(x => x.VehicleRepo.GetAllVehicles()).ReturnsAsync(cars);
+            //Act
+            var response = await vehicleService.GetVehicleWithRegNumber("ABC123");
+            //Assert
+            response.Id.Should().Be(1);
+        }
+
+        [TestMethod]
+        public async Task TestGetVehicleByVehicleName_ShouldReturnNullWhenRegNumberNotExist()
+        {
+            //Arrange
+            mockRepository.Setup(x => x.VehicleRepo.GetAllVehicles()).ReturnsAsync(cars);
+            //Act
+            var response = await vehicleService.GetVehicleWithRegNumber("ACC123");
+            //Assert
+            response.Should().BeNull();
+        }
+
+
+        [TestMethod]
         public void TestCalculateYearlyFee_ShouldReturnLowestValue()
         {
             //Arrange
@@ -123,7 +146,7 @@ namespace VehicleRegister.Testing.Services
         {
             //Arrange
             int weight = 2000;
-            //Act
+            //Act 
             var response = vehicleService.CalculateYearlyFee(weight);
             //Assert
             response.Should().Be(1800);

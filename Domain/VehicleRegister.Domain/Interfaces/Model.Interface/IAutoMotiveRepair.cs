@@ -8,7 +8,7 @@ namespace VehicleRegister.Domain.Interfaces.Model.Interface
     {
          int Id { get; set; }
          string Name { get; set; }
-         int OrganisationNumber { get; set; }
+         string OrganisationNumber { get; set; }
          int PhoneNumber { get; set; }
          string Address { get; set; }
          string Website { get; set; }

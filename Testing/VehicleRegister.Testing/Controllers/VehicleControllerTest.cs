@@ -103,7 +103,35 @@ namespace VehicleRegister.Testing.Controllers
             vehicle.Count().Should().Be(1);
         }
 
+        [TestMethod]
+        public async Task GetVehicleByRegNumber_ShouldReturNoContent()
+        {
+            //Arrange
+            var regNumber = "ABC123";
+            mockService.Setup(x => x.Vehicle.GetVehicleWithRegNumber(It.IsAny<string>())).ReturnsAsync(car);
 
+            //Act
+            var response = await vehicleController.GetVehicleWithRegNumber(regNumber);
+
+            //Assert
+            var result = response.Should().BeOfType<OkObjectResult>().Subject;
+            var vehicle = result.Value.Should().BeOfType<Vehicle>().Subject;
+            vehicle.RegisterNumber.Should().Be("ABC123");
+        }
+
+        [TestMethod]
+        public async Task GetVehicleByRegNumber_ShouldReturNotFoundWhenVehicleIsNull()
+        {
+            //Arrange
+            var regNumber = "ABC123";
+            mockService.Setup(x => x.Vehicle.GetVehicleWithRegNumber(It.IsAny<string>()));
+
+            //Act
+            var response = await vehicleController.GetVehicleWithRegNumber(regNumber);
+
+            //Assert
+            response.Should().BeOfType<NotFoundResult>();
+        }
 
         [TestMethod]
         public async Task CreateVehicle_ShouldReturnOkWhenReturningTrue()

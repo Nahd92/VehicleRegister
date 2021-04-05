@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using VehicleRegister.Domain.DTO.AutoMotiveDTO.Request;
 using VehicleRegister.Domain.Interfaces.Service.Interface;
 using VehicleRegister.Domain.RouteAPI;
 
@@ -28,5 +29,42 @@ namespace VehicleRegister.CarAPI.Controllers
            
             return Ok(automotives);
         }
+
+        [HttpGet]
+        [Route(RoutesAPI.AutoMotive.GetAutoMotives)]
+        public async Task<IActionResult> GetAutoMotive(int id)
+        {
+            var automotive = await _serviceWrapper.RepairService.GetAutoMotiveById(id);
+
+            if (automotive == null) return NotFound("No AutoMotive could be found");
+
+            return Ok(automotive);
+        }
+
+        [HttpPost]
+        [Route(RoutesAPI.AutoMotive.CreateAutoMotives)]
+        public async Task<IActionResult> AddNewAutoMotivesToDatabase(AddAutoMotiveToListRequest request)
+        {
+            var response = await _serviceWrapper.RepairService.AddNewAutoMotiveToDatabase(request);
+
+             if (response) 
+                  return NoContent();
+
+            return BadRequest("Something happened when trygin to add AutoMotive to list, try again");
+
+        }
+
+        [HttpPut]
+        [Route(RoutesAPI.AutoMotive.UpdateAutoMotive)]
+        public async Task<IActionResult> UpdateExistingAutoMotive(UpdateAutoMotive request)
+        {
+            var response = await _serviceWrapper.RepairService.UpdateAutoMotive(request);
+
+            if (response is null)
+               return BadRequest("Something happened when trygin to update AutoMotive, try again");
+
+            return Ok(response);
+        }
+
     }
 }

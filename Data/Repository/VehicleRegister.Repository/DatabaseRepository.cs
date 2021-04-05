@@ -18,6 +18,20 @@ namespace VehicleRegister.Repository
             _ctx = ctx;
         }
 
+        public async Task<bool> CreateNewAutoMotive(IAutoMotiveRepair repair)
+        {
+            try
+            {
+                _ctx.Add(repair);
+                return await _ctx.SaveChangesAsync() > 0;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
         public async Task<bool> CreateVehicle(IVehicle vehicle)
         {
             _ctx.Add(vehicle);
@@ -99,6 +113,34 @@ namespace VehicleRegister.Repository
 
         }
 
+        public async Task<IAutoMotiveRepair> GetAutoMotive(int id)
+        {
+            try
+            {
+                var autoMotive = await _ctx.AutoMotive.Where(x => x.Id == id).AsNoTracking().FirstOrDefaultAsync();
+
+                if (autoMotive is null) return null;
+
+                IAutoMotiveRepair repair = new AutoMotiveRepair
+                {
+                    Id = autoMotive.Id,
+                    Address = autoMotive.Address,
+                    City = autoMotive.City,
+                    Country = autoMotive.Country,
+                    Description = autoMotive.Description,
+                    Name = autoMotive.Name,
+                    OrganisationNumber = autoMotive.OrganisationNumber,
+                    PhoneNumber = autoMotive.PhoneNumber,
+                    Website = autoMotive.Website
+                };
+                return repair;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public async Task<IVehicle> GetVehicleById(int id)
         {
             try
@@ -127,6 +169,11 @@ namespace VehicleRegister.Repository
             {
                 throw ex;
             }    
+        }
+
+        public Task<bool> UpdateAutMotive(IAutoMotiveRepair repair)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task<bool> UpdateVehicle(IVehicle vehicle)
