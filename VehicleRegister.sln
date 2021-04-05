@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31112.23
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "APIs", "APIs", "{3EABC766-5B66-42B8-9C44-660911380DA4}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "VehicleRegister.CarAPI", "VehicleRegister.CarAPI", "{4C445657-562C-418D-9389-A7B596A62227}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "VehicleRegister.VehicleAPI", "VehicleRegister.VehicleAPI", "{4C445657-562C-418D-9389-A7B596A62227}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{F12D63DC-BF9A-4835-B7B6-FFE5D211BB6D}"
 EndProject
@@ -19,7 +19,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{6668
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{45D31BD5-10D7-42DB-AB1C-F5A738544ED3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VehicleRegister.CarAPI", "APIs\VehicleRegister.CarAPI\VehicleRegister.CarAPI\VehicleRegister.CarAPI.csproj", "{7E415C87-D30F-4137-82C4-C4789BA7A89B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VehicleRegister.VehicleAPI", "APIs\VehicleRegister.CarAPI\VehicleRegister.CarAPI\VehicleRegister.VehicleAPI.csproj", "{7E415C87-D30F-4137-82C4-C4789BA7A89B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VehicleRegister.Client", "Client\VehicleRegister.Client\VehicleRegister.Client.csproj", "{E9DCEC72-3F35-4A88-90F2-7CF3CBDDB703}"
 EndProject

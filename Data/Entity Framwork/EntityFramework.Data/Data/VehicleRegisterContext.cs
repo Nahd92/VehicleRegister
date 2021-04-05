@@ -1,13 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using VehicleRegister.Domain.Models;
 
 namespace EntityFramework.Data.Data
 {
-    public class VehicleRegisterContext : DbContext
+    public class VehicleRegisterContext : IdentityDbContext
     {
+
+  
         public VehicleRegisterContext(DbContextOptions<VehicleRegisterContext> options) : base(options)
         {
 
@@ -21,10 +21,7 @@ namespace EntityFramework.Data.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Vehicle>().ToTable("Vehicle");
-            modelBuilder.Entity<AutoMotiveRepair>().ToTable("AutoMotiveRepair");
-            modelBuilder.Entity<ServiceReservations>().ToTable("ServiceReservations");
-            modelBuilder.Entity<VehicleServiceHistory>().ToTable("VehicleServiceHistory");
+            base.OnModelCreating(modelBuilder);
         }
 
     }

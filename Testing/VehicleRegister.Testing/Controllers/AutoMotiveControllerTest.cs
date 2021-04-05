@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using VehicleRegister.CarAPI.Controllers;
 using VehicleRegister.Domain.DTO.AutoMotiveDTO.Request;
+using VehicleRegister.Domain.DTO.AutoMotiveDTO.Response;
 using VehicleRegister.Domain.Interfaces.Model.Interface;
 using VehicleRegister.Domain.Interfaces.Service.Interface;
 using VehicleRegister.Domain.Models;
@@ -69,6 +70,35 @@ namespace VehicleRegister.Testing.Controllers
         }
 
         [TestMethod]
+        public async Task GetAutoMotive_ShouldReturnOkAndObject()
+        {
+            //Arrange
+            int randomId = 1;
+            mockService.Setup(x => x.RepairService.GetAutoMotiveById(It.IsAny<int>())).ReturnsAsync(new AutoMotiveRepair { Id = 1, Country = "Sweden", City = "Gothenburg" });
+            //Act
+            var response = await autoMotiveController.GetAutoMotive(randomId);
+            //Assert
+            var result = response.Should().BeOfType<OkObjectResult>().Subject;
+            var vehicle = result.Value.Should().BeOfType<AutoMotiveRepair>().Subject;
+            vehicle.Country.Should().Be("Sweden");
+        }
+
+        [TestMethod]
+        public async Task GetAutoMotive_ShouldReturnNotFountWhenNoAutoMotiveWithInputedIDExist()
+        {
+            //Arrange
+            int randomID = 1;
+            mockService.Setup(x => x.RepairService.GetAutoMotiveById(It.IsAny<int>()));
+            //Act
+            var response = await autoMotiveController.GetAutoMotive(randomID);
+            //Assert
+            var result = response.Should().BeOfType<NotFoundObjectResult>().Subject;
+             result.Value.Should().Be("No AutoMotive could be found");
+        }
+
+
+
+        [TestMethod]
         public async Task TestAddNewAutoMotivesToDatabase_ShouldReturnNoContent()
         {
             //Arrange
@@ -92,5 +122,45 @@ namespace VehicleRegister.Testing.Controllers
             var result = response.Should().BeOfType<BadRequestObjectResult>().Subject;
             result.Value.Should().Be("Something happened when trygin to add AutoMotive to list, try again");
         }
+
+
+        [TestMethod]
+        public async Task TestUpdateAutoMotives_ShouldReturnOkAndADTOObject()
+        {
+            //Arrange
+            mockService.Setup(x => x.RepairService.UpdateAutoMotive(It.IsAny<UpdateAutoMotive>())).ReturnsAsync(
+                new UpdatedAutoMotiveResponse(
+                1,
+                "Hedinbil",
+                "Gothenburg",
+                "Sweden",
+                "Very good repair and service",
+                1234123,
+                "www.hedinbil.se",
+                "1234123asd"
+            ));
+
+            //Act
+            var response = await autoMotiveController.UpdateExistingAutoMotive(new UpdateAutoMotive { Id = 1});
+            //Assert
+            var result = response.Should().BeOfType<OkObjectResult>().Subject;
+            var automotive = result.Value.Should().BeOfType<UpdatedAutoMotiveResponse>().Subject;
+            automotive.Website.Should().Be("www.hedinbil.se");
+        }
+
+
+        [TestMethod]
+        public async Task TestUpdateAutoMotives_ShouldReturnBadRequstIfDTOIsNULL()
+        {
+            //Arrange
+            mockService.Setup(x => x.RepairService.UpdateAutoMotive(It.IsAny<UpdateAutoMotive>()));
+            //Act
+            var response = await autoMotiveController.UpdateExistingAutoMotive(new UpdateAutoMotive { Id = 1 });
+
+            //Assert
+            var result = response.Should().BeOfType<BadRequestObjectResult>().Subject;
+            result.Value.Should().Be("Something happened when trygin to update AutoMotive, try again");
+        }
+
     }
 }

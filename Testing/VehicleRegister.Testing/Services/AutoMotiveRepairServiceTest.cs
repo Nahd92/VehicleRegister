@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VehicleRegister.Business.Service;
+using VehicleRegister.Domain.DTO.AutoMotiveDTO.Request;
+using VehicleRegister.Domain.DTO.AutoMotiveDTO.Response;
 using VehicleRegister.Domain.Interfaces.Model.Interface;
 using VehicleRegister.Domain.Interfaces.Repository.Interface;
 using VehicleRegister.Domain.Models;
@@ -97,7 +99,7 @@ namespace VehicleRegister.Testing.Services
             //Arrange
             mockService.Setup(x => x.RepairRepo.CreateNewAutoMotive(It.IsAny<IAutoMotiveRepair>())).ReturnsAsync(true);
             //Act
-            var response = await autoMotiveService.AddNewAutoMotiveToDatabase(new Domain.DTO.AutoMotiveDTO.Request.AddAutoMotiveToListRequest
+            var response = await autoMotiveService.AddNewAutoMotiveToDatabase(new AddAutoMotiveToListRequest
             {
                 Name = "Hedin bil",
                 Address = "Gothenburg",
@@ -135,6 +137,17 @@ namespace VehicleRegister.Testing.Services
             //Assert
             response.Should().BeFalse();
         }
-
+        
+        [TestMethod]
+        public async Task TestUpdateAutoMotive_ShouldReturnUpdatedObject()
+        {
+            //Arrange
+            mockService.Setup(x => x.RepairRepo.GetAutoMotive(It.IsAny<int>())).ReturnsAsync(autoMotive);
+            mockService.Setup(x => x.RepairRepo.UpdateAutMotive(It.IsAny<IAutoMotiveRepair>())).ReturnsAsync(true);
+            //Act
+            var response = await autoMotiveService.UpdateAutoMotive(new UpdateAutoMotive { Id = 1, Name = "HedinBil", City = "Halmstad" });
+            //Assert
+            autoMotive.City.Should().Be("Halmstad");
+        }
     }
 }

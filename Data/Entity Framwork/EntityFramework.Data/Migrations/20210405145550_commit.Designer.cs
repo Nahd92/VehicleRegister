@@ -4,14 +4,16 @@ using EntityFramework.Data.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EntityFramework.Data.Migrations
 {
     [DbContext(typeof(VehicleRegisterContext))]
-    partial class VehicleRegisterContextModelSnapshot : ModelSnapshot
+    [Migration("20210405145550_commit")]
+    partial class commit
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -19,11 +19,6 @@ namespace VehicleRegister.CarAPI.Controllers
         }
 
 
-        public IActionResult Index()
-        {
-            return View();
-        }
-
         [HttpGet]
         [Route(RoutesAPI.Reservations.GetAllServiceReservations)]
         public async Task<IActionResult> GetAllReservations()

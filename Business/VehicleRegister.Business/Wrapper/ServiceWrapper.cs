@@ -1,7 +1,11 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Options;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using VehicleRegister.Business.Service;
+using VehicleRegister.Domain.AppSettingsModels;
+using VehicleRegister.Domain.Interfaces.Auth.Interface;
 using VehicleRegister.Domain.Interfaces.Repository.Interface;
 using VehicleRegister.Domain.Interfaces.Service.Interface;
 
@@ -13,6 +17,11 @@ namespace VehicleRegister.Business.Wrapper
         private IRepositoryWrapper _wrapper;
         private IAutoMotiveRepairService _AutoMotiveRepair;
         private IServiceReservationService _service;
+        private IAuthenticationService _authService;
+        private UserManager<IdentityUser> manager;
+        private readonly AppSettings appsettings;
+
+
 
         public IVehicleService Vehicle
         {
@@ -50,9 +59,23 @@ namespace VehicleRegister.Business.Wrapper
             }
         }
 
-        public ServiceWrapper(IRepositoryWrapper wrapper)
+        public IAuthenticationService authService 
+        {
+            get
+            {
+                if (_authService == null)
+                {
+                    _authService = new AuthenticationService(manager, appsettings);
+                }
+                return _authService;
+            }
+        }
+
+        public ServiceWrapper(IRepositoryWrapper wrapper, UserManager<IdentityUser> manager, AppSettings appsettings)
         {
             _wrapper = wrapper;
+            this.manager = manager;
+            this.appsettings = appsettings;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using VehicleRegister.Domain.DTO.VehicleDTO.Request;
@@ -18,6 +19,8 @@ namespace VehicleRegister.CarAPI.Controllers
         }
 
 
+
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         [Route(RoutesAPI.Vehicle.GetAllVehicles)]
         [ProducesResponseType(StatusCodes.Status200OK)]

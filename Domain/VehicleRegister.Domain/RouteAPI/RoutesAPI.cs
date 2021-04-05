@@ -34,6 +34,10 @@ namespace VehicleRegister.Domain.RouteAPI
             public const string RemoveServiceReservation = Base + "Reservation/{id}";
             public const string UpdateServiceReservation = Base + "Reservation";
         }
+        public class Identity
+        {
+            public const string Login = Base + "Login";
+        }
     }
     
 }

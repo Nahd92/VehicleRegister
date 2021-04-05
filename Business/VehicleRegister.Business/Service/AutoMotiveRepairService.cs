@@ -59,21 +59,12 @@ namespace VehicleRegister.Business.Service
             existingAutoMotive.PhoneNumber = request.PhoneNumber;
             existingAutoMotive.Website = request.Website;
 
-            var update = await _repo.RepairRepo.UpdateAutMotive(existingAutoMotive);
-            if (update is false) return null;
+            await _repo.RepairRepo.UpdateAutMotive(existingAutoMotive);
 
-            return new UpdatedAutoMotiveResponse
-            {
-                Id = existingAutoMotive.Id,
-                Name = existingAutoMotive.Name,
-                Address = existingAutoMotive.Address,
-                City = existingAutoMotive.City,
-                Country = existingAutoMotive.Country,
-                Description = existingAutoMotive.Description,
-                PhoneNumber = existingAutoMotive.PhoneNumber,
-                Website = existingAutoMotive.Website,
-                OrganisationNumber = existingAutoMotive.OrganisationNumber
-            };
+            return new UpdatedAutoMotiveResponse(
+                existingAutoMotive.Id, existingAutoMotive.Name, existingAutoMotive.City, 
+                existingAutoMotive.Country, existingAutoMotive.Description, 
+                existingAutoMotive.PhoneNumber, existingAutoMotive.Website, existingAutoMotive.OrganisationNumber);
         }
 
         public async Task<string> CreateOrganisationNumber()

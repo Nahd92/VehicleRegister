@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\APIs\VehicleRegister.CarAPI\VehicleRegister.CarAPI\VehicleRegister.CarAPI.csproj" />
+    <ProjectReference Include="..\..\APIs\VehicleRegister.CarAPI\VehicleRegister.CarAPI\VehicleRegister.VehicleAPI.csproj" />
     <ProjectReference Include="..\..\Business\VehicleRegister.Business\VehicleRegister.Business.csproj" />
   </ItemGroup>
 
