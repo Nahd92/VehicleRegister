@@ -9,6 +9,8 @@ namespace VehicleRegister.Domain.Models
         public int Id { get; set; }
         public DateTime Date { get; set; }
     
+        public int VehicleMiles { get; set; }
+
         public int VehicleId { get; set; }
         public Vehicle Vehicle { get; set; }
         

@@ -14,6 +14,7 @@ namespace VehicleRegister.Domain.Models
 
         public int VehicleId{ get; set; }
         public Vehicle Vehicle { get; set; }
+
         public int AutoMotiveRepairId { get; set; }
         public AutoMotiveRepair AutoMotiveRepair { get; set; }
 

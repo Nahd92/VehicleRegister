@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace VehicleRegister.Domain.Models
+namespace VehicleRegister.Domain.Models.Auth
 {
     public class Token
     {

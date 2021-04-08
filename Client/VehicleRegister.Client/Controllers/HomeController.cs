@@ -1,15 +1,12 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Text;
 using System.Threading.Tasks;
-using VehicleRegister.Domain.DTO.UserDTO.Request;
 using VehicleRegister.Domain.DTO.VehicleDTO.Response;
-using VehicleRegister.Domain.Models;
+using VehicleRegister.Domain.Models.Auth;
 
 namespace VehicleRegister.Client.Controllers
 {
@@ -17,7 +14,7 @@ namespace VehicleRegister.Client.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            return View(new LoginModel());
         }
 
 
@@ -47,5 +44,6 @@ namespace VehicleRegister.Client.Controllers
             }
             return RedirectToAction("Index", "Home");
         }
+  
     }
 }

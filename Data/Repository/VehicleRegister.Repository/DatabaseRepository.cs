@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using VehicleRegister.Domain.DTO.ReservationsDTO.Request;
 using VehicleRegister.Domain.Factory;
 using VehicleRegister.Domain.Interfaces.Model.Interface;
 using VehicleRegister.Domain.Interfaces.Repository.Interface;
@@ -34,6 +35,20 @@ namespace VehicleRegister.Repository
             }
         }
 
+        public async Task<bool> CreateReservations(IServiceReservations reservation)
+        {
+            try
+            {
+                _ctx.Add(reservation);
+                return await _ctx.SaveChangesAsync() > 0;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
         public async Task<bool> CreateVehicle(IVehicle vehicle)
         {
             try
@@ -47,6 +62,34 @@ namespace VehicleRegister.Repository
                 throw ex;
             }
             
+        }
+
+        public async Task<bool> DeleteAllReservations(List<IServiceReservations> reservations)
+        {
+            try
+            {
+            _ctx.RemoveRange(reservations);
+            return await _ctx.SaveChangesAsync() > 0;   
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public async Task<bool> DeleteReservation(IServiceReservations reservations)
+        {
+            try
+            {
+                _ctx.Remove(reservations);
+               return await _ctx.SaveChangesAsync() > 0;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
         public async Task<bool> DeleteVehicle(IVehicle vehicle)
@@ -92,6 +135,23 @@ namespace VehicleRegister.Repository
             }
         }
 
+        public async Task<IEnumerable<IServiceReservations>> GetAllReservations()
+        {
+            try
+            {
+                var serviceReservations = new List<IServiceReservations>();
+
+                foreach (var reservation in await _ctx.ServiceReservations.ToListAsync())
+                {
+                    serviceReservations.Add(reservation);
+                }
+                return serviceReservations;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
         public async Task<IEnumerable<IVehicle>> GetAllVehicles()
         {
@@ -153,6 +213,25 @@ namespace VehicleRegister.Repository
             }
         }
 
+        public async Task<IServiceReservations> GetReservation(int id)
+        {
+            try
+            {
+                var reservation = await _ctx.ServiceReservations.Where(x => x.Id == id).SingleOrDefaultAsync();
+
+                if (reservation == null) return null;
+
+                return reservation;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+         
+
+        }
+
         public async Task<IVehicle> GetVehicleById(int id)
         {
             try
@@ -179,9 +258,32 @@ namespace VehicleRegister.Repository
             }    
         }
 
-        public Task<bool> UpdateAutMotive(IAutoMotiveRepair repair)
+        public async Task<bool> UpdateAutMotive(IAutoMotiveRepair repair)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _ctx.Update(repair);
+                return await _ctx.SaveChangesAsync() > 0;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex; 
+            }
+        }
+
+        public async Task<bool> UpdateReservations(IServiceReservations request)
+        {
+            try
+            {
+                _ctx.Update(request);
+                return await _ctx.SaveChangesAsync() > 0;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
         public async Task<bool> UpdateVehicle(IVehicle vehicle)

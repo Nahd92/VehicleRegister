@@ -23,7 +23,7 @@ namespace VehicleRegister.CarAPI.Controllers
 
 
         [HttpGet]
-        [Authorize(Roles = "Manager")]
+        [Authorize(Roles = "Admin")]
         [Route(RoutesAPI.Vehicle.GetAllVehicles)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -57,9 +57,9 @@ namespace VehicleRegister.CarAPI.Controllers
         [Route(RoutesAPI.Vehicle.GetVehicle)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> GetVehicle(int id)
+        public async Task<IActionResult> GetVehicle(int? id)
         {
-            var response = await _serviceWrapper.Vehicle.GetVehicleById(id);
+            var response = await _serviceWrapper.Vehicle.GetVehicleById(id.Value);
 
             if (response == null) return NotFound();
 

@@ -1,3 +1,4 @@
+using EntityFramework.Data;
 using EntityFramework.Data.Data;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OAuth;
@@ -5,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -14,6 +16,7 @@ using System.Collections.Generic;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using VehicleRegister.Domain.Models;
 
 namespace VehicleRegister.Client
 {
@@ -45,7 +48,8 @@ namespace VehicleRegister.Client
                 opt.Cookie.IsEssential = true;
             });
 
-            services.AddMvc();
+                 
+          services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

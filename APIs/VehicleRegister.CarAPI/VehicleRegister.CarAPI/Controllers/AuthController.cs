@@ -6,11 +6,13 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using VehicleRegister.Domain.AppSettingsModels;
 using VehicleRegister.Domain.DTO.UserDTO.Request;
+using VehicleRegister.Domain.DTO.UserDTO.Response;
 using VehicleRegister.Domain.Interfaces.Auth.Interface;
 using VehicleRegister.Domain.Interfaces.Service.Interface;
 using VehicleRegister.Domain.RouteAPI;
@@ -42,23 +44,30 @@ namespace VehicleRegister.VehicleAPI.Controllers
 
                 var usersRole = await _service.authService.GetUsersRole(request.UserName);
 
-                var claims = new List<Claim>
+
+                var roles = new List<string>();
+
+             var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Name, request.UserName),                  
                 };
                 foreach (var claim in usersRole)
                 {
                     claims.Add(new Claim(ClaimTypes.Role, claim));
+                    roles.Add(claim);
                 };
-
-
 
                 var accessToken = GenerateAccessToken(claims);
 
 
-
-                HttpContext.Response.Cookies.Append("access_token", accessToken, new CookieOptions { HttpOnly = true, Secure = true });
-                return Ok(new { Token = accessToken });
+                var loginModel = new LoginResponse
+                {
+                    Token = accessToken,
+                    Roles = roles,
+                    IsLoggedIn = true
+                };
+            
+                return Ok(loginModel);
             }
             else
             {

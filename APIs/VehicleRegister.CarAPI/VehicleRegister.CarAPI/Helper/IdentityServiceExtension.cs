@@ -1,4 +1,5 @@
-﻿using EntityFramework.Data.Data;
+﻿using EntityFramework.Data;
+using EntityFramework.Data.Data;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Http;
@@ -9,6 +10,7 @@ using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Text;
 using System.Threading.Tasks;
+using VehicleRegister.Domain.Models;
 
 namespace VehicleRegister.VehicleAPI.Helper
 {
@@ -62,6 +64,7 @@ namespace VehicleRegister.VehicleAPI.Helper
                 opt.Password.RequireUppercase = false;
             }).AddEntityFrameworkStores<VehicleRegisterContext>();
         }
+
 
     }
 }

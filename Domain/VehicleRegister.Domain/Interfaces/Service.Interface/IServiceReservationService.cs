@@ -11,9 +11,10 @@ namespace VehicleRegister.Domain.Interfaces.Service.Interface
     public interface IServiceReservationService
     {
         Task<IEnumerable<IServiceReservations>> GetAllReservations();
-        Task<IServiceReservationService> GetReservation();
+        Task<IServiceReservations> GetReservation(int id);
+        Task<bool> DeleteReservations();
         Task<bool> DeleteReservation(int id);
         Task<bool> CreateReservation(CreateReservationRequest request);
-        Task<UpdatedReservationResponse> UpdateReservation();
+        Task<UpdatedReservationResponse> UpdateReservation(UpdateReservationRequest request);
     }
 }

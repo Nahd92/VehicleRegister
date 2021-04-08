@@ -2,24 +2,20 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
-using VehicleRegister.Domain.DTO.UserDTO.Response;
 
-namespace VehicleRegister.Domain.DTO.UserDTO.Request
+namespace VehicleRegister.Domain.Models.Auth
 {
-    public class LoginRequest : LoginResponse
+    public class LoginModel
     {
         [Required]
         public string UserName { get; set; }
-
-
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
-
-
-        [Display(Name = "Remember me?")]
+        public string Token { get; set; }
         public bool RememberMe { get; set; }
-    
-    
+        public bool IsAdmin { get; set; }
+        public bool IsManager { get; set; }
+        public bool IsLoggedIn { get; set; }
     }
 }

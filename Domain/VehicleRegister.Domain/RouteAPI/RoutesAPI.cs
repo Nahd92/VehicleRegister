@@ -23,14 +23,15 @@ namespace VehicleRegister.Domain.RouteAPI
         {
             public const string GetAllAutoMotives = Base + "AutoMotives";
             public const string GetAutoMotives = Base + "AutoMovie/{id}";
-            public const string CreateAutoMotives = Base + "AutoMovie";
-            public const string UpdateAutoMotive = Base + "AutoMovie";
+            public const string CreateAutoMotives = Base + "AutoMotives";
+            public const string UpdateAutoMotive = Base + "AutoMotives";
         }
         public class Reservations
         {
             public const string GetAllServiceReservations = Base + "Reservations";
             public const string GetServiceReservation = Base + "Reservation/{id}";
             public const string CreateServiceReservation = Base + "Reservation";
+            public const string RemoveServiceReservations = Base + "Reservations";
             public const string RemoveServiceReservation = Base + "Reservation/{id}";
             public const string UpdateServiceReservation = Base + "Reservation";
         }

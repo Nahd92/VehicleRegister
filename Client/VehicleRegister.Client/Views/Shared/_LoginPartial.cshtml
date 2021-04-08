@@ -1,13 +1,25 @@
-﻿@using Microsoft.AspNetCore.Identity
+﻿@model VehicleRegister.Domain.Models.Auth.LoginModel
+
+
 
 
 <ul class="navbar-nav">
+        @if (Model.IsLoggedIn)
+        {
+            <li class="nav-item">
+                <a class="navbar-item" asp-controller="Account" asp-action="Logout">Sign Out</a>
+                </li>
+        }
+        else
+        {
+            
         <li class="nav-item">
             <a class="nav-link text-dark" asp-controller="Account"
-               asp-action="Login">Login</a>
+                asp-action="Login">Login</a>
         </li>
         <li class="nav-item">
             <a class="nav-link text-dark" asp-controller="Account"
-               asp-action="Register">Register</a>
+                asp-action="Register">Register</a>
         </li>
-</ul>
+        }
+ </ul>

@@ -11,11 +11,21 @@ using System.Threading.Tasks;
 using VehicleRegister.Domain.DTO.UserDTO.Request;
 using VehicleRegister.Domain.Models;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Identity;
+using VehicleRegister.Domain.DTO.UserDTO.Response;
+using System.Linq;
+using VehicleRegister.Domain.Models.Auth;
 
 namespace VehicleRegister.Client.Controllers
 {
     public class AccountController : Controller
     {
+        private readonly SignInManager<IdentityUser> signInManager;
+
+        public AccountController(SignInManager<IdentityUser> signInManager)
+        {
+            this.signInManager = signInManager;
+        }
 
         [Authorize]
         public IActionResult Secret()
@@ -26,10 +36,10 @@ namespace VehicleRegister.Client.Controllers
         [HttpGet]
         public IActionResult Login()
         {
-            return View(new LoginRequest());
+            return View(new LoginModel());
         }
 
-        public async Task<string> GetToken(LoginRequest request)
+        public async Task<LoginResponse> GetToken(LoginResponse request)
         {
             using (var _httpClient = new HttpClient())
             {
@@ -41,35 +51,48 @@ namespace VehicleRegister.Client.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     var result = response.Content.ReadAsStringAsync().Result;
-                    var jsonString = JsonConvert.DeserializeObject<Token>(result);
-                    return jsonString.AccessToken;
+                    var jsonString = JsonConvert.DeserializeObject<LoginResponse>(result);
+
+
+            
+                    return jsonString;
                 }
             }
             return null;
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login(LoginRequest request)
+        public async Task<IActionResult> Login(LoginResponse request)
         {
-            var token = await GetToken(request);
-
-            if (string.IsNullOrEmpty(token))
-                return View("LoginErrorView");
-
-
-            var ui = new LoginModel
+            if (ModelState.IsValid)
             {
-                UserName = request.UserName,
-                Token = token
-            };
+                var response = await GetToken(request);
 
-            var key = "token";
-            var str = JsonConvert.SerializeObject(ui);
-            HttpContext.Session.SetString(key, str);
+                if (string.IsNullOrEmpty(response.Token))
+                    return View("LoginErrorView");
 
 
-            return View("SuccessLogin");
+                var result = await signInManager.PasswordSignInAsync(request.UserName, request.Password, request.RememberMe, false);
+
+                var id = new LoginModel
+                {
+                    UserName = request.UserName,
+                    Token = response.Token,
+                    IsAdmin = response.Roles.Contains("Admin"),
+                    IsManager = response.Roles.Contains("Manager"),
+                    IsLoggedIn = response.IsLoggedIn
+                };
+
+                var key = "token";
+                var str = JsonConvert.SerializeObject(id);
+                HttpContext.Session.SetString(key, str);
+
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+            return RedirectToAction("Login", "Account");
         }
-
     }
 }
