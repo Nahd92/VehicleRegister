@@ -12,7 +12,7 @@ using VehicleRegister.Domain.DTO.VehicleDTO.Response;
 using VehicleRegister.Domain.Interfaces.Model.Interface;
 using VehicleRegister.Domain.Interfaces.Service.Interface;
 using VehicleRegister.Domain.Models;
-
+using VehicleRegister.Domain.Models.Vehicles;
 
 namespace VehicleRegister.Testing.Controllers
 {
@@ -31,7 +31,7 @@ namespace VehicleRegister.Testing.Controllers
 
         private IEnumerable<IVehicle> cars = new List<Vehicle>()
         {
-            new Vehicle()
+            new LightVehicle()
             {
                 Id = 1,
                 Brand = "Volvo",
@@ -45,7 +45,7 @@ namespace VehicleRegister.Testing.Controllers
                 YearlyFee = 2000
             }
         };
-        private IVehicle car = new Vehicle()
+        private IVehicle car = new LightVehicle()
         {
             Id = 1,
             Brand = "Volvo",

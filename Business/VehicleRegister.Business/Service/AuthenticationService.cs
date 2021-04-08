@@ -16,32 +16,15 @@ namespace VehicleRegister.Business.Service
     public class AuthenticationService : IAuthenticationService
     {
         private readonly UserManager<IdentityUser> _userManager;
-        private readonly AppSettings _appSettings;
 
-        public AuthenticationService(UserManager<IdentityUser> userManager, AppSettings appSettings)
+        public AuthenticationService(UserManager<IdentityUser> userManager)
         {
             _userManager = userManager;
-            _appSettings = appSettings;
         }
 
-        public string GenerateAccessToken(IEnumerable<Claim> claims)
-        {
-            var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_appSettings.SecretKey));
-            var signInCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
+      
 
-            var tokenOptions = new JwtSecurityToken(
-              issuer: "https://localhost:44345/",
-              audience: "https://localhost:44345/",
-              claims: claims,
-              expires: DateTime.Now.AddMinutes(5),
-              signingCredentials: signInCredentials
-              );
-
-            var tokenString = new JwtSecurityTokenHandler().WriteToken(tokenOptions);
-            return tokenString;
-        }
-
-        public async Task <string> GetUsersRole(string username)
+        public async Task <List<string>> GetUsersRole(string username)
         {
             var user = await _userManager.FindByNameAsync(username);
             var roles = await _userManager.GetClaimsAsync(user);
@@ -51,7 +34,7 @@ namespace VehicleRegister.Business.Service
             {
                 newList.Add(role);
             }
-            return string.Join("", newList);
+            return newList;
         }
 
         public async Task<bool> IsValidUserNameAndPassword(string username, string password)

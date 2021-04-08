@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using VehicleRegister.Domain.Models;
 
 namespace VehicleRegister.Domain.DTO.VehicleDTO.Response
 {
-    public class UpdateVehicleResponse : Vehicle
+    public class GetAllVehiclesDto
     {
         public int Id { get; set; }
         public string RegisterNumber { get; set; }
@@ -17,6 +16,5 @@ namespace VehicleRegister.Domain.DTO.VehicleDTO.Response
         public bool IsServiceBooked { get; set; }
         public DateTime ServiceDate { get; set; }
         public int YearlyFee { get; set; }
-
     }
 }

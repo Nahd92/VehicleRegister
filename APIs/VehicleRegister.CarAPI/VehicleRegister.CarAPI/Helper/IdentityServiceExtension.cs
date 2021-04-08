@@ -1,17 +1,14 @@
 ﻿using EntityFramework.Data.Data;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using VehicleRegister.Domain.AppSettingsModels;
-using VehicleRegister.VehicleAPI.Helper.AppsettingsHelper;
 
 namespace VehicleRegister.VehicleAPI.Helper
 {
@@ -20,30 +17,44 @@ namespace VehicleRegister.VehicleAPI.Helper
 
         public static void ConfigureBearer(this IServiceCollection service, IConfiguration Config)
         {
-            service.AddAuthentication(opt =>
+            service.AddAuthentication(cfg => 
             {
-                opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            })
-                .AddJwtBearer(options =>
-                {
-                options.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuer = true,
-                    ValidateAudience = true,
-                    ValidateLifetime = true,
-                    ValidateIssuerSigningKey = true,
+                cfg.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                cfg.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                })
+                    .AddJwtBearer(config =>
+                    {
+                        var secretBytes = Encoding.UTF8.GetBytes(Config["SecretKey:Key"]);
+                        var key = new SymmetricSecurityKey(secretBytes);
+                        config.Events = new JwtBearerEvents()
+                        {
+                            OnMessageReceived = context =>
+                            {
+                                if (context.Request.Cookies.ContainsKey("X-Access-Token"))
+                                {
+                                    context.Token = context.Request.Cookies["X-Access-Token"];
+                                }
+                                return Task.CompletedTask;
+                            }
+                        };
 
-                    ValidIssuer = AppSettingsHelper.HostName(Config),
-                    ValidAudience = AppSettingsHelper.HostName(Config),
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(AppSettingsHelper.SecretKey(Config)))
-                    };
-                });
+                         config.TokenValidationParameters = new TokenValidationParameters()
+                        {
+                            ValidateIssuer = true,
+                            ValidIssuer = Config["Url:HostName"],
+                            ValidateAudience = true,
+                            ValidAudience = Config["Url:HostName"],
+                            ValidateIssuerSigningKey = true,
+                            IssuerSigningKey = key,
+                        };
+                        
+                        config.SaveToken = true;
+                    });
         }
 
         public static void ConfigureIdentityOptions(this IServiceCollection service)
         {
-            service.AddIdentity<IdentityUser, IdentityRole>(opt =>
+            service.AddIdentityCore<IdentityUser>(opt =>
             {
                 opt.Password.RequireDigit = false;
                 opt.Password.RequiredLength = 6;

@@ -33,7 +33,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VehicleRegister.Business", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repository", "Repository", "{713573C9-C45C-4C20-BBAE-FB13A71824A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VehicleRegister.Repository", "Data\Repository\VehicleRegister.Repository\VehicleRegister.Repository.csproj", "{B48F7D26-2870-4DF9-91F1-6A519EA1DFC8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VehicleRegister.Repository", "Data\Repository\VehicleRegister.Repository\VehicleRegister.Repository.csproj", "{B48F7D26-2870-4DF9-91F1-6A519EA1DFC8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

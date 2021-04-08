@@ -19,5 +19,11 @@ namespace VehicleRegister.Domain.Models
         public bool IsServiceBooked { get; set; }
         public DateTime ServiceDate { get; set; }
         public int YearlyFee { get; set; }
+
+        public virtual int CalculateYearlyFee()
+        {
+            return 0;
+        }
+
     }
 }

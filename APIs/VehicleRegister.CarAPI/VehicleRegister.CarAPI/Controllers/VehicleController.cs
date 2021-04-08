@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -9,6 +10,7 @@ using VehicleRegister.Domain.RouteAPI;
 namespace VehicleRegister.CarAPI.Controllers
 {
     [ApiController]
+    [Authorize]
     public class VehicleController : Controller
     {
 
@@ -20,8 +22,8 @@ namespace VehicleRegister.CarAPI.Controllers
 
 
 
-        [Authorize(Roles = "Admin")]
         [HttpGet]
+        [Authorize(Roles = "Manager")]
         [Route(RoutesAPI.Vehicle.GetAllVehicles)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -36,6 +38,7 @@ namespace VehicleRegister.CarAPI.Controllers
 
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         [Route(RoutesAPI.Vehicle.GetVehicleWithRegNumber)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -50,6 +53,7 @@ namespace VehicleRegister.CarAPI.Controllers
 
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         [Route(RoutesAPI.Vehicle.GetVehicle)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -63,6 +67,7 @@ namespace VehicleRegister.CarAPI.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         [Route(RoutesAPI.Vehicle.CreateVehicle)]
         public async Task<IActionResult> CreateVehicle(CreateVehicleRequest request)
         {
@@ -76,6 +81,7 @@ namespace VehicleRegister.CarAPI.Controllers
 
 
         [HttpDelete]
+        [Authorize(Roles = "Admin")]
         [Route(RoutesAPI.Vehicle.DeleteVehicle)]
         public async Task<IActionResult> DeleteVehicle(int id)
         {
@@ -89,6 +95,7 @@ namespace VehicleRegister.CarAPI.Controllers
 
 
         [HttpPut]
+        [Authorize(Roles = "Admin")]
         [Route(RoutesAPI.Vehicle.UpdateVehicle)]
         public async Task<IActionResult> UpdateVehicle(UpdateVehicleRequest request)
         {
@@ -98,5 +105,8 @@ namespace VehicleRegister.CarAPI.Controllers
 
             return Ok(response);
         }
+
+
+        
     }
 }

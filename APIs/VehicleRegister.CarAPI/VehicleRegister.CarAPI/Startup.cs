@@ -1,4 +1,6 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -24,6 +26,8 @@ namespace VehicleRegister.CarAPI
             Configuration = builder.Build();
 
             var database = Configuration["ConnectionStrings:VehicleRegister"];
+            var url = Configuration["Url:HostName"];
+            var secret = Configuration["SecretKey:Key"];
         }
 
 
@@ -36,8 +40,11 @@ namespace VehicleRegister.CarAPI
             services.ConfigureIdentityOptions();
             services.ConfigureInjections();
             services.ConfigureBearer(Configuration);
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme);
             services.ConfigureCors();
             services.ConfigureAppsettingsValuesInjection(Configuration);
+
+         
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,9 +66,7 @@ namespace VehicleRegister.CarAPI
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllers();
             });
         }
     }

@@ -4,9 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using VehicleRegister.Domain.Factory;
 using VehicleRegister.Domain.Interfaces.Model.Interface;
 using VehicleRegister.Domain.Interfaces.Repository.Interface;
 using VehicleRegister.Domain.Models;
+using VehicleRegister.Domain.Models.Vehicles;
 
 namespace VehicleRegister.Repository
 {
@@ -34,8 +36,17 @@ namespace VehicleRegister.Repository
 
         public async Task<bool> CreateVehicle(IVehicle vehicle)
         {
-            _ctx.Add(vehicle);
-            return await _ctx.SaveChangesAsync() > 0;
+            try
+            {
+                _ctx.Add(vehicle);
+                return await _ctx.SaveChangesAsync() > 0;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            
         }
 
         public async Task<bool> DeleteVehicle(IVehicle vehicle)
@@ -81,6 +92,7 @@ namespace VehicleRegister.Repository
             }
         }
 
+
         public async Task<IEnumerable<IVehicle>> GetAllVehicles()
         {
             try
@@ -89,19 +101,19 @@ namespace VehicleRegister.Repository
 
                 foreach (var veh in await _ctx.Vehicles.ToListAsync())
                 {
-                    vehicles.Add(new Vehicle()
-                    {
-                        Id = veh.Id,
-                        Brand = veh.Brand,
-                        IsDrivingBan = veh.IsDrivingBan,
-                        ServiceDate = veh.ServiceDate,
-                        IsServiceBooked = veh.IsServiceBooked,
-                        InTraffic = veh.InTraffic,
-                        Model = veh.Model,
-                        RegisterNumber = veh.RegisterNumber,
-                        Weight = veh.Weight,
-                        YearlyFee = veh.YearlyFee
-                    });
+                    var vehicle = VehicleFactory.Create(
+                                                    veh.Id,
+                                                    veh.RegisterNumber,
+                                                    veh.Brand,
+                                                    veh.Model,
+                                                    veh.InTraffic,
+                                                    veh.IsDrivingBan,
+                                                    veh.IsServiceBooked,
+                                                    veh.ServiceDate,
+                                                    veh.Weight,
+                                                    veh.YearlyFee);
+
+                    vehicles.Add(vehicle);
                 }
                 return vehicles;
             }
@@ -148,22 +160,18 @@ namespace VehicleRegister.Repository
                 var vehicle = await _ctx.Vehicles.Where(x => x.Id == id).AsNoTracking().FirstOrDefaultAsync();
 
                 if (vehicle == null) return null;
-                    
-                IVehicle ve = new Vehicle()
-                {
-                    Id = vehicle.Id,
-                    Brand = vehicle.Brand,
-                    IsDrivingBan = vehicle.IsDrivingBan,
-                    ServiceDate = vehicle.ServiceDate,
-                    IsServiceBooked = vehicle.IsServiceBooked,
-                    InTraffic = vehicle.InTraffic,
-                    Model = vehicle.Model,
-                    RegisterNumber = vehicle.RegisterNumber,
-                    Weight = vehicle.Weight,
-                    YearlyFee = vehicle.YearlyFee
-                };
+                var vh = VehicleFactory.Create(vehicle.Id,
+                                                 vehicle.RegisterNumber,
+                                                 vehicle.Brand,
+                                                 vehicle.Model,
+                                                 vehicle.InTraffic,
+                                                 vehicle.IsDrivingBan,
+                                                 vehicle.IsServiceBooked,
+                                                 vehicle.ServiceDate,
+                                                 vehicle.Weight,
+                                                 vehicle.YearlyFee);
 
-                return ve;
+                return vh;
             }
             catch (Exception ex)
             {

@@ -12,7 +12,6 @@ namespace VehicleRegister.Domain.Interfaces.Service.Interface
         Task<bool> CreateVehicle(CreateVehicleRequest vehicle);
         Task<IVehicle> GetVehicleById(int id);
         Task<bool> DeleteVehicle(int id);
-        int CalculateYearlyFee(int weight);
         Task<UpdateVehicleResponse> UpdateVehicle(UpdateVehicleRequest vehicle);
         Task<IVehicle> GetVehicleWithRegNumber(string regNumber);
     }

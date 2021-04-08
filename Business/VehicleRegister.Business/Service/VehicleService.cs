@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using VehicleRegister.Domain.DTO.VehicleDTO.Request;
 using VehicleRegister.Domain.DTO.VehicleDTO.Response;
+using VehicleRegister.Domain.Factory;
 using VehicleRegister.Domain.Interfaces.Model.Interface;
 using VehicleRegister.Domain.Interfaces.Repository.Interface;
 using VehicleRegister.Domain.Interfaces.Service.Interface;
@@ -20,20 +21,10 @@ namespace VehicleRegister.Business.Service
 
         public async Task<bool> CreateVehicle(CreateVehicleRequest vehicle)
         {
-            var createVehicle = new Vehicle()
-            {
-                Brand = vehicle.Brand,
-                IsDrivingBan = vehicle.IsDrivingBan,
-                ServiceDate = vehicle.ServiceDate,
-                IsServiceBooked = vehicle.IsServiceBooked,
-                InTraffic = vehicle.InTraffic,
-                Model = vehicle.Model,
-                RegisterNumber = vehicle.RegisterNumber,
-                Weight = vehicle.Weight,              
-                YearlyFee = CalculateYearlyFee(vehicle.Weight)
-            };
 
-           return await _repo.VehicleRepo.CreateVehicle(createVehicle);
+           var createdV = VehicleFactory.Create(0, vehicle.RegisterNumber, vehicle.Brand, vehicle.Model, vehicle.InTraffic, vehicle.IsDrivingBan, vehicle.IsServiceBooked, vehicle.ServiceDate, vehicle.Weight, vehicle.YearlyFee);
+
+           return await _repo.VehicleRepo.CreateVehicle(createdV);
         }
 
         public async Task<IEnumerable<IVehicle>> GetAllVehicles() => await _repo.VehicleRepo.GetAllVehicles();
@@ -46,19 +37,6 @@ namespace VehicleRegister.Business.Service
             if (vehicle is null) return false;
             
            return await _repo.VehicleRepo.DeleteVehicle(vehicle);
-        }
-
-        public int CalculateYearlyFee(int weight)
-        {
-            switch (weight)
-            {
-                case int n when(n <= 1800):
-                    return 1200;
-                case int b when (b > 1800 && b <= 2500):
-                    return 1800;
-                default:
-                    return 4500;
-            }
         }
 
         public async Task<UpdateVehicleResponse> UpdateVehicle(UpdateVehicleRequest request)

@@ -42,6 +42,7 @@ namespace VehicleRegister.Business.Service
                 OrganisationNumber = await CreateOrganisationNumber()
             };
 
+
            return await _repo.RepairRepo.CreateNewAutoMotive(newAutoMotive);
         }
 

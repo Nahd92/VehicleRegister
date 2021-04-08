@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace VehicleRegister.CarAPI.Controllers
 {
 
     [ApiController]
+    [Authorize]
     public class ReservationController : Controller
     {
         private readonly IServiceWrapper _serviceWrapper;
@@ -20,6 +22,7 @@ namespace VehicleRegister.CarAPI.Controllers
 
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         [Route(RoutesAPI.Reservations.GetAllServiceReservations)]
         public async Task<IActionResult> GetAllReservations()
         {

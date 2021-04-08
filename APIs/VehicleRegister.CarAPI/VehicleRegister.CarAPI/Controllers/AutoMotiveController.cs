@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +12,7 @@ using VehicleRegister.Domain.RouteAPI;
 namespace VehicleRegister.CarAPI.Controllers
 {
     [ApiController]
+    [Authorize]
     public class AutoMotiveController : Controller
     {
         private readonly IServiceWrapper _serviceWrapper;
@@ -20,6 +23,7 @@ namespace VehicleRegister.CarAPI.Controllers
 
 
         [HttpGet]
+        [Authorize]
         [Route(RoutesAPI.AutoMotive.GetAllAutoMotives)]
         public async Task<IActionResult> GetAutoMotives()
         {
@@ -31,6 +35,7 @@ namespace VehicleRegister.CarAPI.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         [Route(RoutesAPI.AutoMotive.GetAutoMotives)]
         public async Task<IActionResult> GetAutoMotive(int id)
         {
@@ -42,6 +47,7 @@ namespace VehicleRegister.CarAPI.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         [Route(RoutesAPI.AutoMotive.CreateAutoMotives)]
         public async Task<IActionResult> AddNewAutoMotivesToDatabase(AddAutoMotiveToListRequest request)
         {
@@ -55,6 +61,7 @@ namespace VehicleRegister.CarAPI.Controllers
         }
 
         [HttpPut]
+        [Authorize(Roles = "Admin")]
         [Route(RoutesAPI.AutoMotive.UpdateAutoMotive)]
         public async Task<IActionResult> UpdateExistingAutoMotive(UpdateAutoMotive request)
         {

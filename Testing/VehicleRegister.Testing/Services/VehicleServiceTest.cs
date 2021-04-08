@@ -7,10 +7,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using VehicleRegister.Business.Service;
 using VehicleRegister.Domain.DTO.VehicleDTO.Request;
+using VehicleRegister.Domain.Factory;
 using VehicleRegister.Domain.Interfaces.Model.Interface;
 using VehicleRegister.Domain.Interfaces.Repository.Interface;
 using VehicleRegister.Domain.Interfaces.Service.Interface;
 using VehicleRegister.Domain.Models;
+using VehicleRegister.Domain.Models.Vehicles;
 
 namespace VehicleRegister.Testing.Services
 {
@@ -27,7 +29,7 @@ namespace VehicleRegister.Testing.Services
 
         private IEnumerable<IVehicle> cars = new List<Vehicle>()
         {
-            new Vehicle()
+            new LightVehicle()
             {
                 Id = 1,
                 Brand = "Volvo",
@@ -41,7 +43,7 @@ namespace VehicleRegister.Testing.Services
                 YearlyFee = 2000
             }
         };
-        private IVehicle car = new Vehicle()
+        private IVehicle car = new LightVehicle()
         {          
                 Id = 1,
                 Brand = "Volvo",
@@ -57,8 +59,7 @@ namespace VehicleRegister.Testing.Services
         };
 
         private CreateVehicleRequest carDTO = new CreateVehicleRequest()
-        {
-                Id = 1,            
+        {       
                 Brand = "Volvo",
                 Model = "XC90",
                 InTraffic = DateTime.Parse("2020-02-02"),
@@ -131,37 +132,6 @@ namespace VehicleRegister.Testing.Services
         }
 
 
-        [TestMethod]
-        public void TestCalculateYearlyFee_ShouldReturnLowestValue()
-        {
-            //Arrange
-            int weight = 800;
-            //Act
-            var response = vehicleService.CalculateYearlyFee(weight);
-            //Assert
-            response.Should().Be(1200);
-        }
-        [TestMethod]
-        public void TestCalculateYearlyFee_ShouldReturnMiddleValue()
-        {
-            //Arrange
-            int weight = 2000;
-            //Act 
-            var response = vehicleService.CalculateYearlyFee(weight);
-            //Assert
-            response.Should().Be(1800);
-        }
-
-        [TestMethod]
-        public void TestCalculateYearlyFee_ShouldReturnHighestValue()
-        {
-            //Arrange
-            int weight = 4000;
-            //Act
-            var response = vehicleService.CalculateYearlyFee(weight);
-            //Assert
-            response.Should().Be(4500);
-        }
 
 
         [TestMethod]
@@ -169,7 +139,7 @@ namespace VehicleRegister.Testing.Services
         {
             //Arrange
             int randomId = 2;
-            mockRepository.Setup(x => x.VehicleRepo.GetVehicleById(It.IsAny<int>())).ReturnsAsync(new Vehicle() { Id = randomId });
+            mockRepository.Setup(x => x.VehicleRepo.GetVehicleById(It.IsAny<int>())).ReturnsAsync(car);
             mockRepository.Setup(x => x.VehicleRepo.DeleteVehicle(It.IsAny<IVehicle>())).ReturnsAsync(true);
             //Act
             var response = await vehicleService.DeleteVehicle(randomId);
@@ -207,7 +177,7 @@ namespace VehicleRegister.Testing.Services
                 ServiceDate = DateTime.Parse("2022-01-01")
             };
 
-            mockRepository.Setup(x => x.VehicleRepo.GetVehicleById(It.IsAny<int>())).ReturnsAsync(new Vehicle() { Id = 2, Brand = "Volvo", Model = "XC90", ServiceDate = DateTime.Parse("2021-01-01"), IsDrivingBan = false });
+            mockRepository.Setup(x => x.VehicleRepo.GetVehicleById(It.IsAny<int>())).ReturnsAsync(car);
             mockRepository.Setup(x => x.VehicleRepo.UpdateVehicle(It.IsAny<IVehicle>())).ReturnsAsync(true);
             //Act
             var response = await vehicleService.UpdateVehicle(request);

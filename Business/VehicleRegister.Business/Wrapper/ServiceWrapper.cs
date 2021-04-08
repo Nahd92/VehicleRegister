@@ -19,7 +19,6 @@ namespace VehicleRegister.Business.Wrapper
         private IServiceReservationService _service;
         private IAuthenticationService _authService;
         private UserManager<IdentityUser> manager;
-        private readonly AppSettings appsettings;
 
 
 
@@ -65,17 +64,16 @@ namespace VehicleRegister.Business.Wrapper
             {
                 if (_authService == null)
                 {
-                    _authService = new AuthenticationService(manager, appsettings);
+                    _authService = new AuthenticationService(manager);
                 }
                 return _authService;
             }
         }
 
-        public ServiceWrapper(IRepositoryWrapper wrapper, UserManager<IdentityUser> manager, AppSettings appsettings)
+        public ServiceWrapper(IRepositoryWrapper wrapper, UserManager<IdentityUser> manager)
         {
             _wrapper = wrapper;
             this.manager = manager;
-            this.appsettings = appsettings;
         }
     }
 }
