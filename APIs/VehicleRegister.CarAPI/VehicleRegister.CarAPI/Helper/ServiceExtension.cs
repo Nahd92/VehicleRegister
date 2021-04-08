@@ -7,6 +7,7 @@ using VehicleRegister.Business.Service;
 using VehicleRegister.Business.Wrapper;
 using VehicleRegister.Domain.AppSettingsModels;
 using VehicleRegister.Domain.Interfaces.Auth.Interface;
+using VehicleRegister.Domain.Interfaces.Logger.Interface;
 using VehicleRegister.Domain.Interfaces.Model.Interface;
 using VehicleRegister.Domain.Interfaces.Repository.Interface;
 using VehicleRegister.Domain.Interfaces.Service.Interface;
@@ -28,6 +29,7 @@ namespace VehicleRegister.CarAPI.Helper
             service.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
             service.AddScoped<IServiceWrapper, ServiceWrapper>();
 
+            service.AddScoped<ILoggerManager, LoggerManager>();
             service.AddScoped<AuthenticationService>();
 
             service.AddScoped<IVehicleRepository, DatabaseRepository>();

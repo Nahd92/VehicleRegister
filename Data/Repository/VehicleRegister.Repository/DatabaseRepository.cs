@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using VehicleRegister.Domain.DTO.ReservationsDTO.Request;
 using VehicleRegister.Domain.Factory;
+using VehicleRegister.Domain.Interfaces.Logger.Interface;
 using VehicleRegister.Domain.Interfaces.Model.Interface;
 using VehicleRegister.Domain.Interfaces.Repository.Interface;
 using VehicleRegister.Domain.Models;
@@ -16,9 +17,11 @@ namespace VehicleRegister.Repository
     public class DatabaseRepository : IVehicleRepository, IAutoMotiveRepairRepository, IServiceReservationsRepository
     {
         private readonly VehicleRegisterContext _ctx;
-        public DatabaseRepository(VehicleRegisterContext ctx)
+        private ILoggerManager _logger;
+        public DatabaseRepository(VehicleRegisterContext ctx, ILoggerManager logger)
         {
             _ctx = ctx;
+            _logger = logger;
         }
 
         public async Task<bool> CreateNewAutoMotive(IAutoMotiveRepair repair)
@@ -26,12 +29,13 @@ namespace VehicleRegister.Repository
             try
             {
                 _ctx.Add(repair);
+                _logger.LogInfo("AutoMotive was created");
                 return await _ctx.SaveChangesAsync() > 0;
             }
             catch (Exception ex)
             {
-
-                throw ex;
+                _logger.LogError($"AutoMotive was not created and gave error: {ex.Message}");
+                return false;
             }
         }
 
@@ -40,12 +44,13 @@ namespace VehicleRegister.Repository
             try
             {
                 _ctx.Add(reservation);
+                _logger.LogInfo("Reservation was created");
                 return await _ctx.SaveChangesAsync() > 0;
             }
             catch (Exception ex)
             {
-
-                throw ex;
+                _logger.LogError($"Reservation was not created and gave error: {ex.Message}");
+                return false;
             }
         }
 
@@ -54,12 +59,13 @@ namespace VehicleRegister.Repository
             try
             {
                 _ctx.Add(vehicle);
+                _logger.LogInfo("Vehicle was created");
                 return await _ctx.SaveChangesAsync() > 0;
             }
             catch (Exception ex)
             {
-
-                throw ex;
+               _logger.LogError($"Reservation was not created and gave error: {ex.Message}");
+                return false;
             }
             
         }
@@ -68,13 +74,14 @@ namespace VehicleRegister.Repository
         {
             try
             {
-            _ctx.RemoveRange(reservations);
-            return await _ctx.SaveChangesAsync() > 0;   
+                _ctx.RemoveRange(reservations);
+                _logger.LogInfo("Every reservation was deleted from today and 30 days back!");
+                return await _ctx.SaveChangesAsync() > 0;   
             }
             catch (Exception ex)
             {
-
-                throw ex;
+                _logger.LogError($"Delete all Reservations was not successfull and gave error: {ex.Message}");
+                return false;
             }
         }
 
@@ -83,12 +90,13 @@ namespace VehicleRegister.Repository
             try
             {
                 _ctx.Remove(reservations);
+                _logger.LogInfo("DEletion of one reservation was successful");
                return await _ctx.SaveChangesAsync() > 0;
             }
             catch (Exception ex)
             {
-
-                throw ex;
+                _logger.LogError($"Delete reservation was not Successfull and gave error: {ex.Message}");
+                return false;
             }
         }
 
@@ -97,11 +105,13 @@ namespace VehicleRegister.Repository
             try
             {
                 _ctx.Remove(vehicle);
+                _logger.LogInfo("DEletion of one Vehicle was successful");
                 return await _ctx.SaveChangesAsync() > 0;
             }
             catch (Exception ex)
             {
-                throw ex;
+                _logger.LogError($"Delete Vehicle was not Successfull and gave error: {ex.Message}");
+                return false;
             }
         }
 
@@ -109,10 +119,11 @@ namespace VehicleRegister.Repository
         {
             try
             {
-                var autoMotives = new List<IAutoMotiveRepair>();
 
+                var autoMotives = new List<IAutoMotiveRepair>();
                 foreach (var auto in await _ctx.AutoMotive.ToListAsync())
                 {
+                    
                     autoMotives.Add(new AutoMotiveRepair()
                     {
                         Id = auto.Id,
@@ -126,12 +137,13 @@ namespace VehicleRegister.Repository
                         Website = auto.Website
                     });
                 }
+                _logger.LogInfo($"Adding {_ctx.AutoMotive.ToList().Count()} to new list and returns back to client! ");
                 return autoMotives;
             }
             catch (Exception ex)
             {
-
-                throw ex;
+                _logger.LogError($"Error Message: {ex.Message} and returns null");
+                return null;
             }
         }
 
@@ -142,14 +154,16 @@ namespace VehicleRegister.Repository
                 var serviceReservations = new List<IServiceReservations>();
 
                 foreach (var reservation in await _ctx.ServiceReservations.ToListAsync())
-                {
+                {                   
                     serviceReservations.Add(reservation);
                 }
+                _logger.LogInfo($"Adding {_ctx.ServiceReservations.ToList().Count()} to new list and returns back to client! ");
                 return serviceReservations;
             }
             catch (Exception ex)
             {
-                throw ex;
+                _logger.LogError($"Error Message: {ex.Message} and returns null");
+                return null;
             }
         }
 
@@ -161,6 +175,7 @@ namespace VehicleRegister.Repository
 
                 foreach (var veh in await _ctx.Vehicles.ToListAsync())
                 {
+                   
                     var vehicle = VehicleFactory.Create(
                                                     veh.Id,
                                                     veh.RegisterNumber,
@@ -172,15 +187,15 @@ namespace VehicleRegister.Repository
                                                     veh.ServiceDate,
                                                     veh.Weight,
                                                     veh.YearlyFee);
-
                     vehicles.Add(vehicle);
                 }
+                _logger.LogInfo($"Adding {_ctx.Vehicles.ToList().Count()} to new list and returns back to client! ");
                 return vehicles;
             }
             catch (Exception ex)
             {
-
-                throw ex;
+                _logger.LogError($"Error Message: {ex.Message} and returns null");
+                return null;
             }
 
         }
@@ -191,7 +206,11 @@ namespace VehicleRegister.Repository
             {
                 var autoMotive = await _ctx.AutoMotive.Where(x => x.Id == id).AsNoTracking().FirstOrDefaultAsync();
 
-                if (autoMotive is null) return null;
+                if (autoMotive is null)
+                {
+                    _logger.LogError($"No AutoMotive was found in Database with id: {id}, returns back null value");
+                    return null;
+                }
 
                 IAutoMotiveRepair repair = new AutoMotiveRepair
                 {
@@ -205,11 +224,14 @@ namespace VehicleRegister.Repository
                     PhoneNumber = autoMotive.PhoneNumber,
                     Website = autoMotive.Website
                 };
+
+                _logger.LogInfo($"Adding {repair.Id} to new list and returns back to client! ");
                 return repair;
             }
             catch (Exception ex)
             {
-                throw ex;
+                _logger.LogError($"Error Message: {ex.Message} and returns null");
+                return null;
             }
         }
 
@@ -219,17 +241,19 @@ namespace VehicleRegister.Repository
             {
                 var reservation = await _ctx.ServiceReservations.Where(x => x.Id == id).SingleOrDefaultAsync();
 
-                if (reservation == null) return null;
+                if (reservation == null) 
+                {
+                    _logger.LogError($"No AutoMotive was found in Database with id: {id}, returns back null value");
+                    return null;
+                }
 
                 return reservation;
             }
             catch (Exception ex)
             {
-
-                throw ex;
-            }
-         
-
+                _logger.LogError($"Error Message: {ex.Message} and returns null");
+                return null;
+            }        
         }
 
         public async Task<IVehicle> GetVehicleById(int id)
@@ -238,7 +262,13 @@ namespace VehicleRegister.Repository
             {
                 var vehicle = await _ctx.Vehicles.Where(x => x.Id == id).AsNoTracking().FirstOrDefaultAsync();
 
-                if (vehicle == null) return null;
+                if (vehicle == null)
+                {
+                    _logger.LogError($"No vehicle was found in Database with id: {id}, returns back null value");
+                    return null;
+                }
+
+
                 var vh = VehicleFactory.Create(vehicle.Id,
                                                  vehicle.RegisterNumber,
                                                  vehicle.Brand,
@@ -250,11 +280,13 @@ namespace VehicleRegister.Repository
                                                  vehicle.Weight,
                                                  vehicle.YearlyFee);
 
+                _logger.LogInfo($"Adding {vh.Id} to new list and returns back to client! ");
                 return vh;
             }
             catch (Exception ex)
             {
-                throw ex;
+                _logger.LogError($"Error Message: {ex.Message} and returns null");
+                return null;
             }    
         }
 
@@ -263,12 +295,13 @@ namespace VehicleRegister.Repository
             try
             {
                 _ctx.Update(repair);
+                _logger.LogError("Updating AutoMotive was success");
                 return await _ctx.SaveChangesAsync() > 0;
             }
             catch (Exception ex)
             {
-
-                throw ex; 
+                _logger.LogError($"Error Message: {ex.Message}");
+                return false;
             }
         }
 
@@ -277,12 +310,13 @@ namespace VehicleRegister.Repository
             try
             {
                 _ctx.Update(request);
+                _logger.LogError("Updating Reservation was success");
                 return await _ctx.SaveChangesAsync() > 0;
             }
             catch (Exception ex)
             {
-
-                throw ex;
+                _logger.LogError($"Error Message: {ex.Message}");
+                return false;
             }
         }
 
@@ -291,12 +325,13 @@ namespace VehicleRegister.Repository
             try
             {
                 _ctx.Update(vehicle);
+                _logger.LogError("Updating Vehicle was success");
                 return await _ctx.SaveChangesAsync() > 0;                
             }
             catch (Exception ex)
             {
-
-                throw ex;
+                _logger.LogError($"Error Message: {ex.Message}");
+                return false;
             }
         }
     }

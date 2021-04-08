@@ -1,4 +1,5 @@
 ﻿using EntityFramework.Data.Data;
+using VehicleRegister.Domain.Interfaces.Logger.Interface;
 using VehicleRegister.Domain.Interfaces.Model.Interface;
 using VehicleRegister.Domain.Interfaces.Repository.Interface;
 using VehicleRegister.Repository;
@@ -11,7 +12,7 @@ namespace VehicleRegister.Business.Wrapper
         private IServiceReservationsRepository _service;
         private IAutoMotiveRepairRepository _autoMotive;
         private readonly VehicleRegisterContext _entityDb;
-
+        private readonly ILoggerManager _logger;
 
         public IVehicleRepository VehicleRepo
         {
@@ -19,7 +20,7 @@ namespace VehicleRegister.Business.Wrapper
             {
                 if (_vehicle == null)
                 {
-                    _vehicle = new DatabaseRepository(_entityDb);
+                    _vehicle = new DatabaseRepository(_entityDb, _logger);
                 }
                 return _vehicle;
             }
@@ -31,7 +32,7 @@ namespace VehicleRegister.Business.Wrapper
             {
                 if (_autoMotive == null)
                 {
-                    _autoMotive = new DatabaseRepository(_entityDb);
+                    _autoMotive = new DatabaseRepository(_entityDb, _logger);
                 }
                 return _autoMotive;
             }
@@ -43,15 +44,17 @@ namespace VehicleRegister.Business.Wrapper
             {
                 if (_service == null)
                 {
-                    _service = new DatabaseRepository(_entityDb);
+                    _service = new DatabaseRepository(_entityDb, _logger);
                 }
                 return _service;
             }
         }
 
-        public RepositoryWrapper(VehicleRegisterContext entityDb)
+
+        public RepositoryWrapper(VehicleRegisterContext entityDb, ILoggerManager logger)
         {
             _entityDb = entityDb;
+            _logger = logger;
         }
     }
 }

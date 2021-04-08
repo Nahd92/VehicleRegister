@@ -54,10 +54,10 @@ namespace VehicleRegister.CarAPI.Controllers
 
         [HttpPost]
         [Authorize]
-        [Route(RoutesAPI.Reservations.CreateServiceReservation)]
-        public async Task<IActionResult> CreateServiceReservation(CreateReservationRequest request)
+        [Route(RoutesAPI.Reservations.BookServiceReservation)]
+        public async Task<IActionResult> BookServiceReservation(CreateReservationRequest request)
         {
-            var reservation = await _serviceWrapper.ServiceReservations.CreateReservation(request);
+            var reservation = await _serviceWrapper.ServiceReservations.BookService(request);
 
             if (reservation)
                 return NoContent();
@@ -73,7 +73,7 @@ namespace VehicleRegister.CarAPI.Controllers
         [Route(RoutesAPI.Reservations.UpdateServiceReservation)]
         public async Task<IActionResult> UpdateServiceReservation(UpdateReservationRequest request)
         {
-            var updatedReservation = await _serviceWrapper.ServiceReservations.UpdateReservation(request);
+            var updatedReservation = await _serviceWrapper.ServiceReservations.UpdateServiceReservation(request);
 
             if (updatedReservation == null) return NotFound("Therese no reservation what inputed ID");
 

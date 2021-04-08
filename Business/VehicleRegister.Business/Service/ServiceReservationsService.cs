@@ -21,7 +21,7 @@ namespace VehicleRegister.Business.Service
             _repo = repo;
         }
 
-        public async Task<bool> CreateReservation(CreateReservationRequest request)
+        public async Task<bool> BookService(CreateReservationRequest request)
         {
             var vehicle = await _repo.VehicleRepo.GetVehicleById(request.VehicleId);
 
@@ -114,7 +114,7 @@ namespace VehicleRegister.Business.Service
 
 
 
-        public async Task<UpdatedReservationResponse> UpdateReservation(UpdateReservationRequest request)
+        public async Task<UpdatedReservationResponse> UpdateServiceReservation(UpdateReservationRequest request)
         {
             var reservation = await _repo.ServiceRepo.GetReservation(request.Id);
 

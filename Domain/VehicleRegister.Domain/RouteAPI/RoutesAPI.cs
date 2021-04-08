@@ -30,7 +30,7 @@ namespace VehicleRegister.Domain.RouteAPI
         {
             public const string GetAllServiceReservations = Base + "Reservations";
             public const string GetServiceReservation = Base + "Reservation/{id}";
-            public const string CreateServiceReservation = Base + "Reservation";
+            public const string BookServiceReservation = Base + "Reservation";
             public const string RemoveServiceReservations = Base + "Reservations";
             public const string RemoveServiceReservation = Base + "Reservation/{id}";
             public const string UpdateServiceReservation = Base + "Reservation";

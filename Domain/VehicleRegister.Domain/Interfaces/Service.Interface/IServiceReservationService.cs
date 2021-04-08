@@ -14,7 +14,7 @@ namespace VehicleRegister.Domain.Interfaces.Service.Interface
         Task<IServiceReservations> GetReservation(int id);
         Task<bool> DeleteReservations();
         Task<bool> DeleteReservation(int id);
-        Task<bool> CreateReservation(CreateReservationRequest request);
-        Task<UpdatedReservationResponse> UpdateReservation(UpdateReservationRequest request);
+        Task<bool> BookService(CreateReservationRequest request);
+        Task<UpdatedReservationResponse> UpdateServiceReservation(UpdateReservationRequest request);
     }
 }

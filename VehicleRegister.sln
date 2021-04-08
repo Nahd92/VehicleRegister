@@ -35,6 +35,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repository", "Repository", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VehicleRegister.Repository", "Data\Repository\VehicleRegister.Repository\VehicleRegister.Repository.csproj", "{B48F7D26-2870-4DF9-91F1-6A519EA1DFC8}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logs", "Logs", "{2E743792-F4D7-4FAD-84E9-C2DE8ABFE13E}"
+	ProjectSection(SolutionItems) = preProject
+		Logs\2021-04-09_logfile.txt = Logs\2021-04-09_logfile.txt
+		Logs\internallog.txt = Logs\internallog.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using VehicleRegister.Domain.Interfaces.Logger.Interface;
 using VehicleRegister.Domain.Interfaces.Model.Interface;
 
 namespace VehicleRegister.Domain.Interfaces.Repository.Interface
