@@ -1,0 +1,10 @@
+2021-04-09 00:10:03.4603 INFO Adding 4 to new list and returns back to client! 
+2021-04-09 00:10:03.5232 INFO Adding 4 to new list and returns back to client! 
+2021-04-09 00:10:03.5232 INFO Adding 4 to new list and returns back to client! 
+2021-04-09 00:10:03.5389 INFO Adding 4 to new list and returns back to client! 
+2021-04-09 00:11:54.2857 INFO Adding 4 to new list and returns back to client! 
+2021-04-09 00:13:18.6496 INFO Adding 5 to new list and returns back to client! 
+2021-04-09 00:13:18.6928 INFO DEletion of one Vehicle was successful
+2021-04-09 00:14:35.1986 ERROR No vehicle was found in Database with id: 55, returns back null value
+2021-04-09 00:14:54.4270 ERROR No vehicle was found in Database with id: 55, returns back null value
+2021-04-09 00:15:06.8657 ERROR No vehicle was found in Database with id: 65, returns back null value
