@@ -38,6 +38,7 @@ namespace VehicleRegister.Domain.RouteAPI
         public class Identity
         {
             public const string Token = Base + "Token";
+            public const string Register = Base + "Register";
         }
     }
     

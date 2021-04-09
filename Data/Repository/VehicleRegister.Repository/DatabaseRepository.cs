@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using VehicleRegister.Domain.DTO.ReservationsDTO.Request;
 using VehicleRegister.Domain.Factory;
@@ -23,48 +25,61 @@ namespace VehicleRegister.Repository
             _ctx = ctx;
             _logger = logger;
         }
+         
+
+        private void ErrorLog(Exception ex, string name) => _logger.LogError($"{this.GetType().Name} with Method {name} resulted in: {ex.Message}.");
+        private static string GetActualAsyncMethodName([CallerMemberName] string name = null) => name;
+        private void LogSuccessInfo(string name) => _logger.LogInfo($"{this.GetType().Name} with Method {name} was successfull");
+        private void LogGettingInfo(string name) => _logger.LogInfo($"{this.GetType().Name} with Method {name} was successfull fetched from database");
+
+
+
 
         public async Task<bool> CreateNewAutoMotive(IAutoMotiveRepair repair)
         {
+
+            var methodName = GetActualAsyncMethodName();
             try
             {
                 _ctx.Add(repair);
-                _logger.LogInfo("AutoMotive was created");
+                LogSuccessInfo(methodName);
                 return await _ctx.SaveChangesAsync() > 0;
             }
             catch (Exception ex)
             {
-                _logger.LogError($"AutoMotive was not created and gave error: {ex.Message}");
+                ErrorLog(ex, methodName);
                 return false;
             }
         }
 
         public async Task<bool> CreateReservations(IServiceReservations reservation)
         {
+            var methodName = GetActualAsyncMethodName();
             try
             {
                 _ctx.Add(reservation);
-                _logger.LogInfo("Reservation was created");
+                LogSuccessInfo(methodName);
                 return await _ctx.SaveChangesAsync() > 0;
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Reservation was not created and gave error: {ex.Message}");
+                ErrorLog(ex, methodName);
                 return false;
             }
         }
 
         public async Task<bool> CreateVehicle(IVehicle vehicle)
         {
+            var methodName = GetActualAsyncMethodName();
             try
             {
                 _ctx.Add(vehicle);
-                _logger.LogInfo("Vehicle was created");
+                LogSuccessInfo(methodName);
                 return await _ctx.SaveChangesAsync() > 0;
             }
             catch (Exception ex)
             {
-               _logger.LogError($"Reservation was not created and gave error: {ex.Message}");
+                ErrorLog(ex, methodName);
                 return false;
             }
             
@@ -72,51 +87,55 @@ namespace VehicleRegister.Repository
 
         public async Task<bool> DeleteAllReservations(List<IServiceReservations> reservations)
         {
+            var methodName = GetActualAsyncMethodName();
             try
             {
                 _ctx.RemoveRange(reservations);
-                _logger.LogInfo("Every reservation was deleted from today and 30 days back!");
+                LogSuccessInfo(methodName);
                 return await _ctx.SaveChangesAsync() > 0;   
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Delete all Reservations was not successfull and gave error: {ex.Message}");
+                ErrorLog(ex, methodName);
                 return false;
             }
         }
 
         public async Task<bool> DeleteReservation(IServiceReservations reservations)
         {
+            var methodName = GetActualAsyncMethodName();
             try
             {
                 _ctx.Remove(reservations);
-                _logger.LogInfo("DEletion of one reservation was successful");
-               return await _ctx.SaveChangesAsync() > 0;
+                LogSuccessInfo(methodName);
+                return await _ctx.SaveChangesAsync() > 0;
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Delete reservation was not Successfull and gave error: {ex.Message}");
+                ErrorLog(ex, methodName);
                 return false;
             }
         }
 
         public async Task<bool> DeleteVehicle(IVehicle vehicle)
         {
+            var methodName = GetActualAsyncMethodName();
             try
             {
                 _ctx.Remove(vehicle);
-                _logger.LogInfo("DEletion of one Vehicle was successful");
+                LogSuccessInfo(methodName);
                 return await _ctx.SaveChangesAsync() > 0;
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Delete Vehicle was not Successfull and gave error: {ex.Message}");
+                ErrorLog(ex, methodName);
                 return false;
             }
         }
 
         public async Task<IEnumerable<IAutoMotiveRepair>> GetAllAutoMotives()
         {
+            var methodName = GetActualAsyncMethodName();
             try
             {
 
@@ -137,18 +156,19 @@ namespace VehicleRegister.Repository
                         Website = auto.Website
                     });
                 }
-                _logger.LogInfo($"Adding {_ctx.AutoMotive.ToList().Count()} to new list and returns back to client! ");
+                LogGettingInfo(methodName);
                 return autoMotives;
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Error Message: {ex.Message} and returns null");
+                ErrorLog(ex, methodName);
                 return null;
             }
         }
 
         public async Task<IEnumerable<IServiceReservations>> GetAllReservations()
         {
+            var methodName = GetActualAsyncMethodName();
             try
             {
                 var serviceReservations = new List<IServiceReservations>();
@@ -157,18 +177,19 @@ namespace VehicleRegister.Repository
                 {                   
                     serviceReservations.Add(reservation);
                 }
-                _logger.LogInfo($"Adding {_ctx.ServiceReservations.ToList().Count()} to new list and returns back to client! ");
+                LogGettingInfo(methodName);
                 return serviceReservations;
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Error Message: {ex.Message} and returns null");
+                ErrorLog(ex, methodName);
                 return null;
             }
         }
 
         public async Task<IEnumerable<IVehicle>> GetAllVehicles()
         {
+            var methodName = GetActualAsyncMethodName();
             try
             {
                 var vehicles = new List<IVehicle>();
@@ -189,12 +210,12 @@ namespace VehicleRegister.Repository
                                                     veh.YearlyFee);
                     vehicles.Add(vehicle);
                 }
-                _logger.LogInfo($"Adding {_ctx.Vehicles.ToList().Count()} to new list and returns back to client! ");
+                LogGettingInfo(methodName);
                 return vehicles;
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Error Message: {ex.Message} and returns null");
+                ErrorLog(ex, methodName);
                 return null;
             }
 
@@ -202,15 +223,10 @@ namespace VehicleRegister.Repository
 
         public async Task<IAutoMotiveRepair> GetAutoMotive(int id)
         {
+            var methodName = GetActualAsyncMethodName();
             try
             {
-                var autoMotive = await _ctx.AutoMotive.Where(x => x.Id == id).AsNoTracking().FirstOrDefaultAsync();
-
-                if (autoMotive is null)
-                {
-                    _logger.LogError($"No AutoMotive was found in Database with id: {id}, returns back null value");
-                    return null;
-                }
+                var autoMotive = await _ctx.AutoMotive.Where(x => x.Id == id).AsNoTracking().SingleAsync(); 
 
                 IAutoMotiveRepair repair = new AutoMotiveRepair
                 {
@@ -225,48 +241,38 @@ namespace VehicleRegister.Repository
                     Website = autoMotive.Website
                 };
 
-                _logger.LogInfo($"Adding {repair.Id} to new list and returns back to client! ");
+                LogGettingInfo(methodName);
                 return repair;
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Error Message: {ex.Message} and returns null");
+                ErrorLog(ex, methodName);
                 return null;
             }
         }
 
         public async Task<IServiceReservations> GetReservation(int id)
         {
+            var methodName = GetActualAsyncMethodName();
             try
             {
-                var reservation = await _ctx.ServiceReservations.Where(x => x.Id == id).SingleOrDefaultAsync();
-
-                if (reservation == null) 
-                {
-                    _logger.LogError($"No AutoMotive was found in Database with id: {id}, returns back null value");
-                    return null;
-                }
-
+                var reservation = await _ctx.ServiceReservations.Where(x => x.Id == id).SingleAsync();
+                LogGettingInfo(methodName);
                 return reservation;
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Error Message: {ex.Message} and returns null");
+                ErrorLog(ex, methodName);
                 return null;
             }        
         }
 
         public async Task<IVehicle> GetVehicleById(int id)
         {
+            var methodName = GetActualAsyncMethodName();
             try
             {
-                var vehicle = await _ctx.Vehicles.Where(x => x.Id == id).AsNoTracking().FirstOrDefaultAsync();
-
-                if (vehicle == null)
-                {
-                    _logger.LogError($"No vehicle was found in Database with id: {id}, returns back null value");
-                    return null;
-                }
+                var vehicle = await _ctx.Vehicles.Where(x => x.Id == id).AsNoTracking().SingleAsync();
 
 
                 var vh = VehicleFactory.Create(vehicle.Id,
@@ -280,57 +286,60 @@ namespace VehicleRegister.Repository
                                                  vehicle.Weight,
                                                  vehicle.YearlyFee);
 
-                _logger.LogInfo($"Adding {vh.Id} to new list and returns back to client! ");
+                LogGettingInfo(methodName);
                 return vh;
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Error Message: {ex.Message} and returns null");
+                ErrorLog(ex, methodName);
                 return null;
             }    
         }
 
         public async Task<bool> UpdateAutMotive(IAutoMotiveRepair repair)
         {
+            var methodName = GetActualAsyncMethodName();
             try
             {
                 _ctx.Update(repair);
-                _logger.LogError("Updating AutoMotive was success");
+                LogSuccessInfo(methodName);
                 return await _ctx.SaveChangesAsync() > 0;
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Error Message: {ex.Message}");
+                ErrorLog(ex, methodName);
                 return false;
             }
         }
 
         public async Task<bool> UpdateReservations(IServiceReservations request)
         {
+            var methodName = GetActualAsyncMethodName();
             try
             {
                 _ctx.Update(request);
-                _logger.LogError("Updating Reservation was success");
+                LogSuccessInfo(methodName);
                 return await _ctx.SaveChangesAsync() > 0;
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Error Message: {ex.Message}");
+                ErrorLog(ex, methodName);
                 return false;
             }
         }
 
         public async Task<bool> UpdateVehicle(IVehicle vehicle)
         {
+            var methodName = GetActualAsyncMethodName();
             try
             {
                 _ctx.Update(vehicle);
-                _logger.LogError("Updating Vehicle was success");
+                LogSuccessInfo(methodName);
                 return await _ctx.SaveChangesAsync() > 0;                
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Error Message: {ex.Message}");
+                ErrorLog(ex, methodName);
                 return false;
             }
         }

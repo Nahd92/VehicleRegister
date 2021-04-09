@@ -8,7 +8,14 @@ namespace VehicleRegister.Business.Service
 {
     public class LoggerManager : ILoggerManager
     {
-        private static ILogger logger = LogManager.GetCurrentClassLogger();
+        private readonly ILogger logger;
+
+        public LoggerManager()
+        {
+           logger = LogManager.GetLogger(GetType().ToString());
+        }
+
+
         public void LogDebug(string message)
         {
             logger.Debug(message);

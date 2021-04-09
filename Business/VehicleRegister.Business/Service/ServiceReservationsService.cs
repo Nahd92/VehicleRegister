@@ -59,10 +59,10 @@ namespace VehicleRegister.Business.Service
 
             if (reservation == null) return false;
 
-            if (await _repo.ServiceRepo.DeleteReservation(reservation));
+            if (await _repo.ServiceRepo.DeleteReservation(reservation))
                   return true;
 
-            return false;     
+            return false;
         }
 
         public async Task<bool> DeleteReservations()

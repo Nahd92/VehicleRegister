@@ -31,11 +31,29 @@ namespace VehicleRegister.VehicleAPI.Controllers
             _appSettings = appSettings;
         }
 
+
+
+        [HttpPost]
+        [Route(RoutesAPI.Identity.Register)]
+        public async Task<IActionResult> RegisterUser([FromBody] RegisterUserRequest request)
+        {
+            if (request is null) return BadRequest("Invalid request");
+
+           var result = await _service.authService.RegisterUser(request);
+
+            if (result)
+                return NoContent();
+
+            return BadRequest("Registration of a new user was unsuccesfull");
+        }
+
+       
+
         [HttpPost]
         [Route(RoutesAPI.Identity.Token)]
         public async Task<IActionResult> Token([FromBody]LoginRequest request)
         {
-            if (request == null) return BadRequest("Invalid request");
+            if (request is null) return BadRequest("Invalid request");
 
             var validation = await _service.authService.IsValidUserNameAndPassword(request.UserName, request.Password);
 
