@@ -10,7 +10,6 @@ using VehicleRegister.Domain.RouteAPI;
 namespace VehicleRegister.CarAPI.Controllers
 {
     [ApiController]
-    [Authorize]
     public class VehicleController : Controller
     {
 
@@ -23,7 +22,6 @@ namespace VehicleRegister.CarAPI.Controllers
 
 
         [HttpGet]
-        [Authorize(Roles = "Admin")]
         [Route(RoutesAPI.Vehicle.GetAllVehicles)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -38,13 +36,12 @@ namespace VehicleRegister.CarAPI.Controllers
 
 
         [HttpGet]
-        [Authorize(Roles = "Admin")]
-        [Route(RoutesAPI.Vehicle.GetVehicleWithRegNumber)]
+        [Route(RoutesAPI.Vehicle.GetVehicleByKeyword)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> GetVehicleWithRegNumber(string regNumber)
+        public async Task<IActionResult> GetVehicleWithKeyword(string keyword)
         {
-            var vehicles = await _serviceWrapper.Vehicle.GetVehicleWithRegNumber(regNumber);
+            var vehicles = await _serviceWrapper.Vehicle.GetVehicleWithKeyword(keyword);
 
             if (vehicles == null) return NotFound();
 

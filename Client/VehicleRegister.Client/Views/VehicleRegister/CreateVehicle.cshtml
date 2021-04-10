@@ -1,0 +1,64 @@
+﻿@model VehicleRegister.Domain.DTO.VehicleDTO.Request.CreateVehicleRequest
+
+@{
+    ViewData["Title"] = "CreateVehicle";
+}
+
+<h1>CreateVehicle</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateVehicle" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="RegisterNumber" class="control-label"></label>
+                <input asp-for="RegisterNumber" class="form-control" />
+                <span asp-validation-for="RegisterNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Model" class="control-label"></label>
+                <input asp-for="Model" class="form-control" />
+                <span asp-validation-for="Model" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Brand" class="control-label"></label>
+                <input asp-for="Brand" class="form-control" />
+                <span asp-validation-for="Brand" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Weight" class="control-label"></label>
+                <input asp-for="Weight" class="form-control" />
+                <span asp-validation-for="Weight" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InTraffic" class="control-label"></label>
+                <input asp-for="InTraffic" class="form-control" />
+                <span asp-validation-for="InTraffic" class="text-danger"></span>
+            </div>
+            <div class="checkbox">
+                <label class="form-check-label">
+                    <input type="checkbox" asp-for="IsDrivingBan" /> @Html.DisplayNameFor(model => model.IsDrivingBan)
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" asp-for="IsServiceBooked" /> @Html.DisplayNameFor(model => model.IsServiceBooked)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="ServiceDate" class="control-label"></label>
+                <input asp-for="ServiceDate" class="form-control" />
+                <span asp-validation-for="ServiceDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

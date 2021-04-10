@@ -1,25 +1,48 @@
-﻿@model VehicleRegister.Domain.Models.Auth.LoginModel
+﻿@using Microsoft.AspNetCore.Http;
+@using VehicleRegister.Client.Helpers;
+
+@{
+    var auth = SessionHelper.GetObjectFromJson<LoginModel>(Context.Session, "identity");
+}
 
 
-
-
-<ul class="navbar-nav">
-        @if (Model.IsLoggedIn)
+<ul class="nav navbar-nav">
+    @if (auth != null)
+    {
+        @if (auth.IsLoggedIn)
         {
-            <li class="nav-item">
-                <a class="navbar-item" asp-controller="Account" asp-action="Logout">Sign Out</a>
-                </li>
+            <li>
+                <a asp-controller="Admin" asp-action="Index" title="Welcome">Welcome @auth.UserName</a>
+            </li>
+            <li>
+                <form asp-controller="Account" asp-action="Logout">
+                    <button type="submit" class="btn btn-link text-info">Logout</button>
+                </form>
+            </li>
+
         }
         else
         {
-            
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-controller="Account"
-                asp-action="Login">Login</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-controller="Account"
-                asp-action="Register">Register</a>
-        </li>
+            <li>
+                <a asp-controller="Account"
+                   asp-action="Login">Login</a>
+            </li>
+            <li>
+                <a asp-controller="Account"
+                   asp-action="Register">Register</a>
+            </li>
         }
- </ul>
+    }
+    else
+    {
+        <li>
+            <a asp-controller="Account"
+               asp-action="Login">Login</a>
+        </li>
+        <li>
+            <a asp-controller="Account"
+               asp-action="Register">Register</a>
+        </li>
+    }
+
+</ul>

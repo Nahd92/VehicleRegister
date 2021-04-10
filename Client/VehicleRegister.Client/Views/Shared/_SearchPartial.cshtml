@@ -1,0 +1,19 @@
+﻿@using VehicleRegister.Domain.DTO.VehicleDTO.Response
+
+@{ 
+    var search = new VehicleSearch();
+}
+
+<ul class="searchInput">
+    <li>
+        <form asp-controller="VehicleRegister" asp-action="Search" method="post" id="search-form">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input asp-for="@search.SearchKeyword" id="search-input" type="text" placeholder="Search by brand, model or RegisterNumber">
+            <button type="submit" class="btn btn-success" id="submit-btn">Search</button>
+        </form>
+    </li>
+</ul>
+
+
+
+

@@ -67,14 +67,47 @@ namespace VehicleRegister.Business.Service
             };
         }
 
-        public async Task<IVehicle> GetVehicleWithRegNumber(string regNumber)
+        public async Task<List<IVehicle>> GetVehicleWithKeyword(string keyword)
         {
             var vehicle = await _repo.VehicleRepo.GetAllVehicles();
+            var newList = new List<IVehicle>();
 
-            if (vehicle.Any(x => x.RegisterNumber == regNumber))
-                 return vehicle.Where(x => x.RegisterNumber == regNumber).FirstOrDefault();
+            if (vehicle.Any(x => x.RegisterNumber == keyword))
+            {
+                foreach (var item in vehicle.Where(y => y.RegisterNumber == keyword))
+                {
+                    newList.Add(item);
+                }
+            }
 
-            return null;          
+            if (vehicle.Any(x => x.Brand == keyword))
+            {
+                foreach (var item in vehicle.Where(y => y.Brand == keyword))
+                {
+                    if (!newList.Any(x => x.Id == item.Id))
+                    {
+                        newList.Add(item);
+                    }
+                }
+            }
+
+            if (vehicle.Any(x => x.Model == keyword))
+            {
+                foreach (var item in vehicle.Where(x => x.Model == keyword))
+                {
+                    if (!newList.Any(x => x.Id == item.Id))
+                    {
+                        newList.Add(item);
+                    }
+                }
+            }
+
+            if (newList == null)
+            {
+                return null;
+            }
+
+            return newList;
         }
     }
 }

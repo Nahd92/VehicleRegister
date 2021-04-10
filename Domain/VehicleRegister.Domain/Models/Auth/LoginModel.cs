@@ -16,6 +16,7 @@ namespace VehicleRegister.Domain.Models.Auth
         public bool RememberMe { get; set; }
         public bool IsAdmin { get; set; }
         public bool IsManager { get; set; }
+        public bool IsUser { get; set; }
         public bool IsLoggedIn { get; set; }
     }
 }

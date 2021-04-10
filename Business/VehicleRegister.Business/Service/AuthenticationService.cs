@@ -47,12 +47,17 @@ namespace VehicleRegister.Business.Service
                         UserName = request.UserName
                     };
 
-                    await _userManager.CreateAsync(newIdentity, request.Password);
+                    var createdUser = await _userManager.CreateAsync(newIdentity, request.Password);
 
-                    var addClaim = new Claim("Role", "User");
-
-                    await _userManager.AddClaimAsync(newIdentity, addClaim);
-                    return true;
+                    if (createdUser.Succeeded)
+                    {
+                        var addClaim = new Claim("Role", "User");
+                      var createdAddingClaim = await _userManager.AddClaimAsync(newIdentity, addClaim);
+                        if (createdAddingClaim.Succeeded)
+                        {
+                            return true;
+                        }
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -72,12 +77,7 @@ namespace VehicleRegister.Business.Service
 
         private async Task<bool> UserNameAlreadyExist(RegisterUserRequest request)
         {
-            var id = new IdentityUser
-            {
-                UserName = request.UserName
-            };
-
-            var user = await _userManager.GetUserNameAsync(id);
+            var user = await _userManager.FindByNameAsync(request.UserName);
 
             if (user is null) return false;
 

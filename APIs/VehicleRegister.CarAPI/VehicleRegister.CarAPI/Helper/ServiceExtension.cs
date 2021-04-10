@@ -52,13 +52,8 @@ namespace VehicleRegister.CarAPI.Helper
 
         public static void ConfigureAppsettingsValuesInjection(this IServiceCollection service, IConfiguration configuration)
         {
-            var settings = new AppSettings
-            {
-                SecretKey = AppSettingsHelper.SecretKey(configuration),
-                HostName = AppSettingsHelper.HostName(configuration)
-            };
-
-            service.AddSingleton(settings);
+            AppSettings.SecretKey = AppSettingsHelper.SecretKey(configuration);
+            AppSettings.HostName = AppSettingsHelper.HostName(configuration);
         }
 
        

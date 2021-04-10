@@ -59,15 +59,15 @@ namespace VehicleRegister.Testing.Services
         };
 
         private CreateVehicleRequest carDTO = new CreateVehicleRequest()
-        {       
-                Brand = "Volvo",
-                Model = "XC90",
-                InTraffic = DateTime.Parse("2020-02-02"),
-                IsDrivingBan = false,
-                RegisterNumber = "ABC123",
-                Weight = 2220,
-                IsServiceBooked = false,
-                ServiceDate = DateTime.Parse("2021-03-03")    
+        {
+            Brand = "Volvo",
+            Model = "XC90",
+            InTraffic = DateTime.Parse("2020-02-02"),
+            IsDrivingBan = false,
+            RegisterNumber = "ABC123",
+            Weight = 2220,
+            IsServiceBooked = false,
+            ServiceDate = DateTime.Parse("2021-03-03")
         };
 
 
@@ -115,9 +115,8 @@ namespace VehicleRegister.Testing.Services
             //Arrange
             mockRepository.Setup(x => x.VehicleRepo.GetAllVehicles()).ReturnsAsync(cars);
             //Act
-            var response = await vehicleService.GetVehicleWithRegNumber("ABC123");
+            var response = await vehicleService.GetVehicleWithKeyword("ABC123");
             //Assert
-            response.Id.Should().Be(1);
         }
 
         [TestMethod]
@@ -126,7 +125,7 @@ namespace VehicleRegister.Testing.Services
             //Arrange
             mockRepository.Setup(x => x.VehicleRepo.GetAllVehicles()).ReturnsAsync(cars);
             //Act
-            var response = await vehicleService.GetVehicleWithRegNumber("ACC123");
+            var response = await vehicleService.GetVehicleWithKeyword("ACC123");
             //Assert
             response.Should().BeNull();
         }

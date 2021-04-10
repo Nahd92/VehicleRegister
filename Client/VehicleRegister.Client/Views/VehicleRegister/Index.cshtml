@@ -1,0 +1,112 @@
+﻿@model IEnumerable<VehicleRegister.Domain.DTO.VehicleDTO.Response.GetAllVehiclesDto>
+ 
+@using Microsoft.AspNetCore.Http;
+@using VehicleRegister.Client.Helpers;
+
+
+@{
+    ViewData["Title"] = "Index";
+
+    var auth = SessionHelper.GetObjectFromJson<LoginModel>(Context.Session, "identity");
+
+}
+
+<h1>Index</h1>
+
+@if (auth != null)
+{
+    if (auth.IsLoggedIn)
+    {
+        <p>
+            <a asp-action="CreateVehicle">Create New</a>
+        </p>
+    }
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RegisterNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Brand)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Weight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InTraffic)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsDrivingBan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsServiceBooked)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ServiceDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.YearlyFee)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegisterNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Brand)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Weight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InTraffic)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsDrivingBan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsServiceBooked)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ServiceDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.YearlyFee)
+            </td>
+
+
+            @if (auth != null)
+            {
+                if (auth.IsLoggedIn)
+                {
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    </td>
+
+                }
+            }
+        </tr>        
+        }
+    </tbody>
+</table>

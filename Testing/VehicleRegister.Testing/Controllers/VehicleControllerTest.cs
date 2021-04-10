@@ -108,10 +108,10 @@ namespace VehicleRegister.Testing.Controllers
         {
             //Arrange
             var regNumber = "ABC123";
-            mockService.Setup(x => x.Vehicle.GetVehicleWithRegNumber(It.IsAny<string>())).ReturnsAsync(car);
+            //mockService.Setup(x => x.Vehicle.GetVehicleWithKeyword(It.IsAny<string>())).ReturnsAsync(cars);
 
             //Act
-            var response = await vehicleController.GetVehicleWithRegNumber(regNumber);
+            var response = await vehicleController.GetVehicleWithKeyword(regNumber);
 
             //Assert
             var result = response.Should().BeOfType<OkObjectResult>().Subject;
@@ -124,10 +124,10 @@ namespace VehicleRegister.Testing.Controllers
         {
             //Arrange
             var regNumber = "ABC123";
-            mockService.Setup(x => x.Vehicle.GetVehicleWithRegNumber(It.IsAny<string>()));
+            mockService.Setup(x => x.Vehicle.GetVehicleWithKeyword(It.IsAny<string>()));
 
             //Act
-            var response = await vehicleController.GetVehicleWithRegNumber(regNumber);
+            var response = await vehicleController.GetVehicleWithKeyword(regNumber);
 
             //Assert
             response.Should().BeOfType<NotFoundResult>();

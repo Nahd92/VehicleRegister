@@ -13,6 +13,6 @@ namespace VehicleRegister.Domain.Interfaces.Service.Interface
         Task<IVehicle> GetVehicleById(int id);
         Task<bool> DeleteVehicle(int id);
         Task<UpdateVehicleResponse> UpdateVehicle(UpdateVehicleRequest vehicle);
-        Task<IVehicle> GetVehicleWithRegNumber(string regNumber);
+        Task<List<IVehicle>> GetVehicleWithKeyword(string keyword);
     }
 }

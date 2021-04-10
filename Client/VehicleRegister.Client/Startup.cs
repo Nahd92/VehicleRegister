@@ -16,6 +16,7 @@ using System.Collections.Generic;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using VehicleRegister.Client.ServiceHelper;
 using VehicleRegister.Domain.Models;
 
 namespace VehicleRegister.Client
@@ -40,16 +41,11 @@ namespace VehicleRegister.Client
         {
             services.AddControllersWithViews();
             services.AddRazorPages();
+            services.ConfigureSession();
+            services.ConfigureAppsettingsValuesInjection(Configuration);
+            services.AddHttpContextAccessor();
 
-            services.AddSession(opt =>
-            {
-                opt.IdleTimeout = TimeSpan.FromHours(5);
-                opt.Cookie.HttpOnly = true;
-                opt.Cookie.IsEssential = true;
-            });
-
-                 
-          services.AddMvc();
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

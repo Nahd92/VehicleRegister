@@ -1,14 +1,28 @@
 ﻿@model IEnumerable<VehicleRegister.Domain.DTO.VehicleDTO.Response.GetAllVehiclesDto>
+@using Microsoft.AspNetCore.Http;
+@using VehicleRegister.Client.Helpers;
+
+
 
 @{
-    ViewData["Title"] = "Vehicles";
+    ViewData["Title"] = "Index";
+
+    var auth = SessionHelper.GetObjectFromJson<LoginModel>(Context.Session, "identity");
+
 }
 
-<h1>Vehicles</h1>
+<h1>Search Result</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+@if (auth != null)
+{
+    if (auth.IsLoggedIn)
+    {
+        <p>
+            <a asp-action="CreateVehicle">Create New</a>
+        </p>
+    }
+}
+
 <table class="table">
     <thead>
         <tr>
@@ -46,7 +60,8 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+        @foreach (var item in Model)
+        {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Id)
@@ -78,12 +93,19 @@
             <td>
                 @Html.DisplayFor(modelItem => item.YearlyFee)
             </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-}
+                @if (auth != null)
+                {
+                    if (auth.IsLoggedIn)
+                    {
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    </td>
+
+                }
+            }
+            </tr>
+        }
     </tbody>
 </table>

@@ -24,11 +24,9 @@ namespace VehicleRegister.VehicleAPI.Controllers
     public class AuthController : Controller
     {
         private readonly IServiceWrapper _service;
-        private AppSettings _appSettings;
-        public AuthController(IServiceWrapper service, AppSettings appSettings)
+        public AuthController(IServiceWrapper service)
         {
             _service = service;
-            _appSettings = appSettings;
         }
 
 
@@ -47,7 +45,7 @@ namespace VehicleRegister.VehicleAPI.Controllers
             return BadRequest("Registration of a new user was unsuccesfull");
         }
 
-       
+        
 
         [HttpPost]
         [Route(RoutesAPI.Identity.Token)]
@@ -94,12 +92,12 @@ namespace VehicleRegister.VehicleAPI.Controllers
         }
         private string GenerateAccessToken(IEnumerable<Claim> claims)
         {
-            var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_appSettings.SecretKey));
+            var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(AppSettings.SecretKey));
             var signInCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
 
             var tokenOptions = new JwtSecurityToken(
-              issuer: _appSettings.HostName,
-              audience: _appSettings.HostName,
+              issuer: AppSettings.HostName,
+              audience: AppSettings.HostName,
               claims: claims,
               expires: DateTime.Now.AddHours(1),
               signingCredentials: signInCredentials

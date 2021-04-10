@@ -4,9 +4,9 @@ using System.Text;
 
 namespace VehicleRegister.Domain.AppSettingsModels
 {
-    public class AppSettings
+    public static class AppSettings
     {
-        public string HostName { get; set; }
-        public string SecretKey { get; set; }
+        public static string HostName { get; set; }
+        public static string SecretKey { get; set; }
     }
 }
