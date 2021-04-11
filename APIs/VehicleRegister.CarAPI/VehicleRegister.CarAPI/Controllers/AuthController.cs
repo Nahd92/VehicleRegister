@@ -1,22 +1,17 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using VehicleRegister.Domain.AppSettingsModels;
 using VehicleRegister.Domain.DTO.UserDTO.Request;
 using VehicleRegister.Domain.DTO.UserDTO.Response;
-using VehicleRegister.Domain.Interfaces.Auth.Interface;
 using VehicleRegister.Domain.Interfaces.Service.Interface;
 using VehicleRegister.Domain.RouteAPI;
-using VehicleRegister.VehicleAPI.Helper.AppsettingsHelper;
 
 namespace VehicleRegister.VehicleAPI.Controllers
 {
@@ -29,6 +24,22 @@ namespace VehicleRegister.VehicleAPI.Controllers
             _service = service;
         }
 
+
+
+        [HttpGet]
+        [Authorize]
+        [Route(RoutesAPI.Identity.GetUserInformation)]
+        public async Task<IActionResult> GetUserInformation(string username)
+        {
+            if (username is null) return BadRequest("Parameter is null");
+
+            var result = await _service.authService.GetUserInformation(username);
+
+            if (result != null)
+                return Ok(result);
+
+            return BadRequest("Something happened when getting user information, try again");
+        }
 
 
         [HttpPost]

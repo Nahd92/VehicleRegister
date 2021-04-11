@@ -143,9 +143,9 @@ namespace VehicleRegister.Testing.Services
         {
             //Arrange
             mockService.Setup(x => x.RepairRepo.GetAutoMotive(It.IsAny<int>())).ReturnsAsync(autoMotive);
-            mockService.Setup(x => x.RepairRepo.UpdateAutMotive(It.IsAny<IAutoMotiveRepair>())).ReturnsAsync(true);
+            mockService.Setup(x => x.RepairRepo.UpdateAutoMotive(It.IsAny<IAutoMotiveRepair>())).ReturnsAsync(true);
             //Act
-            var response = await autoMotiveService.UpdateAutoMotive(new UpdateAutoMotive { Id = 1, Name = "HedinBil", City = "Halmstad" });
+            var response = await autoMotiveService.UpdateAutoMotive(new UpdateAutoMotiveDto { Id = 1, Name = "HedinBil", City = "Halmstad" });
             //Assert
             autoMotive.City.Should().Be("Halmstad");
         }

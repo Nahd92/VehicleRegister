@@ -8,22 +8,29 @@ namespace VehicleRegister.Domain.DTO.VehicleDTO.Request
     public class CreateVehicleRequest
     {
         public int Id { get; set; }
-        [RegularExpression("^[a-zA-Z]{3}[0-9]{3}$")]
+
+        [Required]
+        [RegularExpression("^[a-zA-Z]{3}[0-9]{3}$", 
+            ErrorMessage = "RegisterNumber has start with 3 letters and 3 numbers, without a space in the middle")]
         public string RegisterNumber { get; set; }
+        [Required]
         public string Model { get; set; }
+        [Required]
         public string Brand { get; set; }
+        [Required]
         public int Weight { get; set; }
 
+        [Required]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime InTraffic { get; set; }
+
         public bool IsDrivingBan { get; set; }
         public bool IsServiceBooked { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}", ConvertEmptyStringToNull = true)]
-        [Required(AllowEmptyStrings = true)]
-        public DateTime ServiceDate { get; set; }
+        public Nullable<DateTime> ServiceDate { get; set; }
         public int YearlyFee { get; set; }
 
         public CreateVehicleRequest()

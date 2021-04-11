@@ -12,7 +12,6 @@ using VehicleRegister.Domain.RouteAPI;
 namespace VehicleRegister.CarAPI.Controllers
 {
     [ApiController]
-    [Authorize]
     public class AutoMotiveController : Controller
     {
         private readonly IServiceWrapper _serviceWrapper;
@@ -23,7 +22,6 @@ namespace VehicleRegister.CarAPI.Controllers
 
 
         [HttpGet]
-        [Authorize]
         [Route(RoutesAPI.AutoMotive.GetAllAutoMotives)]
         public async Task<IActionResult> GetAutoMotives()
         {
@@ -35,7 +33,6 @@ namespace VehicleRegister.CarAPI.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "Admin")]
         [Route(RoutesAPI.AutoMotive.GetAutoMotives)]
         public async Task<IActionResult> GetAutoMotive(int id)
         {
@@ -63,7 +60,7 @@ namespace VehicleRegister.CarAPI.Controllers
         [HttpPut]
         [Authorize(Roles = "Admin")]
         [Route(RoutesAPI.AutoMotive.UpdateAutoMotive)]
-        public async Task<IActionResult> UpdateExistingAutoMotive(UpdateAutoMotive request)
+        public async Task<IActionResult> UpdateExistingAutoMotive(UpdateAutoMotiveDto request)
         {
             var response = await _serviceWrapper.RepairService.UpdateAutoMotive(request);
 
@@ -71,6 +68,19 @@ namespace VehicleRegister.CarAPI.Controllers
                return BadRequest("Something happened when trygin to update AutoMotive, try again");
 
             return Ok(response);
+        }
+
+        [HttpDelete]
+        [Authorize(Roles = "Admin")]
+        [Route(RoutesAPI.AutoMotive.DeleteAutoMotive)]
+        public async Task<IActionResult> DeleteAutoMotive(int id)
+        {
+            var response = await _serviceWrapper.RepairService.DeleteAutoMotive(id);
+
+            if (response)
+                return NoContent();
+
+            return BadRequest("Something happended when trying to delete autoMotive");
         }
 
     }

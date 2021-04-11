@@ -12,7 +12,6 @@ namespace VehicleRegister.CarAPI.Controllers
 {
 
     [ApiController]
-    [Authorize]
     public class ReservationController : Controller
     {
         private readonly IServiceWrapper _serviceWrapper;
@@ -38,7 +37,7 @@ namespace VehicleRegister.CarAPI.Controllers
 
 
         [HttpGet]
-        [Authorize(Roles = "Admin")]
+        [Authorize]
         [Route(RoutesAPI.Reservations.GetAllServiceReservations)]
         public async Task<IActionResult> GetAllServiceReservations()
         {

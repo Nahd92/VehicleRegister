@@ -10,41 +10,38 @@ using System.Linq;
 using VehicleRegister.Domain.Models.Auth;
 using VehicleRegister.Client.Helpers;
 using VehicleRegister.Domain.DTO.UserDTO.Request;
+using System.Net.Http.Headers;
 
 namespace VehicleRegister.Client.Controllers
 {
     public class AccountController : Controller
     {
 
-        [Authorize]
-        public IActionResult Secret()
-        {
-            return View();
-        }
-
-
-        public async Task<LoginResponse> GetToken(LoginResponse request)
+        [HttpGet]
+        public async Task<IActionResult> GetUserInformation(string username)
         {
             using (var _httpClient = new HttpClient())
             {
-                var loginValue = JsonConvert.SerializeObject(request);
-                var content = new StringContent(loginValue, Encoding.UTF8, "Application/json");
-                var requestUrl = HttpClientRoutes.IdentityRoute.Token;
+                var session = SessionHelper.GetObjectFromJson<LoginModel>(HttpContext.Session, "identity");
 
-                var response = await _httpClient.PostAsync(requestUrl, content);
+                if (session is null) RedirectToAction("Login", "Account");
+
+                var requestUrl = IdentityRoute.UserInformation + username;
+                _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", session.Token);
+                var response = await _httpClient.GetAsync(requestUrl);
                 if (response.IsSuccessStatusCode)
                 {
-                    var result = response.Content.ReadAsStringAsync().Result;
-                    var jsonString = JsonConvert.DeserializeObject<LoginResponse>(result);      
-                    return jsonString;
+                    var jsonString = response.Content.ReadAsStringAsync().Result;
+                    var vehicles = JsonConvert.DeserializeObject<GetUserInformationDto>(jsonString);
+                    return View(vehicles);
                 }
             }
-            return null;
+            return RedirectToAction("Index", "Home");
         }
 
 
-      
 
+ 
         [HttpPost]
         public IActionResult Logout()
         {
@@ -57,7 +54,6 @@ namespace VehicleRegister.Client.Controllers
 
             return RedirectToAction("Index", "Home");
         }
-
 
 
         [HttpGet]
@@ -75,7 +71,7 @@ namespace VehicleRegister.Client.Controllers
                 {
                     var registerJson = JsonConvert.SerializeObject(register);
                     var stringContent = new StringContent(registerJson, Encoding.UTF8, "Application/Json");
-                    var requestUrl = HttpClientRoutes.IdentityRoute.Register;
+                    var requestUrl = IdentityRoute.Register;
 
                     var response = await _httpClient.PostAsync(requestUrl, stringContent);
 
@@ -113,7 +109,7 @@ namespace VehicleRegister.Client.Controllers
             {
                 var response = await GetToken(request);
 
-                if (string.IsNullOrEmpty(response.Token))
+                if (response == null)
                     return View("LoginErrorView");
 
                 var identity = new LoginModel
@@ -133,7 +129,26 @@ namespace VehicleRegister.Client.Controllers
 
             return View();
         }
+
+        public async Task<LoginResponse> GetToken(LoginResponse request)
+        {
+            using (var _httpClient = new HttpClient())
+            {
+                var loginValue = JsonConvert.SerializeObject(request);
+                var content = new StringContent(loginValue, Encoding.UTF8, "Application/json");
+                var requestUrl = IdentityRoute.Token;
+
+                var response = await _httpClient.PostAsync(requestUrl, content);
+                if (response.IsSuccessStatusCode)
+                {
+                    var result = response.Content.ReadAsStringAsync().Result;
+                    var jsonString = JsonConvert.DeserializeObject<LoginResponse>(result);
+                    return jsonString;
+                }
+            }
+            return null;
+        }
     }
-} 
+}
 
 

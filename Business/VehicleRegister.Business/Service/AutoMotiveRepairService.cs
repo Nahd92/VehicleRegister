@@ -46,7 +46,7 @@ namespace VehicleRegister.Business.Service
            return await _repo.RepairRepo.CreateNewAutoMotive(newAutoMotive);
         }
 
-        public async Task<UpdatedAutoMotiveResponse> UpdateAutoMotive(UpdateAutoMotive request)
+        public async Task<UpdatedAutoMotiveResponse> UpdateAutoMotive(UpdateAutoMotiveDto request)
         {
             var existingAutoMotive = await _repo.RepairRepo.GetAutoMotive(request.Id);
 
@@ -60,7 +60,7 @@ namespace VehicleRegister.Business.Service
             existingAutoMotive.PhoneNumber = request.PhoneNumber;
             existingAutoMotive.Website = request.Website;
 
-            await _repo.RepairRepo.UpdateAutMotive(existingAutoMotive);
+            await _repo.RepairRepo.UpdateAutoMotive(existingAutoMotive);
 
             return new UpdatedAutoMotiveResponse(
                 existingAutoMotive.Id, existingAutoMotive.Name, existingAutoMotive.City, 
@@ -92,6 +92,15 @@ namespace VehicleRegister.Business.Service
                 return true;
 
             return false;
+        }
+
+        public async Task<bool> DeleteAutoMotive(int id)
+        {
+            var autoMotive = await _repo.RepairRepo.GetAutoMotive(id);
+
+            if (autoMotive is null) return false;
+
+            return await _repo.RepairRepo.DeleteAutoMotive(autoMotive);
         }
     }
 }

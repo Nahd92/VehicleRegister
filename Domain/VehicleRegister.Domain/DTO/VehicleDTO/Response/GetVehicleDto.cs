@@ -17,6 +17,5 @@ namespace VehicleRegister.Domain.DTO.VehicleDTO.Response
         public bool IsServiceBooked { get; set; }
         public DateTime ServiceDate { get; set; }
         public int YearlyFee { get; set; }
-        public string SearchKeyword { get; set; }
     }
 }

@@ -12,7 +12,7 @@
         @if (auth.IsLoggedIn)
         {
             <li>
-                <a asp-controller="Admin" asp-action="Index" title="Welcome">Welcome @auth.UserName</a>
+                @Html.ActionLink(@auth.UserName, "GetUserInformation", "Account", new { username = auth.UserName })>
             </li>
             <li>
                 <form asp-controller="Account" asp-action="Logout">

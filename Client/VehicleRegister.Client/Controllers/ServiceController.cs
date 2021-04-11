@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VehicleRegister.Client.Controllers
 {
-    public class AutoMotiveRegister : Controller
+    public class ServiceController : Controller
     {
         public IActionResult Index()
         {

@@ -54,6 +54,8 @@ namespace VehicleRegister.CarAPI.Helper
         {
             AppSettings.SecretKey = AppSettingsHelper.SecretKey(configuration);
             AppSettings.HostName = AppSettingsHelper.HostName(configuration);
+            AppSettings.AdminPassword = AppSettingsHelper.AdminPassword(configuration);
+            AppSettings.ManagerPassword = AppSettingsHelper.ManagerPassword(configuration);
         }
 
        

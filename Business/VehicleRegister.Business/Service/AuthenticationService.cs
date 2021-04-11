@@ -1,16 +1,11 @@
-﻿using EntityFramework.Data;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Tokens;
+﻿using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
-using System.Text;
 using System.Threading.Tasks;
-using VehicleRegister.Domain.AppSettingsModels;
 using VehicleRegister.Domain.DTO.UserDTO.Request;
+using VehicleRegister.Domain.DTO.UserDTO.Response;
 using VehicleRegister.Domain.Interfaces.Auth.Interface;
 using VehicleRegister.Domain.Interfaces.Logger.Interface;
 
@@ -44,7 +39,9 @@ namespace VehicleRegister.Business.Service
                 {
                     var newIdentity = new IdentityUser()
                     {
-                        UserName = request.UserName
+                        UserName = request.UserName,
+                        Email = request.Email,
+                        PhoneNumber = request.PhoneNumber
                     };
 
                     var createdUser = await _userManager.CreateAsync(newIdentity, request.Password);
@@ -101,6 +98,22 @@ namespace VehicleRegister.Business.Service
         {
             var user = await _userManager.FindByNameAsync(username);
             return await _userManager.CheckPasswordAsync(user, password);
+        }
+
+        public async Task<GetUserInformationDto> GetUserInformation(string userName)
+        {
+            var user = await _userManager.FindByNameAsync(userName);
+
+            if (user != null)
+                return new GetUserInformationDto 
+                {
+                Id = user.Id,
+                Email = user.Email,
+                UserName = user.UserName,
+                PhoneNumber = user.PhoneNumber
+                }; 
+                       
+            return null;           
         }
     }
 }

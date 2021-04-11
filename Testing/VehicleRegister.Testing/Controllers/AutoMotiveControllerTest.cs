@@ -128,7 +128,7 @@ namespace VehicleRegister.Testing.Controllers
         public async Task TestUpdateAutoMotives_ShouldReturnOkAndADTOObject()
         {
             //Arrange
-            mockService.Setup(x => x.RepairService.UpdateAutoMotive(It.IsAny<UpdateAutoMotive>())).ReturnsAsync(
+            mockService.Setup(x => x.RepairService.UpdateAutoMotive(It.IsAny<UpdateAutoMotiveDto>())).ReturnsAsync(
                 new UpdatedAutoMotiveResponse(
                 1,
                 "Hedinbil",
@@ -141,7 +141,7 @@ namespace VehicleRegister.Testing.Controllers
             ));
 
             //Act
-            var response = await autoMotiveController.UpdateExistingAutoMotive(new UpdateAutoMotive { Id = 1});
+            var response = await autoMotiveController.UpdateExistingAutoMotive(new UpdateAutoMotiveDto { Id = 1});
             //Assert
             var result = response.Should().BeOfType<OkObjectResult>().Subject;
             var automotive = result.Value.Should().BeOfType<UpdatedAutoMotiveResponse>().Subject;
@@ -153,9 +153,9 @@ namespace VehicleRegister.Testing.Controllers
         public async Task TestUpdateAutoMotives_ShouldReturnBadRequstIfDTOIsNULL()
         {
             //Arrange
-            mockService.Setup(x => x.RepairService.UpdateAutoMotive(It.IsAny<UpdateAutoMotive>()));
+            mockService.Setup(x => x.RepairService.UpdateAutoMotive(It.IsAny<UpdateAutoMotiveDto>()));
             //Act
-            var response = await autoMotiveController.UpdateExistingAutoMotive(new UpdateAutoMotive { Id = 1 });
+            var response = await autoMotiveController.UpdateExistingAutoMotive(new UpdateAutoMotiveDto { Id = 1 });
 
             //Assert
             var result = response.Should().BeOfType<BadRequestObjectResult>().Subject;

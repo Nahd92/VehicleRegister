@@ -50,7 +50,6 @@ namespace VehicleRegister.CarAPI.Controllers
 
 
         [HttpGet]
-        [Authorize(Roles = "Admin")]
         [Route(RoutesAPI.Vehicle.GetVehicle)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -64,7 +63,7 @@ namespace VehicleRegister.CarAPI.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "Admin")]
+        [Authorize]
         [Route(RoutesAPI.Vehicle.CreateVehicle)]
         public async Task<IActionResult> CreateVehicle(CreateVehicleRequest request)
         {

@@ -1,0 +1,91 @@
+﻿@model VehicleRegister.Domain.DTO.VehicleDTO.Response.GetVehicleDto
+@using Microsoft.AspNetCore.Http;
+@using VehicleRegister.Client.Helpers;
+
+
+@{
+    ViewData["Title"] = "Index";
+
+    var auth = SessionHelper.GetObjectFromJson<LoginModel>(Context.Session, "identity");
+
+}
+
+<h1>Vehicle Details</h1>
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.RegisterNumber)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.RegisterNumber)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Model)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Model)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Brand)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Brand)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Weight)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Weight)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.InTraffic)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.InTraffic)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IsDrivingBan)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IsDrivingBan)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IsServiceBooked)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IsServiceBooked)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ServiceDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ServiceDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.YearlyFee)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.YearlyFee)
+        </dd>
+    </dl>
+</div>
+
+@if (auth != null)
+{
+    if (auth.IsLoggedIn && auth.IsAdmin)
+    {
+<div>
+    @Html.ActionLink("Edit", "VehicleUpdate", new { id = Model.Id }) |
+    @Html.ActionLink("Delete", "DeleteVehicle", new { id = Model.Id })
+</div>
+    }
+}
+<a asp-action="Index">Back to List</a>
+

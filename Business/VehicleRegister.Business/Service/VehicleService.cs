@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using VehicleRegister.Domain.DTO.VehicleDTO.Request;
@@ -21,8 +22,7 @@ namespace VehicleRegister.Business.Service
 
         public async Task<bool> CreateVehicle(CreateVehicleRequest vehicle)
         {
-
-           var createdV = VehicleFactory.Create(0, vehicle.RegisterNumber, vehicle.Brand, vehicle.Model, vehicle.InTraffic, vehicle.IsDrivingBan, vehicle.IsServiceBooked, vehicle.ServiceDate, vehicle.Weight, vehicle.YearlyFee);
+           var createdV = VehicleFactory.Create(0, vehicle.RegisterNumber, vehicle.Brand, vehicle.Model, vehicle.InTraffic, vehicle.IsDrivingBan, vehicle.IsServiceBooked, vehicle.Weight, vehicle.YearlyFee);
 
            return await _repo.VehicleRepo.CreateVehicle(createdV);
         }

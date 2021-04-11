@@ -13,10 +13,21 @@ namespace VehicleRegister.Domain.DTO.UserDTO.Request
         [StringLength(100)]
         public string UserName { get; set; }
 
+
+        [Required]
+        [DataType(DataType.EmailAddress)]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+
+        [DataType(DataType.PhoneNumber)]
+        [Display(Name = "PhoneNumber")]
+        public string PhoneNumber { get; set; }
+
+
         [Required]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 7)]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 4)]
         public string Password { set; get; }
 
         [Required]

@@ -23,7 +23,7 @@ namespace VehicleRegister.Client.Controllers
         {
             using (var _httpClient = new HttpClient())
             {
-                var requestUrl = HttpClientRoutes.VehicleRoute.Vehicles;
+                var requestUrl = VehicleRoute.Vehicles;
                 var response = await _httpClient.GetAsync(requestUrl);
                 if (response.IsSuccessStatusCode)
                 {
@@ -46,28 +46,140 @@ namespace VehicleRegister.Client.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateVehicle(CreateVehicleRequest request)
         {
-            using (var client = new HttpClient())
-            {           
+            if (ModelState.IsValid)
+            {
+                using (var _httpClient = new HttpClient())
+                {
+                    var session = SessionHelper.GetObjectFromJson<LoginModel>(HttpContext.Session, "identity");
+
+                    if (session is null) RedirectToAction("Login", "Account");
+
+
+                    var createdVehicle = JsonConvert.SerializeObject(request);
+                    var content = new StringContent(createdVehicle, Encoding.UTF8, "Application/json");
+                    var requestUrl = VehicleRoute.CreateVehicle;
+                    _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", session.Token);
+                    var response = await _httpClient.PostAsync(requestUrl, content);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return RedirectToAction("Index");
+                    }
+                }
+            }
+            return View();
+        }
+  
+        [HttpGet]
+        public async Task<IActionResult> DeleteVehicle(int? id)
+        {
+            using (var _httpClient = new HttpClient())
+            {
+                var requestUrl = VehicleRoute.GetVehicle + id;
+                var response = await _httpClient.GetAsync(requestUrl);
+                if (response.IsSuccessStatusCode)
+                {
+                    var jsonString = response.Content.ReadAsStringAsync().Result;
+                    var vehicle = JsonConvert.DeserializeObject<DeleteVehicleDto>(jsonString);
+                    return View(vehicle);
+                }
+            }
+            return View();
+        }
+
+        [HttpPost, ActionName("DeleteVehicle")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            using (var _httpClient = new HttpClient())
+            {
                 var session = SessionHelper.GetObjectFromJson<LoginModel>(HttpContext.Session, "identity");
 
                 if (session is null) RedirectToAction("Login", "Account");
 
-
-                var createdVehicle = JsonConvert.SerializeObject(request);
-                var content = new StringContent(createdVehicle, Encoding.UTF8, "Application/json");
-                var requestUrl = HttpClientRoutes.VehicleRoute.CreateVehicle;
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", session.Token);
-                var response =  await client.PostAsync(requestUrl, content);
-
+                _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", session.Token);             
+                var requestUrl = VehicleRoute.DeleteVehicel + id;
+                var response = await _httpClient.DeleteAsync(requestUrl);
                 if (response.IsSuccessStatusCode)
                 {
                     return RedirectToAction("Index");
                 }
-
-                return View();
             }
+            return RedirectToAction("Index", "Home");
         }
-  
+
+        [HttpGet]
+        public async Task<IActionResult> VehicleDetails(int id)
+        {
+            using (var _httpClient = new HttpClient())
+            {
+                var requestUrl = VehicleRoute.GetVehicle + id;
+                var response = await _httpClient.GetAsync(requestUrl);
+                if (response.IsSuccessStatusCode)
+                {
+                    var jsonString = response.Content.ReadAsStringAsync().Result;
+                    var vehicle = JsonConvert.DeserializeObject<GetVehicleDto>(jsonString);
+                    return View(vehicle);
+                }
+            }
+            return RedirectToAction("Index", "Home");
+        }
+
+
+
+
+
+        [HttpGet]
+        public async Task<IActionResult> VehicleUpdate(int? id)
+        {
+            using (var _httpClient = new HttpClient())
+            {                    
+                var requestUrl = VehicleRoute.GetVehicle + id;
+                var response = await _httpClient.GetAsync(requestUrl );
+                if (response.IsSuccessStatusCode)
+                {
+                    var jsonString = response.Content.ReadAsStringAsync().Result;
+                    var vehicle = JsonConvert.DeserializeObject<UpdateVehicleRequest>(jsonString);
+                    return View(vehicle);
+                }
+            }
+            return RedirectToAction("Index", "Home");
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> VehicleUpdate(UpdateVehicleRequest update)
+        {
+            if (ModelState.IsValid)
+            {
+                using (var _httpClient = new HttpClient())
+                {
+                    var session = SessionHelper.GetObjectFromJson<LoginModel>(HttpContext.Session, "identity");
+
+                    if (session is null) RedirectToAction("Login", "Account");
+
+
+                    var updateVehicle = JsonConvert.SerializeObject(update);
+                    var content = new StringContent(updateVehicle, Encoding.UTF8, "Application/json");
+                    var requestUrl = VehicleRoute.UpdateVehicle;
+                    _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", session.Token);
+                    var response = await _httpClient.PutAsync(requestUrl, content);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return RedirectToAction("Index");
+                    }
+                }
+            }
+            return View();
+        }
+
+
+
+
+
+
+
 
         [HttpPost]
         [AutoValidateAntiforgeryToken]
@@ -97,7 +209,7 @@ namespace VehicleRegister.Client.Controllers
                 using (var _httpClient = new HttpClient())
                 {
                     var searchVehicle = JsonConvert.DeserializeObject(searchKeyword);
-                    var requestUrl = HttpClientRoutes.VehicleRoute.VehicleByRegisterName;
+                    var requestUrl = VehicleRoute.VehicleByRegisterName;
                     var response = await _httpClient.GetAsync(requestUrl + searchVehicle);
                     if (response.IsSuccessStatusCode)
                     {

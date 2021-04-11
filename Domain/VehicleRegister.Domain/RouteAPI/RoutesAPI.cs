@@ -22,9 +22,10 @@ namespace VehicleRegister.Domain.RouteAPI
         public class AutoMotive
         {
             public const string GetAllAutoMotives = Base + "AutoMotives";
-            public const string GetAutoMotives = Base + "AutoMovie/{id}";
-            public const string CreateAutoMotives = Base + "AutoMotives";
-            public const string UpdateAutoMotive = Base + "AutoMotives";
+            public const string GetAutoMotives = Base + "AutoMotive/{id}";
+            public const string CreateAutoMotives = Base + "AutoMotive";
+            public const string UpdateAutoMotive = Base + "AutoMotive";
+            public const string DeleteAutoMotive = Base + "AutoMotive/{id}";
         }
         public class Reservations
         {
@@ -39,7 +40,9 @@ namespace VehicleRegister.Domain.RouteAPI
         {
             public const string Token = Base + "Token";
             public const string Register = Base + "Register";
+            public const string GetUserInformation = Base + "UserInformation/{username}";
         }
     }
-    
+   
+
 }

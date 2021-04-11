@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using System;
 using System.Linq;
 using System.Security.Claims;
+using VehicleRegister.Domain.AppSettingsModels;
 
 namespace VehicleRegister.CarAPI
 {
@@ -37,13 +38,9 @@ namespace VehicleRegister.CarAPI
                             UserName = "Manager"
                         };
 
-
                                         
-                        //TODO 
-                        //Remove hardcoded password...
-
-                        userManager.CreateAsync(adminUser, "password").GetAwaiter().GetResult();
-                        userManager.CreateAsync(managerUser, "password").GetAwaiter().GetResult();
+                        userManager.CreateAsync(adminUser, AppSettings.AdminPassword).GetAwaiter().GetResult();
+                        userManager.CreateAsync(managerUser, AppSettings.ManagerPassword).GetAwaiter().GetResult();
 
                         var adminClaim = new Claim("Role", "Admin");
                         var managerClaim = new Claim("Role", "Manager");

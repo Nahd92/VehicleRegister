@@ -93,19 +93,20 @@
             <td>
                 @Html.DisplayFor(modelItem => item.YearlyFee)
             </td>
-                @if (auth != null)
+            <td>
+                @Html.ActionLink("Details", "VehicleDetails", new { id = item.Id })
+            </td>
+            @if (auth != null)
+            {
+                if (auth.IsLoggedIn && auth.IsAdmin)
                 {
-                    if (auth.IsLoggedIn)
-                    {
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-                    </td>
-
+        <td>
+            @Html.ActionLink("Edit", "VehicleUpdate", new { id = item.Id }) |
+            @Html.ActionLink("Delete", "DeleteVehicle", new { id = item.Id })
+        </td>
                 }
             }
-            </tr>
+        </tr>
         }
     </tbody>
 </table>

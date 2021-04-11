@@ -11,7 +11,8 @@ namespace VehicleRegister.Domain.Interfaces.Service.Interface
         Task<IEnumerable<IAutoMotiveRepair>> GetAllAutoMotives();
         Task<IAutoMotiveRepair> GetAutoMotiveById(int id);
         Task<bool> AddNewAutoMotiveToDatabase(AddAutoMotiveToListRequest request);
-        Task<UpdatedAutoMotiveResponse> UpdateAutoMotive(UpdateAutoMotive request);
+        Task<UpdatedAutoMotiveResponse> UpdateAutoMotive(UpdateAutoMotiveDto request);
+        Task<bool> DeleteAutoMotive(int id);
         Task<string> CreateOrganisationNumber();
         Task<bool> OrgansationNumberAlreadyExist(string number);
     }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace VehicleRegister.Domain.DTO.AutoMotiveDTO.Request
 {
-   public class UpdateAutoMotive
+   public class UpdateAutoMotiveDto
     {
         public int Id { get; set; }
         public string Name { get; set; }

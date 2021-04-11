@@ -205,7 +205,6 @@ namespace VehicleRegister.Repository
                                                     veh.InTraffic,
                                                     veh.IsDrivingBan,
                                                     veh.IsServiceBooked,
-                                                    veh.ServiceDate,
                                                     veh.Weight,
                                                     veh.YearlyFee);
                     vehicles.Add(vehicle);
@@ -282,7 +281,6 @@ namespace VehicleRegister.Repository
                                                  vehicle.InTraffic,
                                                  vehicle.IsDrivingBan,
                                                  vehicle.IsServiceBooked,
-                                                 vehicle.ServiceDate,
                                                  vehicle.Weight,
                                                  vehicle.YearlyFee);
 
@@ -296,7 +294,7 @@ namespace VehicleRegister.Repository
             }    
         }
 
-        public async Task<bool> UpdateAutMotive(IAutoMotiveRepair repair)
+        public async Task<bool> UpdateAutoMotive(IAutoMotiveRepair repair)
         {
             var methodName = GetActualAsyncMethodName();
             try
@@ -341,6 +339,22 @@ namespace VehicleRegister.Repository
             {
                 ErrorLog(ex, methodName);
                 return false;
+            }
+        }
+
+        public async Task<bool> DeleteAutoMotive(IAutoMotiveRepair repair)
+        {
+            var methodName = GetActualAsyncMethodName();
+            try
+            {
+                _ctx.Remove(repair);
+                LogGettingInfo(methodName);
+                return await _ctx.SaveChangesAsync() > 0;
+            }
+            catch (Exception ex)
+            {
+                ErrorLog(ex, methodName);
+                throw;
             }
         }
     }

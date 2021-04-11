@@ -1,0 +1,39 @@
+﻿@model VehicleRegister.Domain.DTO.VehicleDTO.Request.UpdateVehicleRequest
+
+@{
+    ViewData["Title"] = "VehicleUpdate";
+}
+
+
+<h4>Update Vehicle</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="VehicleUpdate">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsDrivingBan" /> @Html.DisplayNameFor(model => model.IsDrivingBan)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsServiceBooked" /> @Html.DisplayNameFor(model => model.IsServiceBooked)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="ServiceDate" class="control-label"></label>
+                <input asp-for="ServiceDate" class="form-control" />
+                <span asp-validation-for="ServiceDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" asp-controller="VehicleRegister">Back to List</a>
+</div>
+
