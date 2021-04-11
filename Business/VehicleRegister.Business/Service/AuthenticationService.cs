@@ -6,30 +6,33 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using VehicleRegister.Domain.DTO.UserDTO.Request;
 using VehicleRegister.Domain.DTO.UserDTO.Response;
+using VehicleRegister.Domain.Extensions;
 using VehicleRegister.Domain.Interfaces.Auth.Interface;
 using VehicleRegister.Domain.Interfaces.Logger.Interface;
 
 namespace VehicleRegister.Business.Service
 {
-    public class AuthenticationService : IAuthenticationService
+    public class AuthenticationService : SpecialLoggerExtensions, IAuthenticationService
     {
         private readonly UserManager<IdentityUser> _userManager;
-        private ILoggerManager _logger;
 
-        public AuthenticationService(UserManager<IdentityUser> userManager, ILoggerManager logger)
+        public AuthenticationService(UserManager<IdentityUser> userManager, ILoggerManager logger) : base(logger)
         {
             _userManager = userManager;
-            _logger = logger;
         }
-
 
 
         public async Task<bool> RegisterUser(RegisterUserRequest request)
         {
-
+            var methodname = GetActualAsyncMethodName();
             var UserNameExist = await UserNameAlreadyExist(request);
 
-            if (UserNameExist) return false;
+            if (UserNameExist)
+            {
+                LogInfo(methodname, "User already exist!");
+                return false;
+            }
+                
 
             var PasswordIsEqual = PasswordValidation(request);
 

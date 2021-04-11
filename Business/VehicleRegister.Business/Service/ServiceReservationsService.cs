@@ -27,7 +27,7 @@ namespace VehicleRegister.Business.Service
 
             if (vehicle == null) return false;
             
-            var autoMotive = await _repo.RepairRepo.GetAutoMotive(request.AutoMotiveId);
+            var autoMotive = await _repo.RepairRepo.GetAutoMotive(request.AutoMotiveRepairId);
 
             if (autoMotive == null) return false;
 

@@ -81,7 +81,7 @@ namespace VehicleRegister.Client.Controllers
                 {
                     var session = SessionHelper.GetObjectFromJson<LoginModel>(HttpContext.Session, "identity");
 
-                    if (session is null) RedirectToAction("Login", "Account");
+                    if (session is null) return RedirectToAction("Login", "Account");
 
 
                     var updateVehicle = JsonConvert.SerializeObject(update);
@@ -118,7 +118,7 @@ namespace VehicleRegister.Client.Controllers
                 {
                     var session = SessionHelper.GetObjectFromJson<LoginModel>(HttpContext.Session, "identity");
 
-                    if (session is null) RedirectToAction("Login", "Account");
+                    if (session is null) return RedirectToAction("Login", "Account");
 
 
                     var createdAutoMotive = JsonConvert.SerializeObject(request);

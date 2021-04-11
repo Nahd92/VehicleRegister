@@ -24,7 +24,7 @@ namespace VehicleRegister.Client.Controllers
             {
                 var session = SessionHelper.GetObjectFromJson<LoginModel>(HttpContext.Session, "identity");
 
-                if (session is null) RedirectToAction("Login", "Account");
+                if (session is null) return RedirectToAction("Login", "Account");
 
                 var requestUrl = IdentityRoute.UserInformation + username;
                 _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", session.Token);

@@ -28,7 +28,7 @@ namespace VehicleRegister.CarAPI.Controllers
         {
             var reservation = await _serviceWrapper.ServiceReservations.GetReservation(id);
 
-            if (reservation == null) return NotFound("No reservaiton exist with that Id");
+            if (reservation == null) return NotFound("No reservation exist with that Id");
 
            return Ok(reservation);
         }

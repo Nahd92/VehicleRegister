@@ -3,37 +3,24 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
-using VehicleRegister.Domain.DTO.ReservationsDTO.Request;
+using VehicleRegister.Domain.Extensions;
 using VehicleRegister.Domain.Factory;
 using VehicleRegister.Domain.Interfaces.Logger.Interface;
 using VehicleRegister.Domain.Interfaces.Model.Interface;
 using VehicleRegister.Domain.Interfaces.Repository.Interface;
 using VehicleRegister.Domain.Models;
-using VehicleRegister.Domain.Models.Vehicles;
 
 namespace VehicleRegister.Repository
 {
-    public class DatabaseRepository : IVehicleRepository, IAutoMotiveRepairRepository, IServiceReservationsRepository
+    public class DatabaseRepository : SpecialLoggerExtensions, IVehicleRepository, IAutoMotiveRepairRepository, IServiceReservationsRepository
     {
         private readonly VehicleRegisterContext _ctx;
-        private ILoggerManager _logger;
-        public DatabaseRepository(VehicleRegisterContext ctx, ILoggerManager logger)
+
+        public DatabaseRepository(VehicleRegisterContext ctx, ILoggerManager logger) : base(logger)
         {
             _ctx = ctx;
-            _logger = logger;
         }
-         
-
-        private void ErrorLog(Exception ex, string name) => _logger.LogError($"{this.GetType().Name} with Method {name} resulted in: {ex.Message}.");
-        private static string GetActualAsyncMethodName([CallerMemberName] string name = null) => name;
-        private void LogSuccessInfo(string name) => _logger.LogInfo($"{this.GetType().Name} with Method {name} was successfull");
-        private void LogGettingInfo(string name) => _logger.LogInfo($"{this.GetType().Name} with Method {name} was successfull fetched from database");
-
-
-
 
         public async Task<bool> CreateNewAutoMotive(IAutoMotiveRepair repair)
         {
@@ -281,6 +268,7 @@ namespace VehicleRegister.Repository
                                                  vehicle.InTraffic,
                                                  vehicle.IsDrivingBan,
                                                  vehicle.IsServiceBooked,
+                                                 vehicle.ServiceDate,
                                                  vehicle.Weight,
                                                  vehicle.YearlyFee);
 
