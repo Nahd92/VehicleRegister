@@ -38,6 +38,14 @@ namespace VehicleRegister.Client.Helpers
         public static string DeleteAutoMotive = AppSettings.HostName + "api/AutoMotive/";
         public static string UpdateAutoMotive = AppSettings.HostName + "api/AutoMotive/";
     }
+
+    public static class ServiceHistory
+    {
+        public static string Reservations = AppSettings.HostName + "api/Reservations";
+    }
+
+
+
     public static class ServiceRoute
     {
         public static string CreateBooking = AppSettings.HostName + "api/Reservation";

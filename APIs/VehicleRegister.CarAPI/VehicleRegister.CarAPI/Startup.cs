@@ -24,6 +24,8 @@ namespace VehicleRegister.CarAPI
                     .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                     .AddEnvironmentVariables();
             Configuration = builder.Build();
+
+            var endPoint = Configuration["Url:HostName"];
         }
 
 

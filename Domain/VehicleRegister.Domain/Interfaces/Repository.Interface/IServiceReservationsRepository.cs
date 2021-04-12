@@ -9,7 +9,6 @@ namespace VehicleRegister.Domain.Interfaces.Model.Interface
 {
     public interface IServiceReservationsRepository
     {
-
         Task<IEnumerable<IServiceReservations>> GetAllReservations();
         Task<IServiceReservations> GetReservation(int id);
         Task<bool> CreateReservations(IServiceReservations reservation);
