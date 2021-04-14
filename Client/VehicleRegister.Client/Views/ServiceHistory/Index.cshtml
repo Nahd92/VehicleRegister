@@ -44,9 +44,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.AutoMotivesName)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsCompleted)
-            </th>
             <th></th>
         </tr>
     </thead>
@@ -69,16 +66,12 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.AutoMotivesName)
                     </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.IsCompleted)
-                    </td>
 
                     @if (auth != null)
                     {
                         if (auth.IsAdmin)
                         {
                             <td>
-                                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
                                 @Html.ActionLink("Mark as Completed", "Completed", new { id=item.Id }) |
                             </td>
                         }

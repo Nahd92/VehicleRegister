@@ -41,9 +41,13 @@ namespace VehicleRegister.Client
         {
             services.AddControllersWithViews();
             services.AddRazorPages();
+
+
+            services.ConfigureInjections();
             services.ConfigureSession();
             services.ConfigureAppsettingsValuesInjection(Configuration);
             services.AddHttpContextAccessor();
+
 
             services.AddMvc();
         }
