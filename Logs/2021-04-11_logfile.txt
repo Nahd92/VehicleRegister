@@ -1,0 +1,12 @@
+2021-04-11 23:10:52.1789 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: AuthenticationService 
+ Method: RegisterUser
+ User already exist!
+2021-04-11 23:17:58.2104 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-11 23:17:58.8646 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database

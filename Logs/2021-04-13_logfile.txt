@@ -1,0 +1,1500 @@
+2021-04-13 16:19:06.3160 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 16:19:06.5560 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 16:19:10.2383 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 16:19:20.2158 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 16:19:20.2709 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 16:19:21.1540 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 16:21:27.8764 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 16:21:28.0631 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 16:21:29.8817 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 16:23:33.6897 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 16:23:33.9318 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 16:23:36.7419 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 16:24:35.0725 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 16:24:35.1373 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 16:24:37.2547 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 16:26:00.9000 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 16:26:10.7502 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAutoMotive
+ Info: Successfully fetched from database
+2021-04-13 16:26:29.8248 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 16:26:30.9815 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 16:26:31.0109 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 16:26:31.0334 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 16:34:59.5449 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 16:34:59.7092 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 16:34:59.8851 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 16:38:25.9350 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 16:38:49.6929 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: DeleteAllReservations
+ Info: was successfull
+2021-04-13 16:39:42.1343 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 16:39:42.1896 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: DeleteAllReservations
+ Info: was successfull
+2021-04-13 16:39:42.4504 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetVehicleById
+ Info: Successfully fetched from database
+2021-04-13 16:39:42.5036 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: UpdateVehicle
+ Info: was successfull
+2021-04-13 16:40:24.5697 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 16:40:24.5809 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: DeleteAllReservations
+ Info: was successfull
+2021-04-13 16:41:03.4787 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 16:41:50.6314 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: DeleteAllReservations
+ Info: was successfull
+2021-04-13 16:42:27.9427 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetVehicleById
+ Info: Successfully fetched from database
+2021-04-13 16:42:31.0359 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: UpdateVehicle
+ Info: was successfull
+2021-04-13 16:42:34.7152 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetVehicleById
+ Info: Successfully fetched from database
+2021-04-13 16:42:35.3393 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: UpdateVehicle
+ Info: was successfull
+2021-04-13 16:46:17.3843 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 16:46:17.5991 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 16:46:17.7646 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 16:46:28.9674 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 16:46:29.0111 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: DeleteAllReservations
+ Info: was successfull
+2021-04-13 16:46:29.3088 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetVehicleById
+ Info: Successfully fetched from database
+2021-04-13 16:46:29.3506 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: UpdateVehicle
+ Info: was successfull
+2021-04-13 16:46:29.3796 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetVehicleById
+ Info: Successfully fetched from database
+2021-04-13 16:46:29.5446 VehicleRegister.Business.Service.LoggerManager ERROR 
+ Class: DatabaseRepository 
+ Method: UpdateVehicle 
+ Error:  resulted in: The instance of entity type 'Vehicle' cannot be tracked because another instance with the same key value for {'Id'} is already being tracked. When attaching existing entities, ensure that only one entity instance with a given key value is attached. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see the conflicting key values..
+2021-04-13 16:47:10.1083 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 16:47:10.1549 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 16:47:10.1909 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 16:49:26.9015 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 16:49:26.9119 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: DeleteAllReservations
+ Info: was successfull
+2021-04-13 16:49:26.9348 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetVehicleById
+ Info: Successfully fetched from database
+2021-04-13 16:49:26.9412 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: UpdateVehicle
+ Info: was successfull
+2021-04-13 16:51:25.0645 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 16:51:25.2680 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 16:51:52.2252 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetVehicleById
+ Info: Successfully fetched from database
+2021-04-13 16:51:53.1483 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAutoMotive
+ Info: Successfully fetched from database
+2021-04-13 16:52:00.3651 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: CreateReservations
+ Info: was successfull
+2021-04-13 16:52:14.5924 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: UpdateVehicle
+ Info: was successfull
+2021-04-13 16:52:19.6159 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 16:52:19.6676 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 16:52:24.4003 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 16:52:38.1598 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 16:52:38.1875 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 16:52:38.2559 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 16:53:54.1570 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 16:53:54.1892 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 16:53:54.2446 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 16:54:04.5105 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 16:54:19.7550 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: DeleteAllReservations
+ Info: was successfull
+2021-04-13 16:54:23.1619 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetVehicleById
+ Info: Successfully fetched from database
+2021-04-13 16:54:23.2316 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: UpdateVehicle
+ Info: was successfull
+2021-04-13 16:54:23.2825 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetVehicleById
+ Info: Successfully fetched from database
+2021-04-13 16:54:23.2825 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: UpdateVehicle
+ Info: was successfull
+2021-04-13 16:54:25.9006 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 16:54:26.0105 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 16:54:26.0266 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 17:29:37.3903 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 17:29:37.6533 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 17:29:37.8134 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 17:30:06.8713 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 17:30:06.9112 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 17:30:06.9454 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 17:30:18.0900 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 17:30:57.3194 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: AddOldServiceToHistory
+ Info: was successfull
+2021-04-13 17:31:46.3962 VehicleRegister.Business.Service.LoggerManager ERROR 
+ Class: DatabaseRepository 
+ Method: AddOldServiceToHistory 
+ Error:  resulted in: Database operation expected to affect 1 row(s) but actually affected 0 row(s). Data may have been modified or deleted since entities were loaded. See http://go.microsoft.com/fwlink/?LinkId=527962 for information on understanding and handling optimistic concurrency exceptions..
+2021-04-13 17:31:52.4826 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: DeleteAllReservations
+ Info: was successfull
+2021-04-13 17:31:52.7453 VehicleRegister.Business.Service.LoggerManager ERROR 
+ Class: DatabaseRepository 
+ Method: DeleteAllReservations 
+ Error:  resulted in: Database operation expected to affect 1 row(s) but actually affected 0 row(s). Data may have been modified or deleted since entities were loaded. See http://go.microsoft.com/fwlink/?LinkId=527962 for information on understanding and handling optimistic concurrency exceptions..
+2021-04-13 17:32:15.2915 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 17:32:15.3372 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 17:32:15.3760 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 17:32:17.7602 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 17:32:17.8029 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 17:32:17.8407 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 17:32:32.2975 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 17:35:40.3409 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 17:35:40.5311 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 17:35:40.6767 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 17:35:47.5547 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 17:35:47.6577 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: AddOldServiceToHistory
+ Info: was successfull
+2021-04-13 17:35:48.1818 VehicleRegister.Business.Service.LoggerManager ERROR 
+ Class: DatabaseRepository 
+ Method: AddOldServiceToHistory 
+ Error:  resulted in: An error occurred while updating the entries. See the inner exception for details..
+2021-04-13 17:35:48.1965 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: DeleteAllReservations
+ Info: was successfull
+2021-04-13 17:35:48.3513 VehicleRegister.Business.Service.LoggerManager ERROR 
+ Class: DatabaseRepository 
+ Method: DeleteAllReservations 
+ Error:  resulted in: An error occurred while updating the entries. See the inner exception for details..
+2021-04-13 17:36:00.8308 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 17:36:02.2149 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 17:36:02.2667 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 17:36:12.7576 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 17:36:19.5156 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: AddOldServiceToHistory
+ Info: was successfull
+2021-04-13 17:36:19.7285 VehicleRegister.Business.Service.LoggerManager ERROR 
+ Class: DatabaseRepository 
+ Method: AddOldServiceToHistory 
+ Error:  resulted in: An error occurred while updating the entries. See the inner exception for details..
+2021-04-13 17:36:27.5758 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: DeleteAllReservations
+ Info: was successfull
+2021-04-13 17:36:27.8846 VehicleRegister.Business.Service.LoggerManager ERROR 
+ Class: DatabaseRepository 
+ Method: DeleteAllReservations 
+ Error:  resulted in: An error occurred while updating the entries. See the inner exception for details..
+2021-04-13 17:36:35.1733 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 17:36:35.2143 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 17:36:35.2312 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 17:36:42.7767 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 17:37:13.5884 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: AddOldServiceToHistory
+ Info: was successfull
+2021-04-13 20:18:06.6854 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 20:18:06.9088 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 20:18:07.0669 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 20:18:15.7657 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 20:18:33.0069 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: AddOldServiceToHistory
+ Info: was successfull
+2021-04-13 20:21:27.2393 VehicleRegister.Business.Service.LoggerManager ERROR 
+ Class: DatabaseRepository 
+ Method: AddOldServiceToHistory 
+ Error:  resulted in: An error occurred while updating the entries. See the inner exception for details..
+2021-04-13 20:21:27.2724 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: DeleteAllReservations
+ Info: was successfull
+2021-04-13 20:21:27.6760 VehicleRegister.Business.Service.LoggerManager ERROR 
+ Class: DatabaseRepository 
+ Method: DeleteAllReservations 
+ Error:  resulted in: An error occurred while updating the entries. See the inner exception for details..
+2021-04-13 20:21:34.3290 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 20:21:34.3625 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 20:21:34.3955 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 20:21:42.7384 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 20:21:57.8861 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: AddOldServiceToHistory
+ Info: was successfull
+2021-04-13 20:22:47.5513 VehicleRegister.Business.Service.LoggerManager ERROR 
+ Class: DatabaseRepository 
+ Method: AddOldServiceToHistory 
+ Error:  resulted in: An error occurred while updating the entries. See the inner exception for details..
+2021-04-13 20:22:47.5866 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: DeleteAllReservations
+ Info: was successfull
+2021-04-13 20:22:47.7760 VehicleRegister.Business.Service.LoggerManager ERROR 
+ Class: DatabaseRepository 
+ Method: DeleteAllReservations 
+ Error:  resulted in: An error occurred while updating the entries. See the inner exception for details..
+2021-04-13 20:22:49.0463 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 20:22:49.0771 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 20:22:49.1005 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 20:23:12.7112 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 20:23:27.6380 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: AddOldServiceToHistory
+ Info: was successfull
+2021-04-13 20:40:23.0330 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 20:40:23.2330 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 20:40:23.3929 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 20:40:36.1114 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 20:41:15.4835 VehicleRegister.Business.Service.LoggerManager ERROR 
+ Class: DatabaseRepository 
+ Method: AddOldServiceToHistory 
+ Error:  resulted in: An error occurred while updating the entries. See the inner exception for details..
+2021-04-13 20:41:15.6999 VehicleRegister.Business.Service.LoggerManager ERROR 
+ Class: DatabaseRepository 
+ Method: DeleteAllReservations 
+ Error:  resulted in: An error occurred while updating the entries. See the inner exception for details..
+2021-04-13 20:41:19.8425 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 20:41:19.8821 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 20:41:19.9169 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 20:41:21.1411 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 20:41:26.7710 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetVehicleById
+ Info: Successfully fetched from database
+2021-04-13 20:41:41.9727 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetVehicleById
+ Info: Successfully fetched from database
+2021-04-13 20:41:42.0267 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: UpdateVehicle
+ Info: was successfull
+2021-04-13 20:41:46.9991 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 20:41:55.9723 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 20:41:56.0110 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 20:41:58.6782 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 20:42:01.7009 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 20:42:01.7291 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 20:42:01.7535 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 20:42:09.2418 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 20:42:12.2374 VehicleRegister.Business.Service.LoggerManager ERROR 
+ Class: DatabaseRepository 
+ Method: AddOldServiceToHistory 
+ Error:  resulted in: An error occurred while updating the entries. See the inner exception for details..
+2021-04-13 20:42:12.7852 VehicleRegister.Business.Service.LoggerManager ERROR 
+ Class: DatabaseRepository 
+ Method: DeleteAllReservations 
+ Error:  resulted in: An error occurred while updating the entries. See the inner exception for details..
+2021-04-13 20:42:23.6546 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 20:42:23.7616 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 20:42:23.8294 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 20:42:30.3625 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 20:43:46.0931 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 20:43:46.8281 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 20:43:47.0442 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 20:43:56.7536 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 20:43:57.1259 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: AddOldServiceToHistory
+ Info: was successfull
+2021-04-13 20:43:57.1650 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: DeleteAllReservations
+ Info: was successfull
+2021-04-13 20:43:57.2001 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetVehicleById
+ Info: Successfully fetched from database
+2021-04-13 20:43:57.2284 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: UpdateVehicle
+ Info: was successfull
+2021-04-13 20:44:04.9566 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 20:44:05.0006 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 20:44:05.0287 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 20:45:04.3654 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 20:45:28.8552 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetVehicleById
+ Info: Successfully fetched from database
+2021-04-13 20:46:43.4809 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 20:46:43.5516 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 20:46:43.5923 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 20:46:44.1669 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 20:46:44.1846 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 20:46:49.0079 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 20:46:49.2046 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 20:46:49.2351 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 21:32:29.7620 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 21:32:29.9465 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 21:32:30.1101 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 21:32:30.1507 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: VehicleHistory
+ Info: Successfully fetched from database
+2021-04-13 21:33:42.5801 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 21:33:42.6323 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 21:33:42.7339 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 21:33:42.7502 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: VehicleHistory
+ Info: Successfully fetched from database
+2021-04-13 21:34:52.5205 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 21:34:52.8203 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 21:34:53.0362 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 21:34:53.1378 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: VehicleHistory
+ Info: Successfully fetched from database
+2021-04-13 21:37:47.4414 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 21:37:47.4910 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 21:37:47.5138 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 21:37:51.8914 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: VehicleHistory
+ Info: Successfully fetched from database
+2021-04-13 21:39:32.9392 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 21:39:33.1896 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 21:39:33.3425 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 21:39:50.1061 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: VehicleHistory
+ Info: Successfully fetched from database
+2021-04-13 21:41:12.2281 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 21:41:12.2985 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 21:41:12.3585 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 21:41:36.8469 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: VehicleHistory
+ Info: Successfully fetched from database
+2021-04-13 21:42:04.1682 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 21:42:04.2367 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 21:42:13.1401 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 21:42:25.3457 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: VehicleHistory
+ Info: Successfully fetched from database
+2021-04-13 21:42:28.3562 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 21:42:28.4064 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 21:43:52.5231 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 21:44:01.2079 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: VehicleHistory
+ Info: Successfully fetched from database
+2021-04-13 21:46:09.3487 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 21:46:09.4141 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 21:46:18.8017 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 21:46:24.7999 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: VehicleHistory
+ Info: Successfully fetched from database
+2021-04-13 21:57:03.0282 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 21:57:03.2693 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 22:01:16.7738 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 22:01:16.9568 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 22:01:22.0932 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 22:01:52.2103 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: VehicleHistory
+ Info: Successfully fetched from database
+2021-04-13 22:07:23.0953 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 22:07:23.2862 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 22:07:28.9023 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 22:07:35.3121 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: VehicleHistory
+ Info: Successfully fetched from database
+2021-04-13 22:11:46.2856 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 22:11:46.4775 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 22:11:52.0056 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 22:11:56.1488 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: VehicleHistory
+ Info: Successfully fetched from database
+2021-04-13 22:12:19.9067 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 22:12:51.5193 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: AddOldServiceToHistory
+ Info: was successfull
+2021-04-13 22:12:54.8019 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: DeleteAllReservations
+ Info: was successfull
+2021-04-13 22:13:02.5900 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetVehicleById
+ Info: Successfully fetched from database
+2021-04-13 22:13:10.0058 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: UpdateVehicle
+ Info: was successfull
+2021-04-13 22:13:18.0028 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 22:13:18.0796 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 22:13:22.0419 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 22:13:41.3841 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: VehicleHistory
+ Info: Successfully fetched from database
+2021-04-13 22:21:34.2083 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 22:21:34.4180 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 22:21:43.6950 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 22:21:50.4424 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: VehicleHistory
+ Info: Successfully fetched from database
+2021-04-13 22:29:07.5685 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 22:29:07.7638 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 22:29:13.0796 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 22:29:19.2849 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: VehicleHistory
+ Info: Successfully fetched from database
+2021-04-13 22:30:56.7131 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 22:30:56.8947 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 22:31:00.1476 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 22:31:03.1527 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: VehicleHistory
+ Info: Successfully fetched from database
+2021-04-13 22:31:18.2085 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 22:31:18.2449 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 22:31:23.1307 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 22:31:26.8424 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: VehicleHistory
+ Info: Successfully fetched from database
+2021-04-13 22:35:33.4659 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 22:35:33.6609 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 22:35:37.3797 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 22:35:42.2712 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: VehicleHistory
+ Info: Successfully fetched from database
+2021-04-13 22:36:57.5501 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 22:37:00.4793 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 22:37:03.2532 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 22:37:07.9854 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: VehicleHistory
+ Info: Successfully fetched from database
+2021-04-13 22:39:42.4544 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 22:39:42.6514 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 22:39:47.7401 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 22:39:49.7987 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: VehicleHistory
+ Info: Successfully fetched from database
+2021-04-13 22:40:39.9505 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 22:40:39.9852 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 22:41:05.2025 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetVehicleById
+ Info: Successfully fetched from database
+2021-04-13 22:41:05.2298 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAutoMotive
+ Info: Successfully fetched from database
+2021-04-13 22:41:05.6269 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: CreateReservations
+ Info: was successfull
+2021-04-13 22:41:08.6983 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: UpdateVehicle
+ Info: was successfull
+2021-04-13 22:41:08.7559 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 22:41:08.7779 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 22:41:14.2620 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 22:41:17.6927 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 22:41:31.1039 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetVehicleById
+ Info: Successfully fetched from database
+2021-04-13 22:41:43.7803 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 22:42:17.4706 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetVehicleById
+ Info: Successfully fetched from database
+2021-04-13 22:42:24.9823 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetVehicleById
+ Info: Successfully fetched from database
+2021-04-13 22:42:33.9941 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetVehicleById
+ Info: Successfully fetched from database
+2021-04-13 22:42:34.0104 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: UpdateVehicle
+ Info: was successfull
+2021-04-13 22:42:34.0615 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 22:42:44.3408 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetVehicleById
+ Info: Successfully fetched from database
+2021-04-13 22:42:47.3261 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 22:42:53.2853 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 22:42:53.3168 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 22:42:54.5913 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 22:42:54.6274 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 22:42:59.0455 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 22:43:05.6626 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: VehicleHistory
+ Info: Successfully fetched from database
+2021-04-13 22:43:11.0828 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 22:43:11.1253 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 22:43:12.1874 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 22:43:12.2147 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 22:43:12.2298 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 22:43:12.2437 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: VehicleHistory
+ Info: Successfully fetched from database
+2021-04-13 22:43:17.5066 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 22:43:17.6353 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 22:43:23.8572 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 22:43:26.1007 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 22:43:28.5174 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 22:43:31.8960 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: VehicleHistory
+ Info: Successfully fetched from database
+2021-04-13 22:44:17.6347 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 22:44:17.7116 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 22:45:08.9681 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 22:45:11.3776 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 22:45:14.8672 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 22:45:18.9646 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: VehicleHistory
+ Info: Successfully fetched from database
+2021-04-13 22:46:04.6343 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 22:46:49.1581 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 22:46:52.1206 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 22:46:55.1597 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: VehicleHistory
+ Info: Successfully fetched from database
+2021-04-13 23:19:09.6967 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 23:19:12.6279 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 23:19:17.3011 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 23:19:21.5853 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: VehicleHistory
+ Info: Successfully fetched from database
+2021-04-13 23:25:32.4224 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 23:25:35.1689 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 23:25:38.6588 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 23:25:41.1804 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: VehicleHistory
+ Info: Successfully fetched from database
+2021-04-13 23:30:19.8294 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 23:30:20.0202 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 23:30:20.1637 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 23:30:20.2269 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: VehicleHistory
+ Info: Successfully fetched from database
+2021-04-13 23:31:18.3463 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 23:31:18.6487 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 23:31:18.8332 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 23:31:18.8846 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: VehicleHistory
+ Info: Successfully fetched from database
+2021-04-13 23:31:57.1989 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 23:31:57.2403 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 23:31:57.2777 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 23:31:57.3021 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: VehicleHistory
+ Info: Successfully fetched from database
+2021-04-13 23:32:34.5583 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 23:32:34.5983 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 23:32:34.6293 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 23:32:34.6705 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: VehicleHistory
+ Info: Successfully fetched from database
+2021-04-13 23:32:38.8946 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 23:32:38.9441 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 23:32:41.8336 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 23:32:41.8718 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 23:32:43.3942 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 23:32:43.4190 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 23:32:44.1089 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 23:32:45.7061 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 23:32:45.7245 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 23:32:45.7505 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 23:32:45.7693 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: VehicleHistory
+ Info: Successfully fetched from database
+2021-04-13 23:51:24.5827 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 23:51:24.7853 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 23:51:24.9508 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 23:51:25.0144 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: VehicleHistory
+ Info: Successfully fetched from database
+2021-04-13 23:56:24.0038 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 23:56:24.1762 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 23:56:24.3312 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 23:56:24.3920 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: VehicleHistory
+ Info: Successfully fetched from database
+2021-04-13 23:56:32.9882 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 23:56:33.0535 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 23:56:33.0962 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 23:56:33.1299 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: VehicleHistory
+ Info: Successfully fetched from database
+2021-04-13 23:57:15.0870 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 23:57:15.1339 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 23:57:15.1721 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 23:57:15.1940 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: VehicleHistory
+ Info: Successfully fetched from database
+2021-04-13 23:58:20.0553 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllVehicles
+ Info: Successfully fetched from database
+2021-04-13 23:58:20.2859 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllAutoMotives
+ Info: Successfully fetched from database
+2021-04-13 23:58:20.4529 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: GetAllReservations
+ Info: Successfully fetched from database
+2021-04-13 23:58:20.5096 VehicleRegister.Business.Service.LoggerManager INFO 
+ Class: DatabaseRepository 
+ Method: VehicleHistory
+ Info: Successfully fetched from database
