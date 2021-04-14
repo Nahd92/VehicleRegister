@@ -120,14 +120,14 @@ namespace VehicleRegister.Testing.Services
         }
 
         [TestMethod]
-        public async Task TestGetVehicleByVehicleName_ShouldReturnNullWhenRegNumberNotExist()
+        public async Task TestGetVehicleByVehicleName_ShouldReturnEmptyWhenRegNumberNotExist()
         {
             //Arrange
             mockRepository.Setup(x => x.VehicleRepo.GetAllVehicles()).ReturnsAsync(cars);
             //Act
             var response = await vehicleService.GetVehicleWithKeyword("ACC123");
             //Assert
-            response.Should().BeNull();
+            response.Should().BeEmpty();
         }
 
 

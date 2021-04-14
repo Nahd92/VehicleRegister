@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using VehicleRegister.Domain.DTO.UserDTO.Request;
 using VehicleRegister.Domain.DTO.UserDTO.Response;
@@ -11,5 +12,6 @@ namespace VehicleRegister.Domain.Interfaces.Auth.Interface
         Task<List<string>> GetUsersRole(string username);
         Task<bool> RegisterUser(RegisterUserRequest request);
         Task<GetUserInformationDto> GetUserInformation(string userName);
+        string GenerateAccessToken(IEnumerable<Claim> claims);
     }
 }

@@ -1,9 +1,13 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
+using VehicleRegister.Domain.AppSettingsModels;
 using VehicleRegister.Domain.DTO.UserDTO.Request;
 using VehicleRegister.Domain.DTO.UserDTO.Response;
 using VehicleRegister.Domain.Extensions;
@@ -117,6 +121,23 @@ namespace VehicleRegister.Business.Service
                 }; 
                        
             return null;           
+        }
+
+        public string GenerateAccessToken(IEnumerable<Claim> claims)
+        {
+            var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(AppSettings.SecretKey));
+            var signInCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
+
+            var tokenOptions = new JwtSecurityToken(
+              issuer: AppSettings.HostName,
+              audience: AppSettings.HostName,
+              claims: claims,
+              expires: DateTime.Now.AddHours(1),
+              signingCredentials: signInCredentials
+              );
+
+            var tokenString = new JwtSecurityTokenHandler().WriteToken(tokenOptions);
+            return tokenString;
         }
     }
 }

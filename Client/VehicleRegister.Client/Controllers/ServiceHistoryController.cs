@@ -126,26 +126,10 @@ namespace VehicleRegister.Client.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Completed(int? id)
-        {
-            using (var _httpClient = new HttpClient())
-            {
-                var requestUrl = ServiceHistory.DeleteReservation + id;
-                var response = await _httpClient.GetAsync(requestUrl);
-                if (response.IsSuccessStatusCode)
-                {
-                    var jsonString = response.Content.ReadAsStringAsync().Result;
-                    var vehicle = JsonConvert.DeserializeObject<CompletedServiceDto>(jsonString);
-                    return View(vehicle);
-                }
-            }
-            return View();
-        }
 
-        [HttpPost, ActionName("Completed")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CompletedConfirmed(int? id)
+
+        [HttpGet]
+        public async Task<IActionResult> Completed(int id)
         {
             using (var _httpClient = new HttpClient())
             {

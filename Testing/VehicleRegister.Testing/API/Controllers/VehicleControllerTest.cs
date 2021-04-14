@@ -108,15 +108,15 @@ namespace VehicleRegister.Testing.Controllers
         {
             //Arrange
             var regNumber = "ABC123";
-            //mockService.Setup(x => x.Vehicle.GetVehicleWithKeyword(It.IsAny<string>())).ReturnsAsync(cars);
+            mockService.Setup(x => x.Vehicle.GetVehicleWithKeyword(It.IsAny<string>())).ReturnsAsync(cars.ToList());
 
             //Act
             var response = await vehicleController.GetVehicleWithKeyword(regNumber);
 
             //Assert
             var result = response.Should().BeOfType<OkObjectResult>().Subject;
-            var vehicle = result.Value.Should().BeOfType<Vehicle>().Subject;
-            vehicle.RegisterNumber.Should().Be("ABC123");
+            var vehicle = result.Value.Should().BeOfType<List<IVehicle>>().Subject;
+            vehicle.Select(x => x.RegisterNumber.Should().Be("ABC123"));
         }
 
         [TestMethod]
@@ -186,7 +186,7 @@ namespace VehicleRegister.Testing.Controllers
 
             //Assert
             var result = response.Should().BeOfType<OkObjectResult>().Subject;
-            var re = result.Value.Should().BeOfType<Vehicle>().Subject;
+            var re = result.Value.Should().BeOfType<LightVehicle>().Subject;
             re.Id.Should().Be(1);
         }
 

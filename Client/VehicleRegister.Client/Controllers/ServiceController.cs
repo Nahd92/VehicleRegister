@@ -19,50 +19,51 @@ namespace VehicleRegister.Client.Controllers
     public class ServiceController : Controller
     {
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> BookService()
         {
-            var listOfVehicles = new List<GetAllVehiclesDto>();
-            var listOfAutoMotives = new List<GetAllAutoMotivesDto>();
+           
+                var listOfVehicles = new List<GetAllVehiclesDto>();
+                var listOfAutoMotives = new List<GetAllAutoMotivesDto>();
 
-            using (var _httpClient = new HttpClient())
-            {
-                var requestUrl = VehicleRoute.Vehicles;
-                var response = await _httpClient.GetAsync(requestUrl);
-                if (response.IsSuccessStatusCode)
+                using (var _httpClient = new HttpClient())
                 {
-                    var jsonString = response.Content.ReadAsStringAsync().Result;
-                    listOfVehicles = JsonConvert.DeserializeObject<List<GetAllVehiclesDto>>(jsonString);
+                    var requestUrl = VehicleRoute.Vehicles;
+                    var response = await _httpClient.GetAsync(requestUrl);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var jsonString = response.Content.ReadAsStringAsync().Result;
+                        listOfVehicles = JsonConvert.DeserializeObject<List<GetAllVehiclesDto>>(jsonString);
+                    }
+
+                    var Url = AutoMotiveRoute.AutoMotives;
+                    var responsed = await _httpClient.GetAsync(Url);
+                    if (responsed.IsSuccessStatusCode)
+                    {
+                        var jsonString = responsed.Content.ReadAsStringAsync().Result;
+                        listOfAutoMotives = JsonConvert.DeserializeObject<List<GetAllAutoMotivesDto>>(jsonString);
+                    }
                 }
 
-                var Url = AutoMotiveRoute.AutoMotives;
-                var responsed = await _httpClient.GetAsync(Url);
-                if (responsed.IsSuccessStatusCode)
+                var vehList = listOfVehicles.Select(c => new SelectListItem()
                 {
-                    var jsonString = responsed.Content.ReadAsStringAsync().Result;
-                    listOfAutoMotives = JsonConvert.DeserializeObject<List<GetAllAutoMotivesDto>>(jsonString);
-                }
-            }
+                    Text = c.RegisterNumber,
+                    Value = c.Id.ToString()
+                });
 
-            var vehList = listOfVehicles.Select(c => new SelectListItem()
-            {
-                Text = c.RegisterNumber,
-                Value = c.Id.ToString()
-            });
+                var autoList = listOfAutoMotives.Select(c => new SelectListItem()
+                {
+                    Text = c.Name,
+                    Value = c.Id.ToString()
+                });
 
-            var autoList = listOfAutoMotives.Select(c => new SelectListItem()
-            {
-                Text = c.Name,
-                Value = c.Id.ToString()
-            });
+                ViewBag.Vehicles = vehList;
+                ViewBag.AutoMotives = autoList;
 
-            ViewBag.Vehicles = vehList;
-            ViewBag.AutoMotives = autoList;
-
-            return View();
+                return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Index(ClientCreateReservationDto request)
+        public async Task<IActionResult> BookService(ClientCreateReservationDto request)
         {
             if (ModelState.IsValid)
             {
@@ -81,12 +82,11 @@ namespace VehicleRegister.Client.Controllers
 
                     if (response.IsSuccessStatusCode)
                     {
-                        return RedirectToAction("Index");
+                        return RedirectToAction("Index", "ServiceHistory");
                     }
                 }
             }
-            return View();
+            return RedirectToAction("BookService");
         }
-
     }
 }

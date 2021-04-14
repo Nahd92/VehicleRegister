@@ -66,9 +66,15 @@ namespace VehicleRegister.Business.Service
                 AutoMotiveRepairId = reservation.AutoMotiveRepairId,
             });
 
-            if (await _repo.ServiceRepo.DeleteReservation(reservation))
-                  return true;
+            var deleted = await _repo.ServiceRepo.DeleteReservation(reservation);
 
+            if (deleted)
+            {
+                var vehicle = await _repo.VehicleRepo.GetVehicleById(reservation.VehicleId);
+                vehicle.IsServiceBooked = false;
+                await _repo.VehicleRepo.UpdateVehicle(vehicle);
+                return true;
+            }
             return false;
         }
 

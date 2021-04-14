@@ -84,7 +84,7 @@ namespace VehicleRegister.VehicleAPI.Controllers
                     roles.Add(claim);
                 };
 
-                var accessToken = GenerateAccessToken(claims);
+                var accessToken = _service.authService.GenerateAccessToken(claims);
 
 
                 var loginModel = new LoginResponse
@@ -101,22 +101,7 @@ namespace VehicleRegister.VehicleAPI.Controllers
                 return Unauthorized();
             }
         }
-        private string GenerateAccessToken(IEnumerable<Claim> claims)
-        {
-            var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(AppSettings.SecretKey));
-            var signInCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
-
-            var tokenOptions = new JwtSecurityToken(
-              issuer: AppSettings.HostName,
-              audience: AppSettings.HostName,
-              claims: claims,
-              expires: DateTime.Now.AddHours(1),
-              signingCredentials: signInCredentials
-              );
-
-            var tokenString = new JwtSecurityTokenHandler().WriteToken(tokenOptions);
-            return tokenString;
-        }
+       
 
     }
 }
