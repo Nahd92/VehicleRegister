@@ -72,34 +72,19 @@ namespace VehicleRegister.Business.Service
             var vehicle = await _repo.VehicleRepo.GetAllVehicles();
             var newList = new List<IVehicle>();
 
-            if (vehicle.Any(x => x.RegisterNumber == keyword))
+            foreach (var item in vehicle.Where(y => y.RegisterNumber.ToUpper() == keyword.ToUpper()))
             {
-                foreach (var item in vehicle.Where(y => y.RegisterNumber == keyword))
-                {
-                    newList.Add(item);
-                }
+                newList.Add(item);
             }
 
-            if (vehicle.Any(x => x.Brand == keyword))
+            foreach (var item in vehicle.Where(y => y.Brand.ToUpper() == keyword.ToUpper()))
             {
-                foreach (var item in vehicle.Where(y => y.Brand == keyword))
-                {
-                    if (!newList.Any(x => x.Id == item.Id))
-                    {
-                        newList.Add(item);
-                    }
-                }
+                newList.Add(item);
             }
 
-            if (vehicle.Any(x => x.Model == keyword))
+            foreach (var item in vehicle.Where(x => x.Model.ToUpper() == keyword.ToUpper()))
             {
-                foreach (var item in vehicle.Where(x => x.Model == keyword))
-                {
-                    if (!newList.Any(x => x.Id == item.Id))
-                    {
-                        newList.Add(item);
-                    }
-                }
+                newList.Add(item);
             }
 
             if (newList == null)
