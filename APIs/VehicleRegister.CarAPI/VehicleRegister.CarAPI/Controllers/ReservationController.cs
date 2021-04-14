@@ -22,7 +22,6 @@ namespace VehicleRegister.CarAPI.Controllers
 
 
         [HttpGet]
-        [Authorize]
         [Route(RoutesAPI.Reservations.GetServiceReservation)]
         public async Task<IActionResult> GetServiceReservation(int id)
         {
@@ -33,6 +32,18 @@ namespace VehicleRegister.CarAPI.Controllers
            return Ok(reservation);
         }
 
+
+        [HttpGet]
+        [Authorize]
+        [Route(RoutesAPI.Reservations.GetAllHistoryServices)]
+        public async Task<IActionResult> GetHistoryOfAllServices()
+        {
+            var serviceHistory = await _serviceWrapper.ServiceReservations.GetAllServiceHistories();
+
+           if (serviceHistory == null) return NotFound("No reservation exist with that Id");
+
+            return Ok(serviceHistory);
+        }
 
 
 

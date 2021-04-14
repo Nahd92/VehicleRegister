@@ -10,6 +10,7 @@ namespace VehicleRegister.Business.Wrapper
     {
         private IVehicleRepository _vehicle;
         private IServiceReservationsRepository _service;
+        private IVehicleServiceHistoryRepository _VehicleHistoryService;
         private IAutoMotiveRepairRepository _autoMotive;
         private readonly VehicleRegisterContext _entityDb;
         private readonly ILoggerManager _logger;
@@ -50,6 +51,17 @@ namespace VehicleRegister.Business.Wrapper
             }
         }
 
+        public IVehicleServiceHistoryRepository VehicleHistoryRepo 
+        {
+            get
+            {
+                if (_VehicleHistoryService == null)
+                {
+                    _VehicleHistoryService = new DatabaseRepository(_entityDb, _logger);
+                }
+                return _VehicleHistoryService;
+            }
+        }
 
         public RepositoryWrapper(VehicleRegisterContext entityDb, ILoggerManager logger)
         {

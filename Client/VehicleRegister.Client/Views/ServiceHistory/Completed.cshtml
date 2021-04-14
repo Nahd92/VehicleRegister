@@ -1,0 +1,50 @@
+﻿@model VehicleRegister.Domain.DTO.ReservationsDTO.Response.VehicleServiceCompletedDto
+
+@{
+    ViewData["Title"] = "Completed";
+}
+
+<h1>Completed</h1>
+
+<h3>Are you sure this service is completed?</h3>
+<div>
+    <h4>VehicleServiceCompletedDto</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IsCompleted)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IsCompleted)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.VehiclesRegisterNumber)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.VehiclesRegisterNumber)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AutoMotivesName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AutoMotivesName)
+        </dd>
+    </dl>
+    
+    <form asp-action="Completed">
+        <input type="submit" value="Completed" class="btn btn-danger" />   |  
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

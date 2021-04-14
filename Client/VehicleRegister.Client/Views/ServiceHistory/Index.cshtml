@@ -9,11 +9,24 @@
 
     var auth = SessionHelper.GetObjectFromJson<LoginModel>(Context.Session, "identity");
 
+
 }
 
 
 <h1>Service History</h1>
 
+
+@if (auth != null)
+{
+    if (auth.IsLoggedIn && auth.IsAdmin)
+    {
+        <p>
+            @Html.ActionLink("Clear history", "ClearServiceHistory")
+        </p>
+    }
+}
+
+<h3>OnGoing Services</h3>
 
 
 <table class="table">
@@ -31,39 +44,95 @@
             <th>
                 @Html.DisplayNameFor(model => model.AutoMotivesName)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsCompleted)
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
+
         @foreach (var item in Model)
         {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.VehiclesRegisterNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AutoMotivesName)
-            </td>
-
-            @if (auth != null)
+            if (item.Id != 0)
             {
-                if (auth.IsAdmin)
-                {
+                <tr>
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                        @Html.DisplayFor(modelItem => item.Id)
                     </td>
-                }
-            }
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.VehiclesRegisterNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AutoMotivesName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsCompleted)
+                    </td>
 
-        </tr>
+                    @if (auth != null)
+                    {
+                        if (auth.IsAdmin)
+                        {
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                                @Html.ActionLink("Mark as Completed", "Completed", new { id=item.Id }) |
+                            </td>
+                        }
+                    }
+
+                </tr>
+            }
         }
     </tbody>
 </table>
+
+
+
+<br />
+
+<h3>Finished Services</h3>
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.History.Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.History.ServiceDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.History.VehicleId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.History.AutoMotiveRepairId)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Select(x => x.History))
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ServiceDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.VehicleId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AutoMotiveRepairId)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+

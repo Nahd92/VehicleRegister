@@ -135,7 +135,7 @@ namespace VehicleRegister.Client.Controllers
             using (var _httpClient = new HttpClient())
             {                    
                 var requestUrl = VehicleRoute.GetVehicle + id;
-                var response = await _httpClient.GetAsync(requestUrl );
+                var response = await _httpClient.GetAsync(requestUrl);
                 if (response.IsSuccessStatusCode)
                 {
                     var jsonString = response.Content.ReadAsStringAsync().Result;

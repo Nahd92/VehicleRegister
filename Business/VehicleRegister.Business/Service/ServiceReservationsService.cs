@@ -59,6 +59,13 @@ namespace VehicleRegister.Business.Service
 
             if (reservation == null) return false;
 
+            await _repo.VehicleHistoryRepo.AddOldServiceToHistory(new VehicleServiceHistory
+            {
+                ServiceDate = reservation.Date,
+                VehicleId = reservation.VehicleId,
+                AutoMotiveRepairId = reservation.AutoMotiveRepairId,
+            });
+
             if (await _repo.ServiceRepo.DeleteReservation(reservation))
                   return true;
 
@@ -76,7 +83,9 @@ namespace VehicleRegister.Business.Service
             {
                 oldReservations.Add(reserv);
             }
-           
+
+            await AddOldServicesToServiceHistory(oldReservations);
+
             var deleted = await _repo.ServiceRepo.DeleteAllReservations(oldReservations);
 
             if (deleted)
@@ -85,6 +94,25 @@ namespace VehicleRegister.Business.Service
                 return true;
             }
             return false;
+        }
+
+        private async Task AddOldServicesToServiceHistory(List<IServiceReservations> oldReservations)
+        {
+            if (oldReservations.Count() != 0)
+            {
+                var serviceHistory = new List<IVehicleServiceHistory>();
+                foreach (var service in oldReservations)
+                {
+                    serviceHistory.Add(new VehicleServiceHistory
+                    {
+                        ServiceDate = service.Date,
+                        AutoMotiveRepairId = service.AutoMotiveRepairId,
+                        VehicleId = service.VehicleId
+                    });
+                }
+
+                await _repo.VehicleHistoryRepo.AddOldServicesToHistory(serviceHistory);
+            }
         }
 
         private async Task SetDeleteReservations(List<IServiceReservations> oldReservations)
@@ -136,10 +164,15 @@ namespace VehicleRegister.Business.Service
                     VehicleId = reservation.VehicleId,
                     AutoMotiveName = autoMotiveId.Name,
                     Date = reservation.Date,
-                    RegisterNumber = vehicle.RegisterNumber
+                    IsCompleted = reservation.IsCompleted,
+                    RegisterNumber = vehicle.RegisterNumber,
+                    
                 };
             }
             return null;
         }
+
+        public async Task<IEnumerable<IVehicleServiceHistory>> GetAllServiceHistories() => await _repo.VehicleHistoryRepo.VehicleHistory();
+
     }
 }

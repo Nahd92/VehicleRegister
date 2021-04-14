@@ -13,7 +13,9 @@ using VehicleRegister.Domain.Models;
 
 namespace VehicleRegister.Repository
 {
-    public class DatabaseRepository : SpecialLoggerExtensions, IVehicleRepository, IAutoMotiveRepairRepository, IServiceReservationsRepository
+    public class DatabaseRepository : SpecialLoggerExtensions, 
+                        IVehicleRepository, IAutoMotiveRepairRepository, IServiceReservationsRepository,
+                        IVehicleServiceHistoryRepository
     {
         private readonly VehicleRegisterContext _ctx;
 
@@ -29,8 +31,10 @@ namespace VehicleRegister.Repository
             try
             {
                 _ctx.Add(repair);
-                LogSuccessInfo(methodName);
-                return await _ctx.SaveChangesAsync() > 0;
+                if (await _ctx.SaveChangesAsync() > 0)
+                    LogSuccessInfo(methodName);
+
+                return true;
             }
             catch (Exception ex)
             {
@@ -45,8 +49,10 @@ namespace VehicleRegister.Repository
             try
             {
                 _ctx.Add(reservation);
-                LogSuccessInfo(methodName);
-                return await _ctx.SaveChangesAsync() > 0;
+                if (await _ctx.SaveChangesAsync() > 0)
+                    LogSuccessInfo(methodName);
+
+                return true;
             }
             catch (Exception ex)
             {
@@ -61,8 +67,11 @@ namespace VehicleRegister.Repository
             try
             {
                 _ctx.Add(vehicle);
-                LogSuccessInfo(methodName);
-                return await _ctx.SaveChangesAsync() > 0;
+
+                if (await _ctx.SaveChangesAsync() > 0)
+                    LogSuccessInfo(methodName);
+
+                return true;
             }
             catch (Exception ex)
             {
@@ -78,8 +87,10 @@ namespace VehicleRegister.Repository
             try
             {
                 _ctx.RemoveRange(reservations);
-                LogSuccessInfo(methodName);
-                return await _ctx.SaveChangesAsync() > 0;   
+                if (await _ctx.SaveChangesAsync() > 0)
+                    LogSuccessInfo(methodName);
+
+                return true;
             }
             catch (Exception ex)
             {
@@ -94,8 +105,10 @@ namespace VehicleRegister.Repository
             try
             {
                 _ctx.Remove(reservations);
-                LogSuccessInfo(methodName);
-                return await _ctx.SaveChangesAsync() > 0;
+                if (await _ctx.SaveChangesAsync() > 0)
+                    LogSuccessInfo(methodName);
+
+                return true;
             }
             catch (Exception ex)
             {
@@ -110,8 +123,10 @@ namespace VehicleRegister.Repository
             try
             {
                 _ctx.Remove(vehicle);
-                LogSuccessInfo(methodName);
-                return await _ctx.SaveChangesAsync() > 0;
+                if (await _ctx.SaveChangesAsync() > 0)
+                    LogSuccessInfo(methodName);
+
+                return true;
             }
             catch (Exception ex)
             {
@@ -204,8 +219,31 @@ namespace VehicleRegister.Repository
                 ErrorLog(ex, methodName);
                 return null;
             }
-
         }
+
+
+        public async Task<IEnumerable<IVehicleServiceHistory>> VehicleHistory()
+        {
+            var methodName = GetActualAsyncMethodName();
+            try
+            {
+                var history = new List<IVehicleServiceHistory>();
+                foreach (var item in await _ctx.VehicleServiceHistory.ToListAsync())
+                {
+                    history.Add(item);
+                }
+                LogGettingInfo(methodName);
+                return history;
+            }
+            catch (Exception ex)
+            {
+                ErrorLog(ex, methodName);
+                return null;
+            }
+        }
+
+
+
 
         public async Task<IAutoMotiveRepair> GetAutoMotive(int id)
         {
@@ -243,7 +281,8 @@ namespace VehicleRegister.Repository
             try
             {
                 var reservation = await _ctx.ServiceReservations.Where(x => x.Id == id).SingleAsync();
-                LogGettingInfo(methodName);
+                 LogSuccessInfo(methodName);
+
                 return reservation;
             }
             catch (Exception ex)
@@ -288,8 +327,10 @@ namespace VehicleRegister.Repository
             try
             {
                 _ctx.Update(repair);
-                LogSuccessInfo(methodName);
-                return await _ctx.SaveChangesAsync() > 0;
+                if (await _ctx.SaveChangesAsync() > 0)
+                    LogSuccessInfo(methodName);
+
+                return true;
             }
             catch (Exception ex)
             {
@@ -304,8 +345,10 @@ namespace VehicleRegister.Repository
             try
             {
                 _ctx.Update(request);
-                LogSuccessInfo(methodName);
-                return await _ctx.SaveChangesAsync() > 0;
+                if (await _ctx.SaveChangesAsync() > 0)
+                    LogSuccessInfo(methodName);
+
+                return true;
             }
             catch (Exception ex)
             {
@@ -320,8 +363,10 @@ namespace VehicleRegister.Repository
             try
             {
                 _ctx.Update(vehicle);
-                LogSuccessInfo(methodName);
-                return await _ctx.SaveChangesAsync() > 0;                
+                if (await _ctx.SaveChangesAsync() > 0)
+                    LogSuccessInfo(methodName);
+
+                return true;
             }
             catch (Exception ex)
             {
@@ -336,14 +381,52 @@ namespace VehicleRegister.Repository
             try
             {
                 _ctx.Remove(repair);
-                LogGettingInfo(methodName);
-                return await _ctx.SaveChangesAsync() > 0;
+                if (await _ctx.SaveChangesAsync() > 0)
+                    LogSuccessInfo(methodName);
+
+                return true;
             }
             catch (Exception ex)
             {
                 ErrorLog(ex, methodName);
-                throw;
+                return false;
             }
         }
+
+        public async Task<bool> AddOldServiceToHistory(IVehicleServiceHistory oldService)
+        {
+            var methodName = GetActualAsyncMethodName();
+            try
+            {               
+                _ctx.Add(oldService);
+                if (await _ctx.SaveChangesAsync() > 0)
+                    LogSuccessInfo(methodName);
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                ErrorLog(ex, methodName);
+                return false;
+            }
+        }
+        public async Task<bool> AddOldServicesToHistory(List<IVehicleServiceHistory> oldServices)
+        {
+            var methodName = GetActualAsyncMethodName();
+            try
+            {
+                _ctx.AddRange(oldServices);
+                if (await _ctx.SaveChangesAsync() > 0)
+                    LogSuccessInfo(methodName);
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                ErrorLog(ex, methodName);
+                return false;
+            }
+        }
+
     }
 }

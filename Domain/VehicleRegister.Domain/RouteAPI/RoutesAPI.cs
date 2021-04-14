@@ -29,6 +29,7 @@ namespace VehicleRegister.Domain.RouteAPI
         }
         public class Reservations
         {
+            public const string GetAllHistoryServices = Base + "ServiceHistory";
             public const string GetAllServiceReservations = Base + "Reservations";
             public const string GetServiceReservation = Base + "Reservation/{id}";
             public const string BookServiceReservation = Base + "Reservation";

@@ -42,6 +42,11 @@ namespace VehicleRegister.Client.Helpers
     public static class ServiceHistory
     {
         public static string Reservations = AppSettings.HostName + "api/Reservations";
+        public static string DeleteReservations = AppSettings.HostName + "api/Reservations";
+        public static string DeleteReservation = AppSettings.HostName + "api/Reservation/";
+        public static string ServiceHistories = AppSettings.HostName + "api/ServiceHistory";
+
+
     }
 
 

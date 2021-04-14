@@ -8,6 +8,7 @@ namespace VehicleRegister.Domain.DTO.ReservationsDTO.Response
     { 
         public int Id { get; set; }
         public string RegisterNumber { get; set; }
+        public bool IsCompleted { get; set; }
         public int VehicleId { get; set; }
         public string AutoMotiveName { get; set; }
         public DateTime Date { get; set; }

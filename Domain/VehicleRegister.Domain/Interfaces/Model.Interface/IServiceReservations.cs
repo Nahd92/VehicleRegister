@@ -9,6 +9,7 @@ namespace VehicleRegister.Domain.Interfaces.Model.Interface
     {
         int Id { get; set; }
         DateTime Date { get; set; }
+        bool IsCompleted { get; set; }
          int VehicleId { get; set; }
          Vehicle Vehicle { get; set; }
          int AutoMotiveRepairId { get; set; }

@@ -1,16 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using VehicleRegister.Domain.Interfaces.Model.Interface;
 
 namespace VehicleRegister.Domain.Models
 {
-    public class VehicleServiceHistory
+    public class VehicleServiceHistory : IVehicleServiceHistory
     {
         public int Id { get; set; }
-        public DateTime Date { get; set; }
+        public DateTime ServiceDate { get; set; }
     
-        public int VehicleMiles { get; set; }
-
         public int VehicleId { get; set; }
         public Vehicle Vehicle { get; set; }
         
