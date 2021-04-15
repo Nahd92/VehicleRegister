@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using VehicleRegister.Domain.DTO.ReservationsDTO.Request;
 using VehicleRegister.Domain.DTO.ReservationsDTO.Response;
+using VehicleRegister.Domain.Interfaces.Extensions.Interface;
 using VehicleRegister.Domain.Interfaces.Model.Interface;
 using VehicleRegister.Domain.Interfaces.Repository.Interface;
 using VehicleRegister.Domain.Interfaces.Service.Interface;
@@ -16,66 +17,92 @@ namespace VehicleRegister.Business.Service
     {
 
         private readonly IRepositoryWrapper _repo;
-        public ServiceReservationsService(IRepositoryWrapper repo)
+        private readonly ISpecialLoggerExtension _logger;
+        public ServiceReservationsService(IRepositoryWrapper repo, ISpecialLoggerExtension logger)
         {
             _repo = repo;
+            _logger = logger;
         }
 
         public async Task<bool> BookService(CreateReservationRequest request)
         {
-            var vehicle = await _repo.VehicleRepo.GetVehicleById(request.VehicleId);
-
-            if (vehicle == null) return false;
-            
-            var autoMotive = await _repo.RepairRepo.GetAutoMotive(request.AutoMotiveRepairId);
-
-            if (autoMotive == null) return false;
-
-
-            var reservation = new ServiceReservations
+            var method = _logger.GetActualAsyncMethodName();
+            try
             {
-                VehicleId = vehicle.Id,
-                AutoMotiveRepairId = autoMotive.Id,
-                Date = request.Date
-            };
-    
-          var created = await _repo.ServiceRepo.CreateReservations(reservation);
+                var vehicle = await _repo.VehicleRepo.GetVehicleById(request.VehicleId);
+                var autoMotive = await _repo.RepairRepo.GetAutoMotive(request.AutoMotiveRepairId);
+                
+                if (vehicle != null && autoMotive != null)
+                {
+                    _logger.LogInfo(this.GetType().Name, method, $"{vehicle} was fetched from database");
+                    _logger.LogInfo(this.GetType().Name, method, $"{autoMotive} was fetched from database");
 
-              if (created)
-              {
-                 vehicle.ServiceDate = request.Date;
-                 vehicle.IsServiceBooked = true;
-                    if (await _repo.VehicleRepo.UpdateVehicle(vehicle))
+                    var reservation = new ServiceReservations
                     {
-                       return true;
-                    }  
-              }
-            return false;     
+                        VehicleId = vehicle.Id,
+                        AutoMotiveRepairId = autoMotive.Id,
+                        Date = request.Date
+                    };
+
+                    var created = await _repo.ServiceRepo.CreateReservations(reservation);
+                    if (created)
+                    {
+                        _logger.LogInfo(this.GetType().Name, method, "Created Vehicle returns true");
+                        vehicle.ServiceDate = request.Date;
+                        vehicle.IsServiceBooked = true;
+                        if (await _repo.VehicleRepo.UpdateVehicle(vehicle))
+                        {
+                            _logger.LogInfo(this.GetType().Name, method, "Vehicle is updated");
+                            return true;
+                        }
+                    }
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                _logger.ErrorLog(this.GetType().Name, ex, method);
+                return false;
+            }            
         }
 
         public async Task<bool> DeleteReservation(int id)
         {
-            var reservation = await _repo.ServiceRepo.GetReservation(id);
-
-            if (reservation == null) return false;
-
-            await _repo.VehicleHistoryRepo.AddOldServiceToHistory(new VehicleServiceHistory
+            var method = _logger.GetActualAsyncMethodName();
+            try
             {
-                ServiceDate = reservation.Date,
-                VehicleId = reservation.VehicleId,
-                AutoMotiveRepairId = reservation.AutoMotiveRepairId,
-            });
+                var reservation = await _repo.ServiceRepo.GetReservation(id);
 
-            var deleted = await _repo.ServiceRepo.DeleteReservation(reservation);
+                if (reservation != null)
+                {
+                    _logger.LogInfo(this.GetType().Name, method, $"{reservation} was fetched from database if exist");
+                   var addedToServiceHistory = await _repo.VehicleHistoryRepo.AddOldServiceToHistory(new VehicleServiceHistory
+                    {
+                        ServiceDate = reservation.Date,
+                        VehicleId = reservation.VehicleId,
+                        AutoMotiveRepairId = reservation.AutoMotiveRepairId,
+                    });
 
-            if (deleted)
-            {
-                var vehicle = await _repo.VehicleRepo.GetVehicleById(reservation.VehicleId);
-                vehicle.IsServiceBooked = false;
-                await _repo.VehicleRepo.UpdateVehicle(vehicle);
-                return true;
+                    if (addedToServiceHistory)
+                    {
+                        var deleted = await _repo.ServiceRepo.DeleteReservation(reservation);
+
+                        if (deleted)
+                        {
+                            var vehicle = await _repo.VehicleRepo.GetVehicleById(reservation.VehicleId);
+                            vehicle.IsServiceBooked = false;
+                            await _repo.VehicleRepo.UpdateVehicle(vehicle);
+                            return true;
+                        }
+                    }                          
+                }
+                return false;
             }
-            return false;
+            catch (Exception ex)
+            {
+                _logger.LogError(this.GetType().Name, ex, method);
+                return false;
+            }
         }
 
         public async Task<bool> DeleteReservations()

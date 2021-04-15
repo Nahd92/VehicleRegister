@@ -6,7 +6,9 @@ using Microsoft.Extensions.Options;
 using VehicleRegister.Business.Service;
 using VehicleRegister.Business.Wrapper;
 using VehicleRegister.Domain.AppSettingsModels;
+using VehicleRegister.Domain.Extensions;
 using VehicleRegister.Domain.Interfaces.Auth.Interface;
+using VehicleRegister.Domain.Interfaces.Extensions.Interface;
 using VehicleRegister.Domain.Interfaces.Logger.Interface;
 using VehicleRegister.Domain.Interfaces.Model.Interface;
 using VehicleRegister.Domain.Interfaces.Repository.Interface;
@@ -30,6 +32,7 @@ namespace VehicleRegister.CarAPI.Helper
             service.AddScoped<IServiceWrapper, ServiceWrapper>();
 
             service.AddScoped<ILoggerManager, LoggerManager>();
+            service.AddScoped<ISpecialLoggerExtension, SpecialLoggerExtensions>();
             service.AddScoped<AuthenticationService>();
 
             service.AddScoped<IVehicleRepository, DatabaseRepository>();

@@ -7,7 +7,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using VehicleRegister.Business.Service;
 using VehicleRegister.Domain.DTO.VehicleDTO.Request;
+using VehicleRegister.Domain.Extensions;
 using VehicleRegister.Domain.Factory;
+using VehicleRegister.Domain.Interfaces.Extensions.Interface;
+using VehicleRegister.Domain.Interfaces.Logger.Interface;
 using VehicleRegister.Domain.Interfaces.Model.Interface;
 using VehicleRegister.Domain.Interfaces.Repository.Interface;
 using VehicleRegister.Domain.Interfaces.Service.Interface;
@@ -20,11 +23,13 @@ namespace VehicleRegister.Testing.Services
     public class VehicleServiceTest
     {
         private readonly Mock<IRepositoryWrapper> mockRepository;
-        private VehicleService vehicleService;
-        public VehicleServiceTest()
+        private readonly VehicleService vehicleService;
+        private readonly ISpecialLoggerExtension _logger;
+        public VehicleServiceTest(ISpecialLoggerExtension logger)
         {
             mockRepository = new Mock<IRepositoryWrapper>();
-            vehicleService = new VehicleService(mockRepository.Object);
+            vehicleService = new VehicleService(mockRepository.Object, logger);
+            _logger = logger;
         }
 
         private IEnumerable<IVehicle> cars = new List<Vehicle>()

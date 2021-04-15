@@ -7,6 +7,7 @@ using System.Text;
 using VehicleRegister.Business.Service;
 using VehicleRegister.Domain.AppSettingsModels;
 using VehicleRegister.Domain.Interfaces.Auth.Interface;
+using VehicleRegister.Domain.Interfaces.Extensions.Interface;
 using VehicleRegister.Domain.Interfaces.Logger.Interface;
 using VehicleRegister.Domain.Interfaces.Repository.Interface;
 using VehicleRegister.Domain.Interfaces.Service.Interface;
@@ -21,7 +22,7 @@ namespace VehicleRegister.Business.Wrapper
         private IServiceReservationService _service;
         private IAuthenticationService _authService;
         private UserManager<IdentityUser> manager;
-        private ILoggerManager _logger;
+        private ISpecialLoggerExtension _logger;
 
 
         public IVehicleService Vehicle
@@ -30,7 +31,7 @@ namespace VehicleRegister.Business.Wrapper
             {
                 if (_vehicle == null)
                 {
-                    _vehicle = new VehicleService(_wrapper);
+                    _vehicle = new VehicleService(_wrapper, _logger);
                 }
                 return _vehicle;
             }
@@ -72,7 +73,7 @@ namespace VehicleRegister.Business.Wrapper
             }
         }
 
-        public ServiceWrapper(IRepositoryWrapper wrapper, UserManager<IdentityUser> manager, ILoggerManager logger)
+        public ServiceWrapper(IRepositoryWrapper wrapper, UserManager<IdentityUser> manager, ISpecialLoggerExtension logger)
         {
             _wrapper = wrapper;
             this.manager = manager;

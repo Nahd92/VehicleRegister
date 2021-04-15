@@ -12,28 +12,32 @@ using VehicleRegister.Domain.DTO.UserDTO.Request;
 using VehicleRegister.Domain.DTO.UserDTO.Response;
 using VehicleRegister.Domain.Extensions;
 using VehicleRegister.Domain.Interfaces.Auth.Interface;
+using VehicleRegister.Domain.Interfaces.Extensions.Interface;
 using VehicleRegister.Domain.Interfaces.Logger.Interface;
 
 namespace VehicleRegister.Business.Service
 {
-    public class AuthenticationService : SpecialLoggerExtensions, IAuthenticationService
+    public class AuthenticationService : IAuthenticationService
     {
         private readonly UserManager<IdentityUser> _userManager;
+        private readonly ISpecialLoggerExtension _logger;
 
-        public AuthenticationService(UserManager<IdentityUser> userManager, ILoggerManager logger) : base(logger)
+
+        public AuthenticationService(UserManager<IdentityUser> userManager, ISpecialLoggerExtension logger)
         {
             _userManager = userManager;
+            _logger = logger;
         }
 
 
         public async Task<bool> RegisterUser(RegisterUserRequest request)
         {
-            var methodname = GetActualAsyncMethodName();
+            var methodname = _logger.GetActualAsyncMethodName();
             var UserNameExist = await UserNameAlreadyExist(request);
 
             if (UserNameExist)
             {
-                LogInfo(methodname, "User already exist!");
+                _logger.LogInfo(this.GetType().Name, methodname, "User already exist!");
                 return false;
             }
                 
