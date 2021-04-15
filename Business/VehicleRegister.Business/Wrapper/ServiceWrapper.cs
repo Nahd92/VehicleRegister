@@ -55,7 +55,7 @@ namespace VehicleRegister.Business.Wrapper
             {
                 if (_service == null)
                 {
-                    _service = new ServiceReservationsService(_wrapper);
+                    _service = new ServiceReservationsService(_wrapper, _logger);
                 }
                 return _service;
             }
