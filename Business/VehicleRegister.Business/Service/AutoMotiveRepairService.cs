@@ -36,14 +36,13 @@ namespace VehicleRegister.Business.Service
                     _logger.LogInfo(GetType().Name, method, $"{autoMotives.Count()} fetched from database");
                     return autoMotives;
                 }
-                return null;
             }
             catch (Exception ex)
             {
                 _logger.ErrorLog(GetType().Name, ex, method);
                 return null;
             }
-          
+            return null;
         }
 
         public async Task<IAutoMotiveRepair> GetAutoMotiveById(int id)
@@ -57,14 +56,13 @@ namespace VehicleRegister.Business.Service
                     _logger.LogInfo(GetType().Name, method, "AutoMotive as fetched");
                     return automotive;
                 }
-                return null;
             }
             catch (Exception ex)
             {
                 _logger.LogError(GetType().Name, ex, method);
                 return null;
             }
-  
+            return null;
         }
 
         public async Task<bool> AddNewAutoMotiveToDatabase(AddAutoMotiveToListRequest request)
@@ -94,15 +92,12 @@ namespace VehicleRegister.Business.Service
                     _logger.LogInfo(GetType().Name, method, "Created was successful");
                     return true;
                 }
-                return false;
             }
             catch (Exception ex)
             {
                 _logger.ErrorLog(GetType().Name, ex, method);
-                return false;
             }
-
-          
+            return false;
         }
 
         public async Task<UpdatedAutoMotiveResponse> UpdateAutoMotive(UpdateAutoMotiveDto request)
@@ -133,13 +128,12 @@ namespace VehicleRegister.Business.Service
                         existingAutoMotive.PhoneNumber, existingAutoMotive.Website, existingAutoMotive.OrganisationNumber);
                   }
                 }
-                return null;
             }
             catch (Exception ex)
             {
                 _logger.LogError(GetType().Name, ex, method);
-                return null;
-            }              
+            }
+            return null;
         }
 
         public async Task<string> CreateOrganisationNumber()
@@ -174,13 +168,13 @@ namespace VehicleRegister.Business.Service
                         return true;
                     }
                 }
-                return false;
             }
             catch (Exception ex)
             {
                 _logger.ErrorLog(GetType().Name, ex, method);
                 return false;
             }
+            return false;
         }
 
         public async Task<bool> DeleteAutoMotive(int id)
@@ -200,14 +194,12 @@ namespace VehicleRegister.Business.Service
                         return true;
                     }
                 }
-                return false;  
             }
             catch (Exception ex)
             {
                 _logger.LogError(GetType().Name, ex, method);
-                return false;
             }
-          
+            return false;
         }
     }
 }

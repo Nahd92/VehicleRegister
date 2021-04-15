@@ -12947,3 +12947,155 @@
 2021-04-15 15:06:55.6066 Trace Opening C:\Users\Admin\source\repos\Nahd92\VehicleRegister\Logs/2021-04-15_logfile.txt with allowFileSharedWriting=False
 2021-04-15 15:06:56.1772 Trace Opening C:\Users\Admin\source\repos\Nahd92\VehicleRegister\Logs/2021-04-15_logfile.txt with allowFileSharedWriting=False
 2021-04-15 15:06:56.1772 Trace Opening C:\Users\Admin\source\repos\Nahd92\VehicleRegister\Logs/2021-04-15_logfile.txt with allowFileSharedWriting=False
+2021-04-15 16:31:24.7015 Debug ScanAssembly('NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c')
+2021-04-15 16:31:25.3754 Debug Found assembly location directory: 'C:\Users\Admin\source\repos\Nahd92\VehicleRegister\APIs\VehicleRegister.CarAPI\VehicleRegister.CarAPI\bin\Debug\netcoreapp3.1' (NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c)
+2021-04-15 16:31:25.3754 Debug Auto loading based on NLog-Assembly found location: C:\Users\Admin\source\repos\Nahd92\VehicleRegister\APIs\VehicleRegister.CarAPI\VehicleRegister.CarAPI\bin\Debug\netcoreapp3.1
+2021-04-15 16:31:25.3754 Debug Search for auto loading files in location: C:\Users\Admin\source\repos\Nahd92\VehicleRegister\APIs\VehicleRegister.CarAPI\VehicleRegister.CarAPI\bin\Debug\netcoreapp3.1
+2021-04-15 16:31:25.3867 Debug Start auto loading, location: C:\Users\Admin\source\repos\Nahd92\VehicleRegister\APIs\VehicleRegister.CarAPI\VehicleRegister.CarAPI\bin\Debug\netcoreapp3.1
+2021-04-15 16:31:25.3867 Info Auto loading assembly file: C:\Users\Admin\source\repos\Nahd92\VehicleRegister\APIs\VehicleRegister.CarAPI\VehicleRegister.CarAPI\bin\Debug\netcoreapp3.1\NLog.Extensions.Logging.dll
+2021-04-15 16:31:25.3867 Info Loading assembly file: C:\Users\Admin\source\repos\Nahd92\VehicleRegister\APIs\VehicleRegister.CarAPI\VehicleRegister.CarAPI\bin\Debug\netcoreapp3.1\NLog.Extensions.Logging.dll
+2021-04-15 16:31:25.4787 Info NLog.Extensions.Logging, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 1.7.2.1548. Product version: 1.7.2+4bd1909dde91279dbdea4d1c38ff6a09de78f531. GlobalAssemblyCache: False
+2021-04-15 16:31:25.4787 Debug ScanAssembly('NLog.Extensions.Logging, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c')
+2021-04-15 16:31:25.4824 Info Auto loading assembly file: C:\Users\Admin\source\repos\Nahd92\VehicleRegister\APIs\VehicleRegister.CarAPI\VehicleRegister.CarAPI\bin\Debug\netcoreapp3.1\NLog.Extensions.Logging.dll succeeded!
+2021-04-15 16:31:25.4824 Trace Assembly 'Microsoft.Extensions.Logging, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60' will be hidden in callsite stacktrace
+2021-04-15 16:31:25.4824 Trace Assembly 'Microsoft.Extensions.Logging.Abstractions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60' will be hidden in callsite stacktrace
+2021-04-15 16:31:25.4824 Trace Assembly 'NLog.Extensions.Logging, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c' will be hidden in callsite stacktrace
+2021-04-15 16:31:25.4986 Debug Auto loading done
+2021-04-15 16:31:25.4986 Info Message Template Auto Format enabled
+2021-04-15 16:31:25.5342 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2021-04-15 16:31:25.5342 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2021-04-15 16:31:25.5542 Debug Setting 'NLog.LayoutRenderers.Wrappers.UppercaseLayoutRendererWrapper.uppercase' to 'true'
+2021-04-15 16:31:25.5649 Trace Wrapping NLog.LayoutRenderers.LevelLayoutRenderer with NLog.LayoutRenderers.Wrappers.UppercaseLayoutRendererWrapper
+2021-04-15 16:31:25.5649 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2021-04-15 16:31:25.5649 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2021-04-15 16:31:25.5649 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2021-04-15 16:31:25.5649 Trace Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2021-04-15 16:31:25.5649 Trace  Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2021-04-15 16:31:25.5734 Trace  Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2021-04-15 16:31:25.5734 Trace   Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2021-04-15 16:31:25.5734 Trace   Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2021-04-15 16:31:25.5734 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2021-04-15 16:31:25.5734 Trace Scanning LoggerNameLayoutRenderer 'Layout Renderer: ${logger}'
+2021-04-15 16:31:25.5734 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2021-04-15 16:31:25.5734 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2021-04-15 16:31:25.6047 Debug Setting 'NLog.Targets.FileTarget.name' to 'logfile'
+2021-04-15 16:31:25.6125 Debug Setting 'NLog.Targets.FileTarget.fileName' to 'C:\Users\Admin\source\repos\Nahd92\VehicleRegister\Logs/${shortdate}_logfile.txt'
+2021-04-15 16:31:25.6125 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2021-04-15 16:31:25.6125 Trace Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2021-04-15 16:31:25.6125 Debug Setting 'NLog.Targets.FileTarget.layout' to '${longdate} ${logger} ${level:uppercase=true} ${message}'
+2021-04-15 16:31:25.6213 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2021-04-15 16:31:25.6213 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2021-04-15 16:31:25.6213 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2021-04-15 16:31:25.6213 Trace Scanning LoggerNameLayoutRenderer 'Layout Renderer: ${logger}'
+2021-04-15 16:31:25.6213 Debug Setting 'NLog.LayoutRenderers.Wrappers.UppercaseLayoutRendererWrapper.uppercase' to 'true'
+2021-04-15 16:31:25.6213 Trace Wrapping NLog.LayoutRenderers.LevelLayoutRenderer with NLog.LayoutRenderers.Wrappers.UppercaseLayoutRendererWrapper
+2021-04-15 16:31:25.6213 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2021-04-15 16:31:25.6213 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2021-04-15 16:31:25.6213 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2021-04-15 16:31:25.6213 Trace Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2021-04-15 16:31:25.6213 Trace  Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2021-04-15 16:31:25.6213 Trace  Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2021-04-15 16:31:25.6213 Trace   Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2021-04-15 16:31:25.6213 Trace   Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2021-04-15 16:31:25.6213 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2021-04-15 16:31:25.6213 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2021-04-15 16:31:25.6213 Info Adding target FileTarget(Name=logfile)
+2021-04-15 16:31:25.6213 Debug Registered target logfile: NLog.Targets.FileTarget
+2021-04-15 16:31:25.6213 Trace ParseRulesElement
+2021-04-15 16:31:25.6831 Debug Watching path 'C:\Users\Admin\source\repos\Nahd92\VehicleRegister\APIs\VehicleRegister.CarAPI\VehicleRegister.CarAPI\bin\Debug\netcoreapp3.1' filter 'NLog.config' for changes.
+2021-04-15 16:31:25.6831 Debug --- NLog configuration dump ---
+2021-04-15 16:31:25.6831 Debug Targets:
+2021-04-15 16:31:25.6831 Debug File Target[logfile]
+2021-04-15 16:31:25.6831 Debug Rules:
+2021-04-15 16:31:25.7036 Debug logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] appendTo: [ logfile ]
+2021-04-15 16:31:25.7036 Debug --- End of NLog configuration dump ---
+2021-04-15 16:31:25.7036 Trace FindReachableObject<System.Object>:
+2021-04-15 16:31:25.7036 Trace Scanning LoggingRule 'logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] appendTo: [ logfile ]'
+2021-04-15 16:31:25.7036 Trace  Scanning Property Targets 'System.Collections.Generic.List`1[NLog.Targets.Target]' System.Collections.Generic
+2021-04-15 16:31:25.7165 Trace  Scanning FileTarget 'File Target[logfile]'
+2021-04-15 16:31:25.7165 Trace   Scanning Property FileName ''C:\Users\Admin\source\repos\Nahd92\VehicleRegister\Logs/${shortdate}_logfile.txt'' NLog.Layouts
+2021-04-15 16:31:25.7165 Trace   Scanning SimpleLayout ''C:\Users\Admin\source\repos\Nahd92\VehicleRegister\Logs/${shortdate}_logfile.txt''
+2021-04-15 16:31:25.7165 Trace    Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2021-04-15 16:31:25.7165 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2021-04-15 16:31:25.7165 Trace    Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2021-04-15 16:31:25.7327 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2021-04-15 16:31:25.7327 Trace   Scanning Property Layout ''${longdate} ${logger} ${level:uppercase=true} ${message}'' NLog.Layouts
+2021-04-15 16:31:25.7327 Trace   Scanning SimpleLayout ''${longdate} ${logger} ${level:uppercase=true} ${message}''
+2021-04-15 16:31:25.7327 Trace    Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2021-04-15 16:31:25.7327 Trace    Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2021-04-15 16:31:25.7327 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2021-04-15 16:31:25.7327 Trace    Scanning LoggerNameLayoutRenderer 'Layout Renderer: ${logger}'
+2021-04-15 16:31:25.7327 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2021-04-15 16:31:25.7327 Trace    Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2021-04-15 16:31:25.7327 Trace     Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2021-04-15 16:31:25.7327 Trace     Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2021-04-15 16:31:25.7327 Trace      Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2021-04-15 16:31:25.7327 Trace      Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2021-04-15 16:31:25.7327 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2021-04-15 16:31:25.7327 Trace    Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2021-04-15 16:31:25.7327 Trace   Scanning Property LineEnding 'Default' NLog.Targets
+2021-04-15 16:31:25.7327 Trace  Scanning Property ChildRules 'System.Collections.Generic.List`1[NLog.Config.LoggingRule]' System.Collections.Generic
+2021-04-15 16:31:25.7327 Trace  Scanning Property Filters 'System.Collections.Generic.List`1[NLog.Filters.Filter]' System.Collections.Generic
+2021-04-15 16:31:25.7486 Info Validating config: TargetNames=logfile, ConfigItems=16, FilePath=C:\Users\Admin\source\repos\Nahd92\VehicleRegister\APIs\VehicleRegister.CarAPI\VehicleRegister.CarAPI\bin\Debug\netcoreapp3.1\NLog.config
+2021-04-15 16:31:25.7486 Debug Unused target checking is started... Rule Count: 1, Target Count: 1
+2021-04-15 16:31:25.7486 Debug Unused target checking is completed. Total Rule Count: 1, Total Target Count: 1, Unused Target Count: 0
+2021-04-15 16:31:25.7646 Trace Initializing Layout Renderer: ${message}
+2021-04-15 16:31:25.7646 Trace Initializing Layout Renderer: ${literal}
+2021-04-15 16:31:25.7646 Trace Initializing Layout Renderer: ${level}
+2021-04-15 16:31:25.7646 Trace Initializing SimpleLayout=Layout Renderer: ${level}
+2021-04-15 16:31:25.7646 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2021-04-15 16:31:25.7646 Trace Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2021-04-15 16:31:25.7646 Trace  Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2021-04-15 16:31:25.7646 Trace  Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2021-04-15 16:31:25.7820 Trace Initializing Layout Renderer: ${uppercase}
+2021-04-15 16:31:25.7820 Trace Initializing Layout Renderer: ${literal}
+2021-04-15 16:31:25.7820 Trace Initializing Layout Renderer: ${logger}
+2021-04-15 16:31:25.7820 Trace Initializing Layout Renderer: ${literal}
+2021-04-15 16:31:25.7820 Trace Initializing Layout Renderer: ${longdate}
+2021-04-15 16:31:25.7820 Trace Initializing '${longdate} ${logger} ${level:uppercase=true} ${message}'
+2021-04-15 16:31:25.7820 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2021-04-15 16:31:25.7820 Trace Scanning SimpleLayout ''${longdate} ${logger} ${level:uppercase=true} ${message}''
+2021-04-15 16:31:25.7820 Trace  Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2021-04-15 16:31:25.7820 Trace  Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2021-04-15 16:31:25.7820 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2021-04-15 16:31:25.7820 Trace  Scanning LoggerNameLayoutRenderer 'Layout Renderer: ${logger}'
+2021-04-15 16:31:25.7953 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2021-04-15 16:31:25.7953 Trace  Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2021-04-15 16:31:25.7953 Trace   Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2021-04-15 16:31:25.7953 Trace   Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2021-04-15 16:31:25.7953 Trace    Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2021-04-15 16:31:25.7953 Trace    Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2021-04-15 16:31:25.7953 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2021-04-15 16:31:25.7953 Trace  Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2021-04-15 16:31:25.7953 Trace Initializing Layout Renderer: ${literal}
+2021-04-15 16:31:25.7953 Trace Initializing Layout Renderer: ${shortdate}
+2021-04-15 16:31:25.7953 Trace Initializing Layout Renderer: ${literal}
+2021-04-15 16:31:25.7953 Trace Initializing 'C:\Users\Admin\source\repos\Nahd92\VehicleRegister\Logs/${shortdate}_logfile.txt'
+2021-04-15 16:31:25.7953 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2021-04-15 16:31:25.7953 Trace Scanning SimpleLayout ''C:\Users\Admin\source\repos\Nahd92\VehicleRegister\Logs/${shortdate}_logfile.txt''
+2021-04-15 16:31:25.7953 Trace  Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2021-04-15 16:31:25.7953 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2021-04-15 16:31:25.7953 Trace  Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2021-04-15 16:31:25.7953 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2021-04-15 16:31:25.7953 Trace Initializing File Target[logfile]
+2021-04-15 16:31:25.8172 Trace FindReachableObject<NLog.Layouts.Layout>:
+2021-04-15 16:31:25.8172 Trace Scanning FileTarget 'File Target[logfile]'
+2021-04-15 16:31:25.8172 Trace  Scanning Property FileName ''C:\Users\Admin\source\repos\Nahd92\VehicleRegister\Logs/${shortdate}_logfile.txt'' NLog.Layouts
+2021-04-15 16:31:25.8172 Trace  Scanning SimpleLayout ''C:\Users\Admin\source\repos\Nahd92\VehicleRegister\Logs/${shortdate}_logfile.txt''
+2021-04-15 16:31:25.8172 Trace  Scanning Property Layout ''${longdate} ${logger} ${level:uppercase=true} ${message}'' NLog.Layouts
+2021-04-15 16:31:25.8172 Trace  Scanning SimpleLayout ''${longdate} ${logger} ${level:uppercase=true} ${message}''
+2021-04-15 16:31:25.8172 Trace  Scanning Property LineEnding 'Default' NLog.Targets
+2021-04-15 16:31:25.8172 Trace File Target[logfile] has 2 layouts
+2021-04-15 16:31:25.8233 Trace FileTarget(Name=logfile): Using appenderFactory: NLog.Internal.FileAppenders.RetryingMultiProcessFileAppender+Factory
+2021-04-15 16:31:25.8233 Info Configuration initialized.
+2021-04-15 16:31:25.8233 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.9.12899. Product version: 4.7.9+e8712e62842e2d74d60fdf37cf74d743750e5ca2. GlobalAssemblyCache: False
+2021-04-15 16:31:25.8419 Debug Targets for VehicleRegister.Business.Service.LoggerManager by level:
+2021-04-15 16:31:25.8419 Debug Trace =>
+2021-04-15 16:31:25.8419 Debug Debug => logfile
+2021-04-15 16:31:25.8419 Debug Info => logfile
+2021-04-15 16:31:25.8419 Debug Warn => logfile
+2021-04-15 16:31:25.8419 Debug Error => logfile
+2021-04-15 16:31:25.8419 Debug Fatal => logfile
+2021-04-15 16:31:44.7341 Debug FileTarget(Name=logfile): Preparing for new file 'C:\Users\Admin\source\repos\Nahd92\VehicleRegister\Logs/2021-04-15_logfile.txt'
+2021-04-15 16:31:44.7536 Debug Creating file appender: C:\Users\Admin\source\repos\Nahd92\VehicleRegister\Logs/2021-04-15_logfile.txt
+2021-04-15 16:31:44.7536 Trace Opening C:\Users\Admin\source\repos\Nahd92\VehicleRegister\Logs/2021-04-15_logfile.txt with allowFileSharedWriting=False

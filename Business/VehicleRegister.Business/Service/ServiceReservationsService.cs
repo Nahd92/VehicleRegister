@@ -57,13 +57,12 @@ namespace VehicleRegister.Business.Service
                         }
                     }
                 }
-                return false;
             }
             catch (Exception ex)
             {
                 _logger.ErrorLog(GetType().Name, ex, method);
-                return false;
-            }            
+            }
+            return false;
         }
 
         public async Task<bool> DeleteReservation(int id)
@@ -96,13 +95,12 @@ namespace VehicleRegister.Business.Service
                         }
                     }                          
                 }
-                return false;
             }
             catch (Exception ex)
             {
                 _logger.LogError(this.GetType().Name, ex, method);
-                return false;
-            }
+           }
+            return false;
         }
 
         public async Task<bool> DeleteReservations()
@@ -138,13 +136,12 @@ namespace VehicleRegister.Business.Service
                        return true;
                     }
                 }
-                return false;
             }
             catch (Exception ex)
             {
                 _logger.ErrorLog(GetType().Name, ex, method);
-                return false;
-            }  
+            }
+            return false;
         }
 
         private async Task AddOldServicesToServiceHistory(List<IServiceReservations> oldReservations)
@@ -213,13 +210,12 @@ namespace VehicleRegister.Business.Service
                     _logger.LogInfo(GetType().Name, method, $"returns {reservations.Count()} from database");
                     return reservations;
                 }
-                return null;
             }
             catch (Exception ex)
             {
               _logger.LogError(GetType().Name, ex, method);
+            }
             return null;
-            }       
         }
 
         public async Task<IServiceReservations> GetReservation(int id)
@@ -234,13 +230,12 @@ namespace VehicleRegister.Business.Service
                     _logger.LogInfo(GetType().Name, method, $"Specific reservation was fetched");
                     return reservation;
                 }
-                return null;
             }
             catch (Exception ex)
             {
                 _logger.LogError(GetType().Name, ex, method);
-                return null;
-            }   
+            }
+            return null;
         }
 
         public async Task<UpdatedReservationResponse> UpdateServiceReservation(UpdateReservationRequest request)

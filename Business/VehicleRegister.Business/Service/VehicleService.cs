@@ -40,8 +40,8 @@ namespace VehicleRegister.Business.Service
             catch (Exception ex)
             {
                 _logger.LogError(this.GetType().Name, ex, method);
-                return false;
             }
+            return false;
         }
 
         public async Task<IEnumerable<IVehicle>> GetAllVehicles()
@@ -60,9 +60,9 @@ namespace VehicleRegister.Business.Service
             catch (Exception ex)
             {
                 _logger.LogError(this.GetType().Name, ex, method);
-                return null;
             }
-           
+            return null;
+
         }
 
         public async Task<IVehicle> GetVehicleById(int id)
@@ -80,8 +80,8 @@ namespace VehicleRegister.Business.Service
             catch (Exception ex)
             {
                 _logger.LogError(this.GetType().Name, ex, method);
-                return null;
             }
+            return null;
         }
 
         public async Task<bool> DeleteVehicle(int id)
@@ -102,14 +102,12 @@ namespace VehicleRegister.Business.Service
 
                     return true;
                 }
-              
-                return false;
             }
             catch (Exception ex)
             {
                 _logger.LogError(this.GetType().Name, ex, method);
-                return false;
             }
+            return false;
         }
 
         public async Task<UpdateVehicleResponse> UpdateVehicle(UpdateVehicleRequest request)
@@ -149,12 +147,7 @@ namespace VehicleRegister.Business.Service
             {
                 _logger.LogError(this.GetType().Name, ex, method);
                 return null;
-            }
-            
-
-
-
-         
+            }         
         }
 
         public async Task<List<IVehicle>> GetVehicleWithKeyword(string keyword)
@@ -184,14 +177,13 @@ namespace VehicleRegister.Business.Service
                         newList.Add(item);
                     }
                     return newList;
-                }
-                return null;      
+                }   
             }
             catch (Exception ex)
             {
                 _logger.LogError(this.GetType().Name, ex, method);
-                return null;
-            }       
+            }
+            return null;
         }
     }
 }

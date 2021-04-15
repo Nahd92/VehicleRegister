@@ -71,7 +71,6 @@ namespace VehicleRegister.VehicleAPI.Controllers
 
                 var usersRole = await _service.authService.GetUsersRole(request.UserName);
 
-
                 var roles = new List<string>();
 
              var claims = new List<Claim>

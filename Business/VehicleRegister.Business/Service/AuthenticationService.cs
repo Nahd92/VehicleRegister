@@ -63,13 +63,14 @@ namespace VehicleRegister.Business.Service
                       var createdAddingClaim = await _userManager.AddClaimAsync(newIdentity, addClaim);
                         if (createdAddingClaim.Succeeded)
                         {
+                            _logger.LogInfo(this.GetType().Name, methodname, "Returns True!");
                             return true;
                         }
                     }
                 }
                 catch (Exception ex)
                 {
-                
+                    _logger.ErrorLog(GetType().Name, ex, methodname);
                     throw ex;
                 }
             }
