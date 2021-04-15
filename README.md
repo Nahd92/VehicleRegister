@@ -16,3 +16,6 @@ When logged in as Admin you have full rights.. However if you create new Account
 
 ![ServiceHistory](https://user-images.githubusercontent.com/62704491/114837326-df015980-9dd3-11eb-9e26-1e485ce27201.png)
 
+Appsettings not inludinc for security reasons. This is how I have declared my Appsettings if someone was downloaded my repo.
+
+![Appsettings](https://user-images.githubusercontent.com/62704491/114840976-a5cae880-9dd7-11eb-9c64-08069683e60a.png)
