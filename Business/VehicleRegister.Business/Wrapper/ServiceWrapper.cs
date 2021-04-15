@@ -43,7 +43,7 @@ namespace VehicleRegister.Business.Wrapper
             {
                 if (_autoMotiveRepair == null)
                 {
-                    _autoMotiveRepair = new AutoMotiveRepairService(_wrapper);
+                    _autoMotiveRepair = new AutoMotiveRepairService(_wrapper, _logger);
                 }
                 return _autoMotiveRepair;
             }

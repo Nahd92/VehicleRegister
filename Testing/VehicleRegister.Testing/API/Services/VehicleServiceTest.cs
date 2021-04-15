@@ -24,12 +24,12 @@ namespace VehicleRegister.Testing.Services
     {
         private readonly Mock<IRepositoryWrapper> mockRepository;
         private readonly VehicleService vehicleService;
-        private readonly ISpecialLoggerExtension _logger;
-        public VehicleServiceTest(ISpecialLoggerExtension logger)
+        private readonly Mock<ISpecialLoggerExtension> mockLogger;
+        public VehicleServiceTest()
         {
             mockRepository = new Mock<IRepositoryWrapper>();
-            vehicleService = new VehicleService(mockRepository.Object, logger);
-            _logger = logger;
+            mockLogger = new Mock<ISpecialLoggerExtension>();
+            vehicleService = new VehicleService(mockRepository.Object, mockLogger.Object);
         }
 
         private IEnumerable<IVehicle> cars = new List<Vehicle>()
@@ -82,6 +82,7 @@ namespace VehicleRegister.Testing.Services
         public async Task TestGetAllVehicles_ShouldContainOneVehicleInList()
         {
             //arrange
+            mockLogger.Setup(x => x.GetActualAsyncMethodName(It.IsAny<string>()));
             mockRepository.Setup(x => x.VehicleRepo.GetAllVehicles()).ReturnsAsync(cars);
 
             //Act
@@ -95,6 +96,7 @@ namespace VehicleRegister.Testing.Services
         public async Task TestCreateVehicle_ShouldReturnTrue()
         {
             //Arrange
+            mockLogger.Setup(x => x.GetActualAsyncMethodName(It.IsAny<string>()));
             mockRepository.Setup(x => x.VehicleRepo.CreateVehicle(It.IsAny<IVehicle>())).ReturnsAsync(true);
             //Act
             var response = await vehicleService.CreateVehicle(carDTO);
@@ -106,6 +108,7 @@ namespace VehicleRegister.Testing.Services
         public async Task TestGetVehicle_ShouldReturnCorrectId()
         {
             //Arrange
+            mockLogger.Setup(x => x.GetActualAsyncMethodName(It.IsAny<string>()));
             mockRepository.Setup(x => x.VehicleRepo.GetVehicleById(It.IsAny<int>())).ReturnsAsync(car);
             //Act
             var response = await vehicleService.GetVehicleById(car.Id);
@@ -118,6 +121,7 @@ namespace VehicleRegister.Testing.Services
         public async Task TestGetVehicleByVehicleName_ShouldReturnCorrectRegNumber()
         {
             //Arrange
+            mockLogger.Setup(x => x.GetActualAsyncMethodName(It.IsAny<string>()));
             mockRepository.Setup(x => x.VehicleRepo.GetAllVehicles()).ReturnsAsync(cars);
             //Act
             var response = await vehicleService.GetVehicleWithKeyword("ABC123");

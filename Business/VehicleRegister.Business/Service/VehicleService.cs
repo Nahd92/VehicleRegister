@@ -92,14 +92,18 @@ namespace VehicleRegister.Business.Service
                 var vehicle = await _repo.VehicleRepo.GetVehicleById(id);
 
                 if (vehicle != null)
+                {
                     _logger.LogInfo(this.GetType().Name, method, $"{vehicle} was fetched from Database");
 
-               var deleted = await _repo.VehicleRepo.DeleteVehicle(vehicle);
-                
-                if (deleted)
-                    _logger.LogInfo(this.GetType().Name, method, $"{vehicle} was deleted from Database");
+                    var deleted = await _repo.VehicleRepo.DeleteVehicle(vehicle);
 
-                return true;
+                    if (deleted)
+                        _logger.LogInfo(this.GetType().Name, method, $"{vehicle} was deleted from Database");
+
+                    return true;
+                }
+              
+                return false;
             }
             catch (Exception ex)
             {

@@ -127,16 +127,16 @@ namespace VehicleRegister.Business.Service
                 await AddOldServicesToServiceHistory(oldReservations);
                 _logger.LogInfo(GetType().Name, method, $"{oldReservations} was added to ServiceHistory");
 
-                var deleted = await _repo.ServiceRepo.DeleteAllReservations(oldReservations);
+                var IsDeleted = await _repo.ServiceRepo.DeleteAllReservations(oldReservations);
 
-                if (deleted)
-                {
-                _logger.LogInfo(GetType().Name, method, "All oldreservations is deleted"); 
-                await SetDeleteReservations(oldReservations);
-                _logger.LogInfo(GetType().Name, method, "All vehicles which had service is now reset");
+                    if (IsDeleted)
+                    {
+                        _logger.LogInfo(GetType().Name, method, "All oldreservations is deleted"); 
+                        await SetDeleteReservations(oldReservations);
+                        _logger.LogInfo(GetType().Name, method, "All vehicles which had service is now reset");
 
-                   return true;
-                }
+                       return true;
+                    }
                 }
                 return false;
             }
@@ -186,9 +186,9 @@ namespace VehicleRegister.Business.Service
                 {
                   var vehicle = await _repo.VehicleRepo.GetVehicleById(vehicleId);
                   vehicle.IsServiceBooked = false;
-                  var updated = await _repo.VehicleRepo.UpdateVehicle(vehicle);
+                  var IsUpdated = await _repo.VehicleRepo.UpdateVehicle(vehicle);
 
-                    if (updated)
+                    if (IsUpdated)
                     {
                         _logger.LogInfo(GetType().Name, method, "All vehicles have been updated");
                     }            

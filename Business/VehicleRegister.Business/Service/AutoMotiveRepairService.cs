@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using VehicleRegister.Domain.DTO.AutoMotiveDTO.Request;
 using VehicleRegister.Domain.DTO.AutoMotiveDTO.Response;
+using VehicleRegister.Domain.Interfaces.Extensions.Interface;
 using VehicleRegister.Domain.Interfaces.Model.Interface;
 using VehicleRegister.Domain.Interfaces.Repository.Interface;
 using VehicleRegister.Domain.Interfaces.Service.Interface;
@@ -15,57 +16,130 @@ namespace VehicleRegister.Business.Service
     public class AutoMotiveRepairService : IAutoMotiveRepairService
     {
         private readonly IRepositoryWrapper _repo;
-        public AutoMotiveRepairService(IRepositoryWrapper repo)
+        private readonly ISpecialLoggerExtension _logger;
+        public AutoMotiveRepairService(IRepositoryWrapper repo, ISpecialLoggerExtension logger)
         {
             _repo = repo;
+            _logger = logger;
         }
 
 
-        public async Task<IEnumerable<IAutoMotiveRepair>> GetAllAutoMotives() => await _repo.RepairRepo.GetAllAutoMotives();
+        public async Task<IEnumerable<IAutoMotiveRepair>> GetAllAutoMotives()
+        {
+            var method = _logger.GetActualAsyncMethodName();
+            try
+            {
+                var autoMotives = await _repo.RepairRepo.GetAllAutoMotives();
 
-        public async Task<IAutoMotiveRepair> GetAutoMotiveById(int id) =>
-                await _repo.RepairRepo.GetAutoMotive(id);
+                if (autoMotives.Count() != 0)
+                {
+                    _logger.LogInfo(GetType().Name, method, $"{autoMotives.Count()} fetched from database");
+                    return autoMotives;
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                _logger.ErrorLog(GetType().Name, ex, method);
+                return null;
+            }
+          
+        }
 
+        public async Task<IAutoMotiveRepair> GetAutoMotiveById(int id)
+        {
+            var method = _logger.GetActualAsyncMethodName();
+            try
+            {
+                var automotive = await _repo.RepairRepo.GetAutoMotive(id);
+                if (automotive != null)
+                {
+                    _logger.LogInfo(GetType().Name, method, "AutoMotive as fetched");
+                    return automotive;
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(GetType().Name, ex, method);
+                return null;
+            }
+  
+        }
 
         public async Task<bool> AddNewAutoMotiveToDatabase(AddAutoMotiveToListRequest request)
         {
-            var newAutoMotive = new AutoMotiveRepair()
+            var method = _logger.GetActualAsyncMethodName();
+
+            try
             {
-                Id = request.Id,
-                Name = request.Name,
-                Address = request.Address,
-                City = request.City,
-                Country = request.Country,
-                Description = request.Description,
-                PhoneNumber = request.PhoneNumber,
-                Website = request.Website,
-                OrganisationNumber = await CreateOrganisationNumber()
-            };
+                var newAutoMotive = new AutoMotiveRepair()
+                {
+                    Id = request.Id,
+                    Name = request.Name,
+                    Address = request.Address,
+                    City = request.City,
+                    Country = request.Country,
+                    Description = request.Description,
+                    PhoneNumber = request.PhoneNumber,
+                    Website = request.Website,
+                    OrganisationNumber = await CreateOrganisationNumber()
+                };
 
 
-           return await _repo.RepairRepo.CreateNewAutoMotive(newAutoMotive);
+                var IsCreated = await _repo.RepairRepo.CreateNewAutoMotive(newAutoMotive);
+
+                if (IsCreated)
+                {
+                    _logger.LogInfo(GetType().Name, method, "Created was successful");
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                _logger.ErrorLog(GetType().Name, ex, method);
+                return false;
+            }
+
+          
         }
 
         public async Task<UpdatedAutoMotiveResponse> UpdateAutoMotive(UpdateAutoMotiveDto request)
         {
-            var existingAutoMotive = await _repo.RepairRepo.GetAutoMotive(request.Id);
+            var method = _logger.GetActualAsyncMethodName();
+            try
+            {
+                var existingAutoMotive = await _repo.RepairRepo.GetAutoMotive(request.Id);
 
-            if (existingAutoMotive is null) return null;
+                if (existingAutoMotive != null)
+                {
+                    existingAutoMotive.Name = request.Name;
+                    existingAutoMotive.Address = request.Address;
+                    existingAutoMotive.City = request.City;
+                    existingAutoMotive.Country = request.Country;
+                    existingAutoMotive.Description = request.Description;
+                    existingAutoMotive.PhoneNumber = request.PhoneNumber;
+                    existingAutoMotive.Website = request.Website;
 
-            existingAutoMotive.Name = request.Name;
-            existingAutoMotive.Address = request.Address;
-            existingAutoMotive.City = request.City;
-            existingAutoMotive.Country = request.Country;
-            existingAutoMotive.Description = request.Description;
-            existingAutoMotive.PhoneNumber = request.PhoneNumber;
-            existingAutoMotive.Website = request.Website;
+                   var IsUpdated = await _repo.RepairRepo.UpdateAutoMotive(existingAutoMotive);
 
-            await _repo.RepairRepo.UpdateAutoMotive(existingAutoMotive);
-
-            return new UpdatedAutoMotiveResponse(
-                existingAutoMotive.Id, existingAutoMotive.Name, existingAutoMotive.City, 
-                existingAutoMotive.Country, existingAutoMotive.Description, 
-                existingAutoMotive.PhoneNumber, existingAutoMotive.Website, existingAutoMotive.OrganisationNumber);
+                    if (IsUpdated)
+                    {
+                        _logger.LogInfo(GetType().Name, method, "AutoMotive was updated");
+                        return new UpdatedAutoMotiveResponse(
+                        existingAutoMotive.Id, existingAutoMotive.Name, existingAutoMotive.City,
+                        existingAutoMotive.Country, existingAutoMotive.Description,
+                        existingAutoMotive.PhoneNumber, existingAutoMotive.Website, existingAutoMotive.OrganisationNumber);
+                  }
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(GetType().Name, ex, method);
+                return null;
+            }              
         }
 
         public async Task<string> CreateOrganisationNumber()
@@ -86,21 +160,54 @@ namespace VehicleRegister.Business.Service
 
         public async Task<bool> OrgansationNumberAlreadyExist(string number)
         {
-            var automMotives = await _repo.RepairRepo.GetAllAutoMotives();
+            var method = _logger.GetActualAsyncMethodName();
+            try
+            {
+                var automMotives = await _repo.RepairRepo.GetAllAutoMotives();
 
-            if (automMotives.Any(x => x.OrganisationNumber == number))
-                return true;
-
-            return false;
+                if (automMotives != null)
+                {
+                    _logger.LogInfo(GetType().Name, method, $"{automMotives.Count()} was fetched from database");
+                    if (automMotives.Any(x => x.OrganisationNumber == number))
+                    {
+                        _logger.LogInfo(GetType().Name, method, $"There was one automotive with organisationnumber: {number}");
+                        return true;
+                    }
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                _logger.ErrorLog(GetType().Name, ex, method);
+                return false;
+            }
         }
 
         public async Task<bool> DeleteAutoMotive(int id)
         {
-            var autoMotive = await _repo.RepairRepo.GetAutoMotive(id);
+            var method = _logger.GetActualAsyncMethodName();
+            try
+            {
+                var autoMotive = await _repo.RepairRepo.GetAutoMotive(id);
 
-            if (autoMotive is null) return false;
-
-            return await _repo.RepairRepo.DeleteAutoMotive(autoMotive);
+                if (autoMotive != null)
+                {
+                    _logger.LogInfo(GetType().Name, method, "Autotmotive was fetched");
+                    var deleted = await _repo.RepairRepo.DeleteAutoMotive(autoMotive);
+                    if (deleted )
+                    {
+                        _logger.LogInfo(GetType().Name, method, "AutoMotive was deleted");
+                        return true;
+                    }
+                }
+                return false;  
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(GetType().Name, ex, method);
+                return false;
+            }
+          
         }
     }
 }

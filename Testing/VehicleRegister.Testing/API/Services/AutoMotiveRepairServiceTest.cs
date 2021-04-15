@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using VehicleRegister.Business.Service;
 using VehicleRegister.Domain.DTO.AutoMotiveDTO.Request;
 using VehicleRegister.Domain.DTO.AutoMotiveDTO.Response;
+using VehicleRegister.Domain.Interfaces.Extensions.Interface;
 using VehicleRegister.Domain.Interfaces.Model.Interface;
 using VehicleRegister.Domain.Interfaces.Repository.Interface;
 using VehicleRegister.Domain.Models;
@@ -20,10 +21,12 @@ namespace VehicleRegister.Testing.Services
     {
         private readonly Mock<IRepositoryWrapper> mockService;
         private AutoMotiveRepairService autoMotiveService;
+        private readonly Mock<ISpecialLoggerExtension> mockLogger;
         public AutoMotiveRepairServiceTest()
         {
             mockService = new Mock<IRepositoryWrapper>();
-            autoMotiveService = new AutoMotiveRepairService(mockService.Object);
+            mockLogger = new Mock<ISpecialLoggerExtension>();
+            autoMotiveService = new AutoMotiveRepairService(mockService.Object, mockLogger.Object);
         }
 
         private IEnumerable<IAutoMotiveRepair> autoMotives = new List<AutoMotiveRepair>()
