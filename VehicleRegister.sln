@@ -40,6 +40,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logs", "Logs", "{2E743792-F
 		Logs\2021-04-11_logfile.txt = Logs\2021-04-11_logfile.txt
 		Logs\2021-04-12_logfile.txt = Logs\2021-04-12_logfile.txt
 		Logs\2021-04-13_logfile.txt = Logs\2021-04-13_logfile.txt
+		Logs\2021-04-15_logfile.txt = Logs\2021-04-15_logfile.txt
 		Logs\internallog.txt = Logs\internallog.txt
 	EndProjectSection
 EndProject

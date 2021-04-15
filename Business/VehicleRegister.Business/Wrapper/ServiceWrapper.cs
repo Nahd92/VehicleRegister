@@ -17,8 +17,8 @@ namespace VehicleRegister.Business.Wrapper
     public class ServiceWrapper : IServiceWrapper
     {
         private IVehicleService _vehicle;
-        private IRepositoryWrapper _wrapper;
-        private IAutoMotiveRepairService _AutoMotiveRepair;
+        private readonly IRepositoryWrapper _wrapper;
+        private IAutoMotiveRepairService _autoMotiveRepair;
         private IServiceReservationService _service;
         private IAuthenticationService _authService;
         private UserManager<IdentityUser> manager;
@@ -41,11 +41,11 @@ namespace VehicleRegister.Business.Wrapper
         {
             get
             {
-                if (_AutoMotiveRepair == null)
+                if (_autoMotiveRepair == null)
                 {
-                    _AutoMotiveRepair = new AutoMotiveRepairService(_wrapper);
+                    _autoMotiveRepair = new AutoMotiveRepairService(_wrapper);
                 }
-                return _AutoMotiveRepair;
+                return _autoMotiveRepair;
             }
         }
 
@@ -72,7 +72,6 @@ namespace VehicleRegister.Business.Wrapper
                 return _authService;
             }
         }
-
         public ServiceWrapper(IRepositoryWrapper wrapper, UserManager<IdentityUser> manager, ISpecialLoggerExtension logger)
         {
             _wrapper = wrapper;

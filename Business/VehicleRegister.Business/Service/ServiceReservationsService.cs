@@ -34,8 +34,8 @@ namespace VehicleRegister.Business.Service
                 
                 if (vehicle != null && autoMotive != null)
                 {
-                    _logger.LogInfo(this.GetType().Name, method, $"{vehicle} was fetched from database");
-                    _logger.LogInfo(this.GetType().Name, method, $"{autoMotive} was fetched from database");
+                    _logger.LogInfo(GetType().Name, method, $"{vehicle.Id} was fetched from database");
+                    _logger.LogInfo(GetType().Name, method, $"{autoMotive.Id} was fetched from database");
 
                     var reservation = new ServiceReservations
                     {
@@ -47,12 +47,12 @@ namespace VehicleRegister.Business.Service
                     var created = await _repo.ServiceRepo.CreateReservations(reservation);
                     if (created)
                     {
-                        _logger.LogInfo(this.GetType().Name, method, "Created Vehicle returns true");
+                        _logger.LogInfo(GetType().Name, method, "Created Vehicle returns true");
                         vehicle.ServiceDate = request.Date;
                         vehicle.IsServiceBooked = true;
                         if (await _repo.VehicleRepo.UpdateVehicle(vehicle))
                         {
-                            _logger.LogInfo(this.GetType().Name, method, "Vehicle is updated");
+                            _logger.LogInfo(GetType().Name, method, "Vehicle is updated");
                             return true;
                         }
                     }
@@ -61,7 +61,7 @@ namespace VehicleRegister.Business.Service
             }
             catch (Exception ex)
             {
-                _logger.ErrorLog(this.GetType().Name, ex, method);
+                _logger.ErrorLog(GetType().Name, ex, method);
                 return false;
             }            
         }
@@ -107,49 +107,78 @@ namespace VehicleRegister.Business.Service
 
         public async Task<bool> DeleteReservations()
         {
-            var reservations = await _repo.ServiceRepo.GetAllReservations();
-            var oldReservations = new List<IServiceReservations>();
-
-            const int reservationsToDeleteDays = -30;
-
-            foreach (var reserv in reservations.Where(x => x.Date < DateTime.Today.AddDays(reservationsToDeleteDays)))
+            var method = _logger.GetActualAsyncMethodName();
+            try
             {
-                oldReservations.Add(reserv);
-            }
+                var reservations = await _repo.ServiceRepo.GetAllReservations();
 
-            await AddOldServicesToServiceHistory(oldReservations);
+                if (reservations != null)
+                {
+                    _logger.LogInfo(GetType().Name, method, $"Number of Reservatios fetched: {reservations.Count()}");
 
-            var deleted = await _repo.ServiceRepo.DeleteAllReservations(oldReservations);
+                    var oldReservations = new List<IServiceReservations>();
 
-            if (deleted)
-            {
+                    const int reservationsToDeleteDays = -30;
+                    foreach (var reserv in reservations.Where(x => x.Date < DateTime.Today.AddDays(reservationsToDeleteDays)))
+                    {
+                        oldReservations.Add(reserv);
+                    }
+         
+                await AddOldServicesToServiceHistory(oldReservations);
+                _logger.LogInfo(GetType().Name, method, $"{oldReservations} was added to ServiceHistory");
+
+                var deleted = await _repo.ServiceRepo.DeleteAllReservations(oldReservations);
+
+                if (deleted)
+                {
+                _logger.LogInfo(GetType().Name, method, "All oldreservations is deleted"); 
                 await SetDeleteReservations(oldReservations);
-                return true;
+                _logger.LogInfo(GetType().Name, method, "All vehicles which had service is now reset");
+
+                   return true;
+                }
+                }
+                return false;
             }
-            return false;
+            catch (Exception ex)
+            {
+                _logger.ErrorLog(GetType().Name, ex, method);
+                return false;
+            }  
         }
 
         private async Task AddOldServicesToServiceHistory(List<IServiceReservations> oldReservations)
         {
-            if (oldReservations.Count() != 0)
+            var method = _logger.GetActualAsyncMethodName();
+            try
             {
-                var serviceHistory = new List<IVehicleServiceHistory>();
-                foreach (var service in oldReservations)
+                if (oldReservations.Count() != 0)
                 {
-                    serviceHistory.Add(new VehicleServiceHistory
+                    var serviceHistory = new List<IVehicleServiceHistory>();
+                    foreach (var service in oldReservations)
                     {
-                        ServiceDate = service.Date,
-                        AutoMotiveRepairId = service.AutoMotiveRepairId,
-                        VehicleId = service.VehicleId
-                    });
-                }
+                        serviceHistory.Add(new VehicleServiceHistory
+                        {
+                            ServiceDate = service.Date,
+                            AutoMotiveRepairId = service.AutoMotiveRepairId,
+                            VehicleId = service.VehicleId
+                        });
+                    }
 
-                await _repo.VehicleHistoryRepo.AddOldServicesToHistory(serviceHistory);
+                    await _repo.VehicleHistoryRepo.AddOldServicesToHistory(serviceHistory);
+                    _logger.LogInfo(GetType().Name, method, "All old Services added to database");
+                }
             }
+            catch (Exception ex)
+            {
+                _logger.LogError(GetType().Name, ex, method);
+            }
+          
         }
 
         private async Task SetDeleteReservations(List<IServiceReservations> oldReservations)
         {
+            var method = _logger.GetActualAsyncMethodName();
             try
             {           
                 var vehicles = new List<IVehicle>();
@@ -157,55 +186,119 @@ namespace VehicleRegister.Business.Service
                 {
                   var vehicle = await _repo.VehicleRepo.GetVehicleById(vehicleId);
                   vehicle.IsServiceBooked = false;
-                  await _repo.VehicleRepo.UpdateVehicle(vehicle);
+                  var updated = await _repo.VehicleRepo.UpdateVehicle(vehicle);
+
+                    if (updated)
+                    {
+                        _logger.LogInfo(GetType().Name, method, "All vehicles have been updated");
+                    }            
                 }              
             }
             catch (Exception ex)
             {
-
-                throw ex;
+                _logger.ErrorLog(GetType().Name, ex, method);
             }
            
         }
 
-        public async Task<IEnumerable<IServiceReservations>> GetAllReservations() => await _repo.ServiceRepo.GetAllReservations();
+        public async Task<IEnumerable<IServiceReservations>> GetAllReservations()
+        {
+            var method = _logger.GetActualAsyncMethodName();
+            try
+            {
+                var reservations = await _repo.ServiceRepo.GetAllReservations();
 
+                if (reservations.Count() != 0)
+                {
+                    _logger.LogInfo(GetType().Name, method, $"returns {reservations.Count()} from database");
+                    return reservations;
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+              _logger.LogError(GetType().Name, ex, method);
+            return null;
+            }       
+        }
 
-        public async Task<IServiceReservations> GetReservation(int id) =>  await _repo.ServiceRepo.GetReservation(id);
+        public async Task<IServiceReservations> GetReservation(int id)
+        {
+            var method = _logger.GetActualAsyncMethodName();
+            try
+            {
+                var reservation = await _repo.ServiceRepo.GetReservation(id);
 
-
+                if (reservation != null)
+                {
+                    _logger.LogInfo(GetType().Name, method, $"Specific reservation was fetched");
+                    return reservation;
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(GetType().Name, ex, method);
+                return null;
+            }   
+        }
 
         public async Task<UpdatedReservationResponse> UpdateServiceReservation(UpdateReservationRequest request)
         {
-            var reservation = await _repo.ServiceRepo.GetReservation(request.Id);
-
-            if (reservation == null) return null;
-
-            reservation.AutoMotiveRepairId = request.AutoMotiveId;
-            reservation.VehicleId = request.VehicleId;
-            reservation.Date = request.Date;
-
-            if (await _repo.ServiceRepo.UpdateReservations(reservation))
+            var method = _logger.GetActualAsyncMethodName();
+            try
             {
+                var reservation = await _repo.ServiceRepo.GetReservation(request.Id);
 
-                var autoMotiveId = await _repo.RepairRepo.GetAutoMotive(reservation.AutoMotiveRepairId);
-                var vehicle = await _repo.VehicleRepo.GetVehicleById(reservation.VehicleId);
-
-                return new UpdatedReservationResponse()
+                if (reservation != null)
                 {
-                    Id = reservation.Id,
-                    VehicleId = reservation.VehicleId,
-                    AutoMotiveName = autoMotiveId.Name,
-                    Date = reservation.Date,
-                    IsCompleted = reservation.IsCompleted,
-                    RegisterNumber = vehicle.RegisterNumber,
-                    
-                };
+                    _logger.LogInfo(GetType().Name, method, $"A reservation was fetched from database");
+                    reservation.AutoMotiveRepairId = request.AutoMotiveId;
+                    reservation.VehicleId = request.VehicleId;
+                    reservation.Date = request.Date;
+
+                    if (await _repo.ServiceRepo.UpdateReservations(reservation))
+                    {
+                        _logger.LogInfo(GetType().Name, method, $"Update was succesfull");
+
+                        var autoMotiveId = await _repo.RepairRepo.GetAutoMotive(reservation.AutoMotiveRepairId);
+                        var vehicle = await _repo.VehicleRepo.GetVehicleById(reservation.VehicleId);
+                        if (autoMotiveId != null && vehicle != null)
+                        {
+                            _logger.LogInfo(GetType().Name, method, $"Gets an autoMotive from database");
+
+                            return new UpdatedReservationResponse()
+                            {
+                                Id = reservation.Id,
+                                VehicleId = reservation.VehicleId,
+                                AutoMotiveName = autoMotiveId.Name,
+                                Date = reservation.Date,
+                                IsCompleted = reservation.IsCompleted,
+                                RegisterNumber = vehicle.RegisterNumber,
+                            };
+                        }               
+                    }
+                }
             }
+            catch (Exception ex)
+            {
+                _logger.LogError(GetType().Name, ex, method);
+                return null;
+            }  
             return null;
         }
 
-        public async Task<IEnumerable<IVehicleServiceHistory>> GetAllServiceHistories() => await _repo.VehicleHistoryRepo.VehicleHistory();
+        public async Task<IEnumerable<IVehicleServiceHistory>> GetAllServiceHistories()
+        {
+            var method = _logger.GetActualAsyncMethodName();
+            var reservationHistory = await _repo.VehicleHistoryRepo.VehicleHistory();
 
+            if (reservationHistory.Count() != 0)
+            {
+                _logger.LogInfo(GetType().Name, method, $"returns {reservationHistory.Count()} serviceHistory!");
+                return reservationHistory;
+            }
+            return null;
+        }
     }
 }
