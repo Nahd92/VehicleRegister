@@ -1,9 +1,10 @@
 # VehicleRegister
 
-Project in progress
+Project in progress....
 
 
-This project is not focusing what so ever on design. The School project focuses on OOP.
+This project is not focusing  on design. The School project focuses on OOP.
+
 
 
 
