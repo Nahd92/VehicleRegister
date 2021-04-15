@@ -3,7 +3,7 @@
 Project in progress
 
 
-
+This project is not focusing what so ever on design. The School project focuses on OOP.
 
 
 
