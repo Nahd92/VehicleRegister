@@ -25,7 +25,6 @@ namespace VehicleRegister.CarAPI
                     .AddEnvironmentVariables();
             Configuration = builder.Build();
 
-            var endPoint = Configuration["Url:HostName"];
         }
 
 

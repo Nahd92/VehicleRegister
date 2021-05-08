@@ -31,7 +31,7 @@ namespace VehicleRegister.Business.Service
             {
                 var vehicle = await _repo.VehicleRepo.GetVehicleById(request.VehicleId);
                 var autoMotive = await _repo.RepairRepo.GetAutoMotive(request.AutoMotiveRepairId);
-                
+
                 if (vehicle != null && autoMotive != null)
                 {
                     _logger.LogInfo(GetType().Name, method, $"{vehicle.Id} was fetched from database");
@@ -75,7 +75,7 @@ namespace VehicleRegister.Business.Service
                 if (reservation != null)
                 {
                     _logger.LogInfo(this.GetType().Name, method, $"{reservation} was fetched from database if exist");
-                   var addedToServiceHistory = await _repo.VehicleHistoryRepo.AddOldServiceToHistory(new VehicleServiceHistory
+                    var addedToServiceHistory = await _repo.VehicleHistoryRepo.AddOldServiceToHistory(new VehicleServiceHistory
                     {
                         ServiceDate = reservation.Date,
                         VehicleId = reservation.VehicleId,
@@ -93,13 +93,13 @@ namespace VehicleRegister.Business.Service
                             await _repo.VehicleRepo.UpdateVehicle(vehicle);
                             return true;
                         }
-                    }                          
+                    }
                 }
             }
             catch (Exception ex)
             {
                 _logger.LogError(this.GetType().Name, ex, method);
-           }
+            }
             return false;
         }
 
@@ -121,19 +121,19 @@ namespace VehicleRegister.Business.Service
                     {
                         oldReservations.Add(reserv);
                     }
-         
-                await AddOldServicesToServiceHistory(oldReservations);
-                _logger.LogInfo(GetType().Name, method, $"{oldReservations} was added to ServiceHistory");
 
-                var IsDeleted = await _repo.ServiceRepo.DeleteAllReservations(oldReservations);
+                    await AddOldServicesToServiceHistory(oldReservations);
+                    _logger.LogInfo(GetType().Name, method, $"{oldReservations} was added to ServiceHistory");
+
+                    var IsDeleted = await _repo.ServiceRepo.DeleteAllReservations(oldReservations);
 
                     if (IsDeleted)
                     {
-                        _logger.LogInfo(GetType().Name, method, "All oldreservations is deleted"); 
+                        _logger.LogInfo(GetType().Name, method, "All oldreservations is deleted");
                         await SetDeleteReservations(oldReservations);
                         _logger.LogInfo(GetType().Name, method, "All vehicles which had service is now reset");
 
-                       return true;
+                        return true;
                     }
                 }
             }
@@ -170,32 +170,32 @@ namespace VehicleRegister.Business.Service
             {
                 _logger.LogError(GetType().Name, ex, method);
             }
-          
+
         }
 
         private async Task SetDeleteReservations(List<IServiceReservations> oldReservations)
         {
             var method = _logger.GetActualAsyncMethodName();
             try
-            {           
+            {
                 var vehicles = new List<IVehicle>();
                 foreach (var vehicleId in oldReservations.Select(x => x.VehicleId))
                 {
-                  var vehicle = await _repo.VehicleRepo.GetVehicleById(vehicleId);
-                  vehicle.IsServiceBooked = false;
-                  var IsUpdated = await _repo.VehicleRepo.UpdateVehicle(vehicle);
+                    var vehicle = await _repo.VehicleRepo.GetVehicleById(vehicleId);
+                    vehicle.IsServiceBooked = false;
+                    var IsUpdated = await _repo.VehicleRepo.UpdateVehicle(vehicle);
 
                     if (IsUpdated)
                     {
                         _logger.LogInfo(GetType().Name, method, "All vehicles have been updated");
-                    }            
-                }              
+                    }
+                }
             }
             catch (Exception ex)
             {
                 _logger.ErrorLog(GetType().Name, ex, method);
             }
-           
+
         }
 
         public async Task<IEnumerable<IServiceReservations>> GetAllReservations()
@@ -213,7 +213,7 @@ namespace VehicleRegister.Business.Service
             }
             catch (Exception ex)
             {
-              _logger.LogError(GetType().Name, ex, method);
+                _logger.LogError(GetType().Name, ex, method);
             }
             return null;
         }
@@ -271,7 +271,7 @@ namespace VehicleRegister.Business.Service
                                 IsCompleted = reservation.IsCompleted,
                                 RegisterNumber = vehicle.RegisterNumber,
                             };
-                        }               
+                        }
                     }
                 }
             }
@@ -279,7 +279,7 @@ namespace VehicleRegister.Business.Service
             {
                 _logger.LogError(GetType().Name, ex, method);
                 return null;
-            }  
+            }
             return null;
         }
 

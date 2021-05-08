@@ -6,7 +6,7 @@ using VehicleRegister.Domain.DTO.UserDTO.Response;
 
 namespace VehicleRegister.Domain.DTO.UserDTO.Request
 {
-    public class LoginRequest : LoginResponse
+    public class LoginRequest
     {
         [Required]
         public string UserName { get; set; }
@@ -19,7 +19,7 @@ namespace VehicleRegister.Domain.DTO.UserDTO.Request
 
         [Display(Name = "Remember me?")]
         public bool RememberMe { get; set; }
-    
-    
+
+
     }
 }

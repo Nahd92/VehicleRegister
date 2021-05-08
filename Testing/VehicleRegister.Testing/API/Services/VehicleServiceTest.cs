@@ -49,18 +49,18 @@ namespace VehicleRegister.Testing.Services
             }
         };
         private IVehicle car = new LightVehicle()
-        {          
-                Id = 1,
-                Brand = "Volvo",
-                Model = "XC90",
-                InTraffic = DateTime.Parse("2020-02-02"),
-                IsDrivingBan = false,
-                RegisterNumber = "ABC123",
-                Weight = 2220,
-                IsServiceBooked = false,
-                ServiceDate = DateTime.Parse("2021-03-03"),
-                YearlyFee = 2000
-            
+        {
+            Id = 1,
+            Brand = "Volvo",
+            Model = "XC90",
+            InTraffic = DateTime.Parse("2020-02-02"),
+            IsDrivingBan = false,
+            RegisterNumber = "ABC123",
+            Weight = 2220,
+            IsServiceBooked = false,
+            ServiceDate = DateTime.Parse("2021-03-03"),
+            YearlyFee = 2000
+
         };
 
         private CreateVehicleRequest carDTO = new CreateVehicleRequest()
@@ -90,7 +90,7 @@ namespace VehicleRegister.Testing.Services
 
             //Assert
             Assert.AreEqual(1, response.Count());
-        } 
+        }
 
         [TestMethod]
         public async Task TestCreateVehicle_ShouldReturnTrue()
@@ -113,7 +113,7 @@ namespace VehicleRegister.Testing.Services
             //Act
             var response = await vehicleService.GetVehicleById(car.Id);
             //Assert
-           response.Id.Should().Be(1);
+            response.Id.Should().Be(1);
         }
 
 
@@ -126,6 +126,8 @@ namespace VehicleRegister.Testing.Services
             //Act
             var response = await vehicleService.GetVehicleWithKeyword("ABC123");
             //Assert
+            var result = response.Select(x => x.RegisterNumber);
+            result.Should().Contain("ABC123");
         }
 
         [TestMethod]
